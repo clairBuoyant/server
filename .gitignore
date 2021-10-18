@@ -1,0 +1,60 @@
+## Testing
+/coverage
+
+## Misc
+.DS_Store
+.vscode
+.idea
+
+## Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+*.cover
+*.py,cover
+.hypothesis/
+.pytest_cache/
+
+## Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+## Sphinx documentation
+docs/_build/
+
+## IPython
+profile_default/
+ipython_config.py
+
+## pyenv
+.python-version
+
+# PEP 582; used by e.g. github.com/David-OConnor/pyflow
+__pypackages__/
+
+## Celery
+celerybeat-schedule
+celerybeat.pid
+
+## Environment
+*.env
+.env.*
+.venv
+
+## mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
