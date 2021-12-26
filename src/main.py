@@ -3,10 +3,23 @@ import uvicorn
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
+description_markdown = """
+clairBuoyant API provides you with timely buoy data from NDBC.
+
+## Buoys
+
+You can **read buoy** data. (_not implemented_).
+"""
+
 
 def get_application() -> FastAPI:
     application = FastAPI(
-        title="clairBuoyant", version="0.1.0", docs_url="/api/docs", openapi_url="/api"
+        description=description_markdown,
+        docs_url="/api/v1/docs",
+        openapi_url="/api/v1/openapi.json",
+        redoc_url=None,
+        title="clairBuoyant",
+        version="0.1.0",
     )
 
     # TODO: Specify specific hosts and adjust method/header permissions
@@ -27,7 +40,7 @@ app = get_application()
 
 
 @app.get("/api/v1")
-async def root():
+def root():
     return {"message": "Hello world!"}
 
 

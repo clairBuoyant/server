@@ -7,12 +7,17 @@ authors = ["Kyle J. Burda <47502769+kylejb@users.noreply.github.com>"]
 [tool.poetry.dependencies]
 python = "^3.10"
 fastapi = "^0.70.0"
-psycopg2 = "^2.9.1"
 requests = "^2.26.0"
+uvicorn = "^0.16.0"
+GeoAlchemy2 = "^0.10.0"
+alembic = "^1.7.5"
+python-dotenv = "^0.19.2"
+asyncpg = "^0.25.0"
+SQLAlchemy = "^1.4.29"
+greenlet = "^1.1.2"
 
 [tool.poetry.dev-dependencies]
-uvicorn = "^0.15.0"
-pydantic = "^1.8.2"
+pydantic = "^1.9.0"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
