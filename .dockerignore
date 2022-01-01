@@ -1,0 +1,14 @@
+.DS_Store
+.docker
+.git
+.gitignore
+.pytest_cache
+.vscode
+
+coverage
+docs
+node_modules
+tests
+
+LICENSE
+*.md

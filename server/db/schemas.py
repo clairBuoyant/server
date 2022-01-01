@@ -17,7 +17,7 @@ class BuoyBase(BaseModel):
     currents: Optional[str] = "n"
     waterquality: Optional[str] = "n"
     dart: Optional[str] = "n"
-    seq: Optional[int | None] = None  # tao_seq
+    seq: Optional[int] = None  # tao_seq
 
 
 class BuoyCreate(BuoyBase):

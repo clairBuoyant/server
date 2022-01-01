@@ -3,8 +3,8 @@ import logging
 
 from sqlalchemy.ext.asyncio import create_async_engine
 
-from src.core.config import get_settings
-from src.db.init_db import init_db
+from server.core.config import get_settings
+from server.db.init_db import init_db
 
 
 settings = get_settings()
