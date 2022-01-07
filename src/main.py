@@ -1,7 +1,31 @@
+import logging
 import uvicorn
-
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from typing import Callable
+
+from .db.session import get_db
+
+database = get_db()
+
+
+def create_start_app_handler(app: FastAPI) -> Callable:
+    async def start_app() -> None:
+        logging.info("connecting to a database")
+        # await database
+        logging.info("Database connection - successful")
+
+    return start_app
+
+
+def create_stop_app_handler(app: FastAPI) -> Callable:
+    async def stop_app() -> None:
+        logging.info("Closing connection to database")
+        # await database.disconnect()
+        logging.info("Database connection - closed")
+
+    return stop_app
+
 
 description_markdown = """
 clairBuoyant API provides you with timely buoy data from NDBC.
@@ -32,6 +56,8 @@ def get_application() -> FastAPI:
         allow_methods=["*"],
         allow_headers=["*"],
     )
+    application.add_event_handler("startup", create_start_app_handler(application))
+    application.add_event_handler("shutdown", create_stop_app_handler(application))
 
     return application
 
@@ -39,8 +65,19 @@ def get_application() -> FastAPI:
 app = get_application()
 
 
+# @app.on_event("startup")
+# async def startup():
+#     await db.connect()
+
+
+# @app.on_event("shutdown")
+# async def shutdown():
+#     await db.disconnect()
+
+
 @app.get("/api/v1")
 def root():
+    print(database)
     return {"message": "Hello world!"}
 
 

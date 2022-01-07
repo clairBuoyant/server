@@ -16,9 +16,9 @@ class Buoy(Base):
     )
     elev = Column(Float(precision=10), default=0.0, nullable=False)  # elevation
     pgm = Column(String(50), nullable=False)
-    buoy_type = Column(String(10), nullable=False)
+    type = Column(String(10), nullable=False)
     met = Column(String(1), default="n", nullable=False)
     currents = Column(String(1), default="n", nullable=False)
-    waterquality = Column(String(1), default="n", nullable=False)
+    water_quality = Column(String(1), default="n", nullable=False)
     dart = Column(String(1), default="n", nullable=False)
     seq = Column(SmallInteger, nullable=True)  # tao_seq
