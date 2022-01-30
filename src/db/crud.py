@@ -14,27 +14,6 @@ async def get_buoy(db: AsyncSession, station_id: str):
     return buoy
 
 
-def create_buoy(db: AsyncSession, buoy: schemas.BuoyCreate):
-    buoy_to_db = models.Buoy(
-        station_id=buoy.station_id,
-        name=buoy.name,
-        owner=buoy.owner,
-        location=buoy.location,
-        elev=buoy.elev,
-        pgm=buoy.pgm,
-        buoy_type=buoy.buoy_type,
-        met=buoy.met,
-        currents=buoy.currents,
-        waterquality=buoy.waterquality,
-        dart=buoy.dart,
-        seq=buoy.seq,
-    )
-    db.add(buoy_to_db)
-    db.commit()
-    db.refresh(buoy_to_db)
-    return buoy_to_db
-
-
 async def create_buoys(db: AsyncSession, buoys: list[schemas.BuoyCreate]):
     buoys_to_db = []
     for buoy in buoys:

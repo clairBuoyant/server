@@ -1,10 +1,10 @@
 import asyncio
 import logging
 
-from src.db.init_db import init_db
+from sqlalchemy.ext.asyncio import create_async_engine
 
 from src.core.config import get_settings
-from sqlalchemy.ext.asyncio import create_async_engine
+from src.db.init_db import init_db
 
 
 settings = get_settings()
