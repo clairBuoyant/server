@@ -1,15 +1,61 @@
-from sqlalchemy.orm import Session
+from sqlalchemy.ext.asyncio import AsyncSession
+from sqlalchemy.future import select
 
 from . import models, schemas
 
 
-def get_buoy(db: Session, station_id: str):
-    return db.query(models.Buoy).filter(models.Buoy.station_id == station_id).first()
+async def get_buoy(db: AsyncSession, station_id: str):
+    buoy = None
+    async with db.begin() as conn:
+        stmt = select(models.Buoy).where(models.Buoy.station_id == station_id)
+        result = await conn.execute(stmt)
+        buoy = result.one_or_none()
+    await db.dispose()
+    return buoy
 
 
-def create_buoy(db: Session, buoy: schemas.BuoyCreate):
-    buoy_to_db = models.Buoy(**buoy)  # TODO: manually assign to kwargs for readability
+def create_buoy(db: AsyncSession, buoy: schemas.BuoyCreate):
+    buoy_to_db = models.Buoy(
+        station_id=buoy.station_id,
+        name=buoy.name,
+        owner=buoy.owner,
+        location=buoy.location,
+        elev=buoy.elev,
+        pgm=buoy.pgm,
+        buoy_type=buoy.buoy_type,
+        met=buoy.met,
+        currents=buoy.currents,
+        waterquality=buoy.waterquality,
+        dart=buoy.dart,
+        seq=buoy.seq,
+    )
     db.add(buoy_to_db)
     db.commit()
     db.refresh(buoy_to_db)
     return buoy_to_db
+
+
+async def create_buoys(db: AsyncSession, buoys: list[schemas.BuoyCreate]):
+    buoys_to_db = []
+    for buoy in buoys:
+        buoys_to_db.append(
+            models.Buoy(
+                station_id=buoy.station_id,
+                name=buoy.name,
+                owner=buoy.owner,
+                location=buoy.location,
+                elev=buoy.elev,
+                pgm=buoy.pgm,
+                type=buoy.buoy_type,
+                met=buoy.met,
+                currents=buoy.currents,
+                water_quality=buoy.waterquality,
+                dart=buoy.dart,
+                seq=buoy.seq,
+            )
+        )
+    async with AsyncSession(db) as session:
+        async with session.begin():
+            session.add_all(buoys_to_db)
+        await session.commit()
+    await db.dispose()

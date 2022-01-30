@@ -15,6 +15,8 @@ python-dotenv = "^0.19.2"
 asyncpg = "^0.25.0"
 SQLAlchemy = "^1.4.29"
 greenlet = "^1.1.2"
+beautifulsoup4 = "^4.10.0"
+lxml = "^4.7.1"
 
 [tool.poetry.dev-dependencies]
 pydantic = "^1.9.0"
