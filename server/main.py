@@ -1,10 +1,11 @@
 import logging
 import uvicorn
+
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from typing import Callable
 
-from .db.session import get_db
+from server.db.session import get_db
 
 database = get_db()
 
@@ -84,4 +85,4 @@ def root():
 # TODO: add routes
 
 if __name__ == "__main__":
-    uvicorn.run("main:app", host="0.0.0.0", reload=True, port=8000)
+    uvicorn.run("main:app", host="0.0.0.0", reload=True, port=8888)

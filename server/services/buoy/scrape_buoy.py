@@ -2,8 +2,8 @@ import requests
 
 from bs4 import BeautifulSoup as bs
 
-from db.crud import create_buoys
-from db.schemas import BuoyCreate
+from server.db.crud import create_buoys
+from server.db.schemas import BuoyCreate
 
 
 async def NDBCScraper_Buoy(db):

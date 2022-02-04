@@ -4,7 +4,7 @@ from sqlalchemy.orm import Session
 from services.buoy.scrape_buoy import NDBCScraper_Buoy
 
 # from src.core.config import settings
-from src.db import base  # noqa: F401
+from server.db import base  # noqa: F401
 
 # make sure all SQL Alchemy models are imported (app.db.base) before initializing DB
 # otherwise, SQL Alchemy might fail to initialize relationships properly

@@ -5,7 +5,7 @@ description = "clairBuoyant Server"
 authors = ["Kyle J. Burda <47502769+kylejb@users.noreply.github.com>"]
 
 [tool.poetry.dependencies]
-python = "^3.10"
+python = ">=3.9, <4.0"
 fastapi = "^0.70.0"
 requests = "^2.26.0"
 uvicorn = "^0.16.0"
@@ -19,7 +19,52 @@ beautifulsoup4 = "^4.10.0"
 lxml = "^4.7.1"
 
 [tool.poetry.dev-dependencies]
+black="^21.12b0"
+coverage = { version = "6.2.0", extras = ["toml"]}
+isort = { version = "^5.10.1", extras = ["pyproject"]}
 pydantic = "^1.9.0"
+pytest="^6.2.5"
+
+[tool.black]
+# https://github.com/psf/black
+line-length = 88
+target_version = ['py310']
+exclude = '''
+(
+  /(
+    \.git
+    | \.mypy_cache
+    | \.pytest_cache
+    | htmlcov
+    | venv
+    | .venv
+  )/
+)
+'''
+
+[tool.isort]
+# https://github.com/timothycrosley/isort
+# https://github.com/timothycrosley/isort/wiki/isort-Settings
+line_length = 88
+indent = '    '
+multi_line_output = 3
+include_trailing_comma = true
+force_grid_wrap = 0
+
+
+[tool.coverage]
+# https://github.com/nedbat/coveragepy
+  [tool.coverage.run]
+
+  source = ["server"]
+  branch = true
+  omit = ['']
+
+  [tool.coverage.report]
+  exclude_lines = [
+    "# noqa",
+    "raise NotImplementedError"
+  ]
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
