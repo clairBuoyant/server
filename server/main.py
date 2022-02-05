@@ -78,7 +78,6 @@ app = get_application()
 
 @app.get("/api/v1")
 def root():
-    print(database)
     return {"message": "Hello world!"}
 
 
