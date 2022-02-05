@@ -19,7 +19,7 @@ docker-compose up -d
 sleep 5;
 
 # Run migrations
-docker-compose run --rm server alembic upgrade head
+docker-compose run --rm backend alembic upgrade head
 
 # Create initial data
-docker-compose run --rm server python3 server/seed_initial_data.py
+docker-compose run --rm backend python3 server/seed_initial_data.py
