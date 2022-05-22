@@ -1,24 +1,20 @@
 import asyncio
 import logging
 
-from sqlalchemy.ext.asyncio import create_async_engine
-
-from server.core.config import get_settings
 from server.db.init_db import init_db
+from server.db.session import AsyncSessionLocal
 
-
-settings = get_settings()
-
-engine = create_async_engine(
-    settings.DATABASE_URL,
-)
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 
+db_session = AsyncSessionLocal
+
+
 async def init() -> None:
-    await init_db(engine)
+    await init_db(db_session)
+    await db_session.close()
 
 
 async def async_main() -> None:

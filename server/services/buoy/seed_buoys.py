@@ -2,8 +2,8 @@ import requests
 
 from bs4 import BeautifulSoup as bs
 
-from server.db.crud import create_buoys
-from server.db.schemas import BuoyCreate
+from server.crud.crud_buoy import buoy
+from server.schemas.buoy import BuoyCreate
 
 
 async def NDBCScraper_Buoy(db):
@@ -50,7 +50,7 @@ async def NDBCScraper_Buoy(db):
                     owner=station.get("owner"),
                     elev=station.get("elev", 0.0),
                     pgm=station.get("pgm"),
-                    buoy_type=station.get("type"),
+                    type=station.get("type"),
                     met=station.get("met", ""),
                     currents=station.get("currents", ""),
                     waterquality=station.get("waterquality", ""),
@@ -62,14 +62,10 @@ async def NDBCScraper_Buoy(db):
 
     async def persist_parsed(stations):
         # TODO: integrate pydantic layer with model layer
-        return await create_buoys(db, stations)
+        return await buoy.create_buoys(db, stations)
 
     async def seed_buoy_data():
         stations = parse_activestations(get_activestations())
         return await persist_parsed(stations)
 
     return await seed_buoy_data()
-
-
-if __name__ == "__main__":
-    NDBCScraper_Buoy()

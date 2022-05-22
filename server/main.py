@@ -1,31 +1,14 @@
-import logging
 import uvicorn
 
-from fastapi import FastAPI
+from fastapi import Depends, FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from typing import Callable
+from sqlalchemy.future import select
+from sqlalchemy.orm import joinedload
+from sqlalchemy.ext.asyncio import AsyncSession
+
+from server import models, schemas
 
 from server.db.session import get_db
-
-database = get_db()
-
-
-def create_start_app_handler(app: FastAPI) -> Callable:
-    async def start_app() -> None:
-        logging.info("connecting to a database")
-        # await database
-        logging.info("Database connection - successful")
-
-    return start_app
-
-
-def create_stop_app_handler(app: FastAPI) -> Callable:
-    async def stop_app() -> None:
-        logging.info("Closing connection to database")
-        # await database.disconnect()
-        logging.info("Database connection - closed")
-
-    return stop_app
 
 
 description_markdown = """
@@ -34,6 +17,10 @@ clairBuoyant API provides you with timely buoy data from NDBC.
 ## Buoys
 
 You can **read buoy** data. (_not implemented_).
+
+## Coastlines
+
+You can **get coastlines** data.
 """
 
 
@@ -57,23 +44,32 @@ def get_application() -> FastAPI:
         allow_methods=["*"],
         allow_headers=["*"],
     )
-    application.add_event_handler("startup", create_start_app_handler(application))
-    application.add_event_handler("shutdown", create_stop_app_handler(application))
 
     return application
 
 
 app = get_application()
 
+# TODO: move to API folder
+@app.get("/api/v1/coastlines")
+async def get_coastlines(
+    db_session: AsyncSession = Depends(get_db),
+) -> models.Coastline:
 
-# @app.on_event("startup")
-# async def startup():
-#     await db.connect()
+    # `selectinload`: alternative approach to `joinedload`
+    stmt = (
+        select(models.Coastline)
+        .options(joinedload(models.Coastline.buoy, innerjoin=True))
+        .order_by(models.Coastline.id)
+    )
+    response = await db_session.execute(stmt)
 
+    """TODO
+    * Finish schema typing to support validation/serialization
 
-# @app.on_event("shutdown")
-# async def shutdown():
-#     await db.disconnect()
+    * Add error handling
+    """
+    return [schemas.Coastline.from_orm(row.Coastline).dict() for row in response]
 
 
 @app.get("/api/v1")
