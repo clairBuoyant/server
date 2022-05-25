@@ -9,11 +9,12 @@ python = ">=3.9, <4.0"
 fastapi = "^0.75.2"
 requests = "^2.27.1"
 uvicorn = "^0.17.6"
+pydantic = "^1.9.1"
 GeoAlchemy2 = "^0.11.1"
 alembic = "^1.7.7"
 python-dotenv = "^0.20.0"
 asyncpg = "^0.25.0"
-SQLAlchemy = "^1.4.35"
+SQLAlchemy = "^1.4.36"
 greenlet = "^1.1.2"
 beautifulsoup4 = "^4.11.1"
 lxml = "^4.8.0"
@@ -22,8 +23,7 @@ lxml = "^4.8.0"
 black="^22.3.0"
 coverage = { version = "6.3.2", extras = ["toml"]}
 isort = { version = "^5.10.1", extras = ["pyproject"]}
-pydantic = "^1.9.0"
-pytest="^7.1.1"
+pytest="^7.1.2"
 
 [tool.black]
 # https://github.com/psf/black
