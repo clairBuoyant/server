@@ -19,8 +19,21 @@ depends_on = None
 def upgrade():
     op.create_table(
         "buoys",
-        sa.Column("id", sa.Integer(), nullable=False),
-        sa.Column("station_id", sa.String(length=10), nullable=False),
+        sa.Column(
+            "id",
+            sa.Integer(),
+            index=True,
+            nullable=False,
+            primary_key=True,
+            unique=True,
+        ),
+        sa.Column(
+            "station_id",
+            sa.String(length=10),
+            index=True,
+            nullable=False,
+            unique=True,
+        ),
         sa.Column("name", sa.String(length=200), nullable=False),
         sa.Column("owner", sa.String(length=200), nullable=False),
         sa.Column(
@@ -41,13 +54,8 @@ def upgrade():
         sa.Column("water_quality", sa.String(length=1), nullable=False),
         sa.Column("dart", sa.String(length=1), nullable=False),
         sa.Column("seq", sa.SmallInteger(), nullable=True),
-        sa.PrimaryKeyConstraint("id"),
     )
-    op.create_index(op.f("ix_buoys_id"), "buoys", ["id"], unique=False)
-    op.create_index(op.f("ix_buoys_station_id"), "buoys", ["station_id"], unique=True)
 
 
 def downgrade():
-    op.drop_index(op.f("ix_buoys_station_id"), table_name="buoys")
-    op.drop_index(op.f("ix_buoys_id"), table_name="buoys")
     op.drop_table("buoys")
