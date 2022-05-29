@@ -1,15 +1,23 @@
-from typing import Any, Optional
+from typing import Optional
 
-from pydantic import BaseModel
+from geoalchemy2.elements import WKBElement
+from pydantic import BaseModel, validator
 
 from .buoy import Buoy
+from .common import ewkb_to_wkt
+
 
 
 # Shared properties
 class CoastlineBase(BaseModel):
-    # TODO: fix typing to streamline API validation/serialization
-    geom: Any  # Geography(geometry_type="MULTILINE")
+    geom: str  # Geography(geometry_type="MULTILINE")
     station_id: str
+
+    @validator("geom", pre=True, allow_reuse=True, whole=True, always=True)
+    def correct_geom_format(cls, v):
+        if not isinstance(v, WKBElement):
+            raise ValueError("Must be a valid WKBE element")
+        return ewkb_to_wkt(v)
 
 
 # Properties to receive on item creation
@@ -32,7 +40,6 @@ class CoastlineInDBBase(CoastlineBase):
 
 # Properties to return to client
 class Coastline(CoastlineInDBBase):
-    # TODO: fix typing to streamline API validation/serialization
     buoy: Optional[Buoy]
 
 
