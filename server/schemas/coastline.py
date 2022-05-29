@@ -4,6 +4,7 @@ from pydantic import BaseModel
 
 from .buoy import Buoy
 
+
 # Shared properties
 class CoastlineBase(BaseModel):
     # TODO: fix typing to streamline API validation/serialization

@@ -4,9 +4,9 @@ TODO: https://docs.sqlalchemy.org/en/14/core/connections.html
     * Investigate whether there are any significant advantages with managing connections ourselves.
     * Alternative: use `get_db` with Dependency hook for every API request.
 """
-import asyncpg
 import logging
 
+import asyncpg
 from fastapi import FastAPI
 
 from server.core.config import Settings

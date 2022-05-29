@@ -4,7 +4,6 @@ import logging
 from server.db.init_db import init_db
 from server.db.session import AsyncSessionLocal
 
-
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
