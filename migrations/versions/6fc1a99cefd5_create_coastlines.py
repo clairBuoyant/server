@@ -5,9 +5,9 @@ Revises: d632ea3490c4
 Create Date: 2022-05-21 14:48:54.624485
 
 """
+import sqlalchemy as sa
 from alembic import op
 from geoalchemy2.types import Geography
-import sqlalchemy as sa
 
 # revision identifiers, used by Alembic.
 revision = "6fc1a99cefd5"

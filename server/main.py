@@ -1,15 +1,12 @@
 import uvicorn
-
 from fastapi import Depends, FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.future import select
 from sqlalchemy.orm import joinedload
-from sqlalchemy.ext.asyncio import AsyncSession
 
 from server import models, schemas
-
 from server.db.session import get_db
-
 
 description_markdown = """
 clairBuoyant API provides you with timely buoy data from NDBC.

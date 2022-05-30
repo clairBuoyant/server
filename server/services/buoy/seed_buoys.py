@@ -1,5 +1,4 @@
-import requests
-
+import requests  # type: ignore # TODO: support mypy
 from bs4 import BeautifulSoup as bs
 
 from server.crud.crud_buoy import buoy
