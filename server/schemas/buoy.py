@@ -1,15 +1,16 @@
-from typing import Any, Optional
+from typing import Optional
 
-from pydantic import BaseModel
+from geoalchemy2.elements import WKBElement
+from pydantic import BaseModel, validator
 
+from .common import ewkb_to_wkt
 
-# TODO: fix typing to streamline API validation/serialization
 # Shared properties
 class BuoyBase(BaseModel):
     station_id: str
     name: str
     owner: str
-    location: Any  # Geography(geometry_type="POINT")
+    location: str  # Geography(geometry_type="POINT")
     elev: Optional[float] = 0.0  # elevation
     pgm: str
     type: str
@@ -18,6 +19,12 @@ class BuoyBase(BaseModel):
     waterquality: Optional[str] = "n"
     dart: Optional[str] = "n"
     seq: Optional[int] = None  # tao_seq
+
+    @validator("location", pre=True, allow_reuse=True, whole=True, always=True)
+    def correct_location_format(cls, v):
+        if not isinstance(v, WKBElement):
+            raise ValueError("Must be a valid WKBE element")
+        return ewkb_to_wkt(v)
 
 
 # Properties to receive on item creation

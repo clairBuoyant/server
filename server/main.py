@@ -62,10 +62,9 @@ async def get_coastlines(
     response = await db_session.execute(stmt)
 
     """TODO
-    * Finish schema typing to support validation/serialization
-
     * Add error handling
     """
+
     return [schemas.Coastline.from_orm(row.Coastline).dict() for row in response]
 
 
