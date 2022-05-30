@@ -14,9 +14,7 @@ repos:
     rev: 5.10.1
     hooks:
       - id: isort
-  - repo: local
+  - repo: https://github.com/clairBuoyant/pre-commit
+    rev: v0.1.0
     hooks:
-      - id: branchcheck
-        name: Enforce branch name
-        entry: ./.githooks/check_branch_name.sh
-        language: script
+      - id: branch-validate
