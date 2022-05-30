@@ -1,10 +1,20 @@
-## Testing
-/coverage
+## Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
 
-## Misc
-.DS_Store
-.vscode
-.idea
+## Celery
+celerybeat-schedule
+celerybeat.pid
+
+## Environment
+*.env
+.env.*
+.venv
+
+## IPython
+profile_default/
+ipython_config.py
 
 ## Logs
 *.log
@@ -15,6 +25,7 @@ yarn-error.log*
 pip-log.txt
 pip-delete-this-directory.txt
 # Unit test / coverage reports
+coverage
 htmlcov/
 .tox/
 .nox/
@@ -27,34 +38,25 @@ nosetests.xml
 .hypothesis/
 .pytest_cache/
 
-## Byte-compiled / optimized / DLL files
-__pycache__/
-*.py[cod]
-*$py.class
-
-## Sphinx documentation
-docs/_build/
-
-## IPython
-profile_default/
-ipython_config.py
-
-## pyenv
+## Misc
+.DS_Store
+.idea
+.idea_modules
 .python-version
-
-# PEP 582; used by e.g. github.com/David-OConnor/pyflow
 __pypackages__/
-
-## Celery
-celerybeat-schedule
-celerybeat.pid
-
-## Environment
-*.env
-.env.*
-.venv
 
 ## mypy
 .mypy_cache/
 .dmypy.json
 dmypy.json
+
+## Sphinx documentation
+docs/_build/
+
+## VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.code-workspace

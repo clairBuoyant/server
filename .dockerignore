@@ -1,11 +1,17 @@
 .DS_Store
+.coverage
 .docker
 .git
+.github
 .gitignore
+.idea
+.idea_modules
+.mypy_cache
 .pytest_cache
 .vscode
 
 coverage
+htmlcov
 docs
 tests
 

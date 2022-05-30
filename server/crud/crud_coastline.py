@@ -1,4 +1,6 @@
 from sqlalchemy.ext.asyncio import AsyncSession
+from sqlalchemy.future import select
+from sqlalchemy.orm import joinedload
 
 from server.crud.base import CRUDBase
 from server.models.coastline import Coastline
@@ -17,6 +19,16 @@ class CRUDCoastline(CRUDBase[Coastline, CoastlineCreate, CoastlineUpdate]):
         ]
         db_session.add_all(coastlines_to_db)
         await db_session.commit()
+
+    @staticmethod
+    async def get_coastlines(db_session: AsyncSession):
+        # `selectinload`: alternative approach to `joinedload`
+        stmt = (
+            select(Coastline)
+            .options(joinedload(Coastline.buoy, innerjoin=True))
+            .order_by(Coastline.id)
+        )
+        return await db_session.execute(stmt)
 
 
 coastline = CRUDCoastline(Coastline)

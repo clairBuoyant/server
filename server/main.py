@@ -2,6 +2,8 @@ import uvicorn
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
+
+from server.db.database import db
 from server.api.v1.endpoints import coastlines
 
 description_markdown = """
@@ -42,7 +44,21 @@ def get_application() -> FastAPI:
 
 
 app = get_application()
+
+
+@app.on_event("startup")
+async def startup_event():
+    await db.init()
+    await db.create_all()
+
+
+@app.on_event("shutdown")
+async def shutdown_event():
+    await db.close()
+
+
 app.include_router(coastlines.router)
+
 
 if __name__ == "__main__":
     uvicorn.run("main:app", host="0.0.0.0", reload=True, port=8888)

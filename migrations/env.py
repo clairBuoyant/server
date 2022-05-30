@@ -2,8 +2,9 @@ import asyncio
 from logging.config import fileConfig
 
 from alembic import context
-from sqlalchemy import engine_from_config, pool
-from sqlalchemy.ext.asyncio import AsyncEngine
+from asyncpg import PostgresError
+from sqlalchemy import engine_from_config, pool, text
+from sqlalchemy.ext.asyncio import AsyncEngine, create_async_engine
 
 from server.core.config import get_settings
 from server.db.base import Base
@@ -28,8 +29,10 @@ target_metadata = Base.metadata
 # ... etc.
 
 
-def get_url():
-    settings = get_settings()
+settings = get_settings()
+
+
+def get_db_url():
     return settings.DATABASE_URL
 
 
@@ -45,8 +48,13 @@ def run_migrations_offline():
     script output.
 
     """
+    if settings.PYTHON_ENV == "test":
+        raise PostgresError(
+            "Running testing migrations offline currently not permitted."
+        )
+
     context.configure(
-        url=get_url(),
+        url=get_db_url(),
         target_metadata=target_metadata,
         literal_binds=True,
         dialect_opts={"paramstyle": "named"},
@@ -60,6 +68,8 @@ def do_run_migrations(connection):
     context.configure(connection=connection, target_metadata=target_metadata)
 
     with context.begin_transaction():
+        if settings.PYTHON_ENV == "test":
+            context.execute(text("CREATE EXTENSION IF NOT EXISTS postgis"))
         context.run_migrations()
 
 
@@ -68,10 +78,23 @@ async def run_migrations_online():
 
     In this scenario we need to create an Engine
     and associate a connection with the context.
-
     """
+    DB_URL = (
+        f"{settings.DATABASE_URL}_test"
+        if settings.PYTHON_ENV == "test"
+        else settings.DATABASE_URL
+    )
+
+    if settings.PYTHON_ENV == "test":
+        # connect to primary db
+        default_engine = create_async_engine(get_db_url(), isolation_level="AUTOCOMMIT")
+        # drop testing db if it exists and create a fresh one
+        async with default_engine.connect() as default_conn:
+            await default_conn.execute(text("DROP DATABASE IF EXISTS postgres_test"))
+            await default_conn.execute(text("CREATE DATABASE postgres_test"))
+
     configuration = config.get_section(config.config_ini_section)
-    configuration["sqlalchemy.url"] = get_url()
+    configuration["sqlalchemy.url"] = DB_URL
     connectable = AsyncEngine(
         engine_from_config(
             configuration,

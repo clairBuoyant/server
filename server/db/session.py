@@ -1,27 +1,12 @@
-import logging
 from typing import AsyncGenerator
 
-from sqlalchemy.ext.asyncio import AsyncSession, create_async_engine
+from sqlalchemy.ext.asyncio import AsyncSession
 
-from server.core.config import get_settings
-
-settings = get_settings()
-
-engine = create_async_engine(settings.DATABASE_URL, echo=True, future=True)
-
-AsyncSessionLocal = AsyncSession(
-    autocommit=False, autoflush=False, bind=engine, future=True
-)
+from .database import db
 
 
 async def get_db() -> AsyncGenerator[AsyncSession, None]:
-    db = AsyncSessionLocal
     try:
-        logging.info("connecting to a database")
-        yield db
-        logging.info("Database connection - successful")
+        yield db._session
     finally:
-        logging.info("Closing connection to database")
-        # TODO: investigate: INFO sqlalchemy.engine.Engine ROLLBACK
         await db.close()
-        logging.info("Database connection - closed")
