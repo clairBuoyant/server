@@ -7,13 +7,12 @@ from .buoy import Buoy
 from .common import ewkb_to_wkt
 
 
-
 # Shared properties
 class CoastlineBase(BaseModel):
     geom: str  # Geography(geometry_type="MULTILINE")
     station_id: str
 
-    @validator("geom", pre=True, allow_reuse=True, whole=True, always=True)
+    @validator("geom", pre=True, allow_reuse=True, always=True)
     def correct_geom_format(cls, v):
         if not isinstance(v, WKBElement):
             raise ValueError("Must be a valid WKBE element")

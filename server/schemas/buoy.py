@@ -5,6 +5,7 @@ from pydantic import BaseModel, validator
 
 from .common import ewkb_to_wkt
 
+
 # Shared properties
 class BuoyBase(BaseModel):
     station_id: str
@@ -20,7 +21,7 @@ class BuoyBase(BaseModel):
     dart: Optional[str] = "n"
     seq: Optional[int] = None  # tao_seq
 
-    @validator("location", pre=True, allow_reuse=True, whole=True, always=True)
+    @validator("location", pre=True, allow_reuse=True, always=True)
     def correct_location_format(cls, v):
         if not isinstance(v, WKBElement):
             raise ValueError("Must be a valid WKBE element")
