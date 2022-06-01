@@ -4,21 +4,17 @@ from sqlalchemy.future import select
 from sqlalchemy.orm import joinedload
 
 from server import models, schemas
-from server.db.session import get_db
-
 # TODO Implement Settings to have hardcoded route prefixes for future use
 from server.core.config import Settings
+from server.db.session import get_db
 
+router = APIRouter(prefix="/api/v1/coastlines", tags=["coastlines"])
 
-router = APIRouter(
-    prefix="/api/v1/coastlines",
-    tags=["coastlines"]
-)
 
 @router.get("/")
 async def get_coastlines(
     db_session: AsyncSession = Depends(get_db),
-    ) -> models.Coastline:
+) -> models.Coastline:
 
     # `selectinload`: alternative approach to `joinedload`
     stmt = (
