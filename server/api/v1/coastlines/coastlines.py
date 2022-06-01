@@ -3,12 +3,22 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.future import select
 from sqlalchemy.orm import joinedload
 
-router = APIRouter()
+from server import models, schemas
+from server.db.session import get_db
 
-@router.get("/api/v1/coastlines")
+# TODO Implement Settings to have hardcoded route prefixes for future use
+from server.core.config import Settings
+
+
+router = APIRouter(
+    prefix="/api/v1/coastlines",
+    tags=["coastlines"]
+)
+
+@router.get("/")
 async def get_coastlines(
     db_session: AsyncSession = Depends(get_db),
-) -> models.Coastline:
+    ) -> models.Coastline:
 
     # `selectinload`: alternative approach to `joinedload`
     stmt = (
@@ -21,5 +31,4 @@ async def get_coastlines(
     """TODO
     * Add error handling
     """
-
     return [schemas.Coastline.from_orm(row.Coastline).dict() for row in response]

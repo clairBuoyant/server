@@ -1,12 +1,8 @@
 import uvicorn
-from fastapi import Depends, FastAPI
+from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from sqlalchemy.ext.asyncio import AsyncSession
-from sqlalchemy.future import select
-from sqlalchemy.orm import joinedload
 
-from server import models, schemas
-from server.db.session import get_db
+from server.api.v1.coastlines import coastlines
 
 description_markdown = """
 clairBuoyant API provides you with timely buoy data from NDBC.
@@ -47,33 +43,15 @@ def get_application() -> FastAPI:
 
 app = get_application()
 
-# TODO: move to API folder
-@app.get("/api/v1/coastlines")
-async def get_coastlines(
-    db_session: AsyncSession = Depends(get_db),
-) -> models.Coastline:
-
-    # `selectinload`: alternative approach to `joinedload`
-    stmt = (
-        select(models.Coastline)
-        .options(joinedload(models.Coastline.buoy, innerjoin=True))
-        .order_by(models.Coastline.id)
-    )
-    response = await db_session.execute(stmt)
-
-    """TODO
-    * Add error handling
-    """
-
-    return [schemas.Coastline.from_orm(row.Coastline).dict() for row in response]
-
 
 @app.get("/api/v1")
 def root():
-    return {"message": "Hello world!"}
+    return {"message": "Welcome to Version 1, Senpai UwU"}
 
 
 # TODO: add routes
+# Coastlines Route
+app.include_router(coastlines.router)
 
 if __name__ == "__main__":
     uvicorn.run("main:app", host="0.0.0.0", reload=True, port=8888)
