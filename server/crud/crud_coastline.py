@@ -9,6 +9,8 @@ from server.schemas.coastline import CoastlineCreate, CoastlineUpdate
 
 # TODO: Rework with OOP composition
 class CRUDCoastline(CRUDBase[Coastline, CoastlineCreate, CoastlineUpdate]):
+    # TODO: Create get method
+
     @staticmethod
     async def create_coastlines(
         db_session: AsyncSession, coastlines: list[CoastlineCreate]
