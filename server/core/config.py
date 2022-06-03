@@ -1,6 +1,9 @@
 from functools import lru_cache
 
+from dotenv import load_dotenv
 from pydantic import BaseSettings
+
+load_dotenv()
 
 API_V1_STR = "/api/v1"
 

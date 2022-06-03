@@ -21,12 +21,6 @@ class BuoyBase(BaseModel):
     dart: Optional[str] = "n"
     seq: Optional[int] = None  # tao_seq
 
-    @validator("location", pre=True, allow_reuse=True, always=True)
-    def correct_location_format(cls, v):
-        if not isinstance(v, WKBElement):
-            raise ValueError("Must be a valid WKBE element")
-        return ewkb_to_wkt(v)
-
 
 # Properties to receive on item creation
 class BuoyCreate(BuoyBase):
@@ -48,7 +42,11 @@ class BuoyInDBBase(BuoyBase):
 
 # Properties to return to client
 class Buoy(BuoyInDBBase):
-    ...
+    @validator("location", pre=True, allow_reuse=True, always=True)
+    def correct_location_format(cls, v):
+        if not isinstance(v, WKBElement):
+            raise ValueError("Must be a valid WKBE element")
+        return ewkb_to_wkt(v)
 
 
 # Properties properties stored in DB

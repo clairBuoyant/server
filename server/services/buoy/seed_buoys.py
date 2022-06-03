@@ -39,7 +39,7 @@ async def NDBCScraper_Buoy(db):
         for station in stations:
             station = station.attrs
             lon, lat = float(station.get("lon", 0.0)), float(station.get("lat", 0.0))
-            geo = f"Point({lon} {lat})"
+            geo = f"POINT({lon} {lat})"
 
             parsed_stations_obj.append(
                 BuoyCreate(

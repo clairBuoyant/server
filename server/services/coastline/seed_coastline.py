@@ -1,5 +1,3 @@
-from sqlalchemy.ext.asyncio import AsyncSession
-
 from server.crud.crud_coastline import coastline
 from server.schemas.coastline import CoastlineCreate
 

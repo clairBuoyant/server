@@ -1,0 +1,61 @@
+name: FastAPI Server
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    environment: test
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Python 3.10
+        uses: actions/setup-python@v3
+        with:
+          python-version: "3.10"
+      - name: Install Poetry
+        uses: snok/install-poetry@v1
+        with:
+          virtualenvs-create: true
+          virtualenvs-in-project: true
+          installer-parallel: true
+      - name: Load cached venv
+        id: cached-poetry-dependencies
+        uses: actions/cache@v2
+        with:
+          path: .venv
+          key: venv-${{ runner.os }}-${{ steps.setup-python.outputs.python-version }}-${{ hashFiles('**/poetry.lock') }}
+      - name: Install dependencies
+        if: steps.cached-poetry-dependencies.outputs.cache-hit != 'true'
+        run: poetry install --no-interaction --no-root
+      - name: Setup PostgreSQL with extensions and unprivileged user
+        uses: Daniel-Marynicz/postgresql-action@1.0.0
+        with:
+          postgres_image_tag: latest
+          postgres_image_name: postgis/postgis
+          postgres_user: postgres
+          postgres_db: postgres
+          postgres_password: postgres
+          postgres_extensions: postgis
+          # app_user: # optional, default is app
+          # app_user_password: # optional, default is app
+          # APP_DB - database or list of databases separated by space for unprivileged postgres user
+          # exposed_postgres_port: # optional, default is 5432
+      - name: Seed DB
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+          PYTHONPATH: .:src
+        run: |
+          sleep 10;
+          poetry run alembic upgrade head
+          poetry run python server/seed_initial_data.py
+      - name: Run tests
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+          PYTHONPATH: .:src
+        # TODO: incorporate coverage reporting
+        run: |
+          poetry run pytest
