@@ -2,7 +2,7 @@ import uvicorn
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from server.api.v1.coastlines import coastlines
+from server.api.v1.endpoints import coastlines
 
 description_markdown = """
 clairBuoyant API provides you with timely buoy data from NDBC.
@@ -40,17 +40,7 @@ def get_application() -> FastAPI:
 
     return application
 
-
 app = get_application()
-
-
-@app.get("/api/v1")
-def root():
-    return {"message": "Welcome to Version 1, Senpai UwU"}
-
-
-# TODO: add routes
-# Coastlines Route
 app.include_router(coastlines.router)
 
 if __name__ == "__main__":

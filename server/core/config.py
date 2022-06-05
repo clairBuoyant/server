@@ -6,7 +6,7 @@ from pydantic import BaseSettings
 load_dotenv()
 
 API_V1_STR = "/api/v1"
-COASTLINES_V1_STR = API_V1_STR + "coastlines"
+COASTLINES_V1_STR = "%s/coastlines" % API_V1_STR  
 
 
 class Settings(BaseSettings):
