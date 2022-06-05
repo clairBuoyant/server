@@ -40,6 +40,7 @@ def get_application() -> FastAPI:
 
     return application
 
+
 app = get_application()
 app.include_router(coastlines.router)
 
