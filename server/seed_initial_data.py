@@ -4,6 +4,7 @@ import logging
 from server.db.init_db import init_db
 from server.db.session import AsyncSessionLocal
 
+# TODO: minimize DB query logs in CI/CD
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 

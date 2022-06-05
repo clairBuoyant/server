@@ -12,12 +12,6 @@ class CoastlineBase(BaseModel):
     geom: str  # Geography(geometry_type="MULTILINE")
     station_id: str
 
-    @validator("geom", pre=True, allow_reuse=True, always=True)
-    def correct_geom_format(cls, v):
-        if not isinstance(v, WKBElement):
-            raise ValueError("Must be a valid WKBE element")
-        return ewkb_to_wkt(v)
-
 
 # Properties to receive on item creation
 class CoastlineCreate(CoastlineBase):
@@ -40,6 +34,12 @@ class CoastlineInDBBase(CoastlineBase):
 # Properties to return to client
 class Coastline(CoastlineInDBBase):
     buoy: Optional[Buoy]
+
+    @validator("geom", pre=True, allow_reuse=True, always=True)
+    def correct_geom_format(cls, v):
+        if not isinstance(v, WKBElement):
+            raise ValueError("Must be a valid WKBE element")
+        return ewkb_to_wkt(v)
 
 
 # Properties properties stored in DB
