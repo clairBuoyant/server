@@ -26,8 +26,7 @@ class CRUDBase(Generic[ModelType, CreateSchemaType, UpdateSchemaType]):
     def get(self, db: Session, id: Any) -> Optional[ModelType]:
         return db.query(self.model).filter(self.model.id == id).first()
 
-    @staticmethod
-    async def async_get(self, db: Session, id: Any) -> Optional[ModelType]:
+    async def async_get(self, db: AsyncSession, id: Any) -> Optional[ModelType]:
         return await db.execute(select(self.model).where(self.model.id == id))
 
     def get_multi(
