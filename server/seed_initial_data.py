@@ -6,8 +6,7 @@ from sqlalchemy.ext.asyncio import AsyncSession, create_async_engine
 from server.core.config import get_settings
 from server.db.init_db import init_db
 
-# TODO: minimize DB query logs in CI/CD
-logging.basicConfig(level=logging.INFO)
+logging.basicConfig(level=logging.WARN)
 logger = logging.getLogger(__name__)
 
 

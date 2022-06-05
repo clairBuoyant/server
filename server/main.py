@@ -3,8 +3,8 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 
-from server.db.database import db
 from server.api.v1.endpoints import coastlines
+from server.db.database import db
 
 description_markdown = """
 clairBuoyant API provides you with timely buoy data from NDBC.
