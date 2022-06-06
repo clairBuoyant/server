@@ -22,11 +22,11 @@ You can **get coastlines** data.
 def get_application() -> FastAPI:
     application = FastAPI(
         description=description_markdown,
-        docs_url="/api/v1/docs",
-        openapi_url="/api/v1/openapi.json",
+        docs_url="/api/docs",
+        openapi_url="/api/openapi.json",
         redoc_url=None,
         title="clairBuoyant",
-        version="0.1.0",
+        version="0.1.1",
     )
 
     # TODO: Specify specific hosts and adjust method/header permissions

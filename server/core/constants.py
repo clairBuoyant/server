@@ -1,5 +1,12 @@
 from enum import Enum
 
+_API_VERSION = "v1"
+_API_PREFIX = f"api/{_API_VERSION}"
+
+
+buoys_path = f"{_API_PREFIX}/buoys"
+coastlines_path = f"{_API_PREFIX}/coastlines"
+
 
 class PythonEnv(Enum):
     DEVELOPMENT = "development"
@@ -7,5 +14,4 @@ class PythonEnv(Enum):
     TEST = "test"
 
 
-API_VERSION = "v1"
 DEFAULT_PYTHON_ENV = PythonEnv.PRODUCTION

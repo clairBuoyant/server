@@ -7,6 +7,7 @@ from sqlalchemy import engine_from_config, pool, text
 from sqlalchemy.ext.asyncio import AsyncEngine, create_async_engine
 
 from server.core.config import get_settings
+from server.core.constants import PythonEnv
 from server.db.base import Base
 
 # this is the Alembic Config object, which provides
@@ -48,7 +49,7 @@ def run_migrations_offline():
     script output.
 
     """
-    if settings.PYTHON_ENV == "test":
+    if settings.PYTHON_ENV == PythonEnv.TEST:
         raise PostgresError(
             "Running testing migrations offline currently not permitted."
         )
@@ -81,11 +82,11 @@ async def run_migrations_online():
     """
     DB_URL = (
         f"{settings.DATABASE_URL}_test"
-        if settings.PYTHON_ENV == "test"
+        if settings.PYTHON_ENV == PythonEnv.TEST
         else settings.DATABASE_URL
     )
 
-    if settings.PYTHON_ENV == "test":
+    if settings.PYTHON_ENV == PythonEnv.TEST:
         # connect to primary db
         default_engine = create_async_engine(get_db_url(), isolation_level="AUTOCOMMIT")
         # drop testing db if it exists and create a fresh one
