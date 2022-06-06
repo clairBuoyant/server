@@ -47,6 +47,7 @@ jobs:
       - name: Seed DB
         env:
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
+          PYTHON_ENV: ${{ secrets.PYTHON_ENV }}
           PYTHONPATH: .:src
         run: |
           sleep 10;
@@ -55,6 +56,7 @@ jobs:
       - name: Run tests
         env:
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
+          PYTHON_ENV: ${{ secrets.PYTHON_ENV }}
           PYTHONPATH: .:src
         # TODO: incorporate coverage reporting
         run: |
