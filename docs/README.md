@@ -38,6 +38,12 @@ Run all documented commands from the project's **root** folder.
 
 See the [poetry docs](https://python-poetry.org/docs/) for more information.
 
+### Environment Variables
+
+- `DATABASE_URL`: "postgresql+asyncpg://{POSTGRES_USER}:{POSTGRES_PASSWORD}@{POSTGRES_SERVER}:{POSTGRES_PORT}/{POSTGRES_DB}"
+
+- `PYTHON_ENV`: "development" or "production" or "test". (default: production)
+
 ### Development with Docker
 
 Go to [devBuoyant](https://github.com/clairBuoyant/devBuoyant) for instructions.
