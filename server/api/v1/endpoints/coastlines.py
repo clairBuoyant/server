@@ -4,9 +4,8 @@ from sqlalchemy.future import select
 from sqlalchemy.orm import joinedload
 
 from server import models, schemas
-# TODO Implement Settings to have hardcoded route prefixes for future use
+from server.api.dependencies import get_db
 from server.core.config import COASTLINES_V1_STR
-from server.db.session import get_db
 
 router = APIRouter(prefix=COASTLINES_V1_STR, tags=["coastlines"])
 

@@ -2,7 +2,6 @@ import uvicorn
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-
 from server.api.v1.endpoints import coastlines
 from server.db.database import db
 
