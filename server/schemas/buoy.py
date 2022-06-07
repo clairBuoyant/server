@@ -17,7 +17,7 @@ class BuoyBase(BaseModel):
     type: str
     met: Optional[str] = "n"
     currents: Optional[str] = "n"
-    waterquality: Optional[str] = "n"
+    water_quality: Optional[str] = "n"
     dart: Optional[str] = "n"
     seq: Optional[int] = None  # tao_seq
 

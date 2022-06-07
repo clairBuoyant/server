@@ -4,9 +4,6 @@ from pydantic import BaseSettings
 
 from server.core.constants import DEFAULT_PYTHON_ENV
 
-API_V1_STR = "/api/v1"
-COASTLINES_V1_STR = "%s/coastlines" % API_V1_STR
-
 
 class Settings(BaseSettings):
     DATABASE_URL: str

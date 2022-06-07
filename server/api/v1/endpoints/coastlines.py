@@ -5,17 +5,19 @@ from sqlalchemy.orm import joinedload
 
 from server import models, schemas
 from server.api.dependencies import get_db
-from server.core.config import COASTLINES_V1_STR
+from server.core.constants import RELATIVE_ROOT
 
-router = APIRouter(prefix=COASTLINES_V1_STR, tags=["coastlines"])
+router = APIRouter()
+
+# TODO: incorporate error handling and refactor with CRUDCoastline
+# TODO: incorporate response_model and response type
 
 
-@router.get("/")
+@router.get(RELATIVE_ROOT)
 async def get_coastlines(
     db_session: AsyncSession = Depends(get_db),
 ) -> models.Coastline:
 
-    # `selectinload`: alternative approach to `joinedload`
     stmt = (
         select(models.Coastline)
         .options(joinedload(models.Coastline.buoy, innerjoin=True))
@@ -23,7 +25,4 @@ async def get_coastlines(
     )
     response = await db_session.execute(stmt)
 
-    """TODO
-    * Add error handling
-    """
     return [schemas.Coastline.from_orm(row.Coastline).dict() for row in response]

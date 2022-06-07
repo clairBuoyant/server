@@ -2,7 +2,8 @@ import uvicorn
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from server.api.v1.endpoints import coastlines
+from server.api.v1.api import api_router
+from server.core.constants import API_PREFIX
 from server.db.database import db
 
 description_markdown = """
@@ -56,7 +57,7 @@ async def shutdown_event():
     await db.close()
 
 
-app.include_router(coastlines.router)
+app.include_router(api_router, prefix=API_PREFIX)
 
 
 if __name__ == "__main__":

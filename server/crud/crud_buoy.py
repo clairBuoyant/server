@@ -27,7 +27,7 @@ class CRUDBuoy(CRUDBase[Buoy, BuoyCreate, BuoyUpdate]):
                 type=buoy.type,
                 met=buoy.met,
                 currents=buoy.currents,
-                water_quality=buoy.waterquality,
+                water_quality=buoy.water_quality,
                 dart=buoy.dart,
                 seq=buoy.seq,
             )

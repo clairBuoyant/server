@@ -1,8 +1,8 @@
-from server.core.constants import coastlines_path
+from server.core.constants import COASTLINES_URI
 
 
 def test_coastlines(test_app):
-    response = test_app.get(coastlines_path)
+    response = test_app.get(COASTLINES_URI)
     assert response.status_code == 200
 
     rockaway_coastlines = response.json()

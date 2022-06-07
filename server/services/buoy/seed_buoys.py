@@ -52,7 +52,7 @@ async def NDBCScraper_Buoy(db):
                     type=station.get("type"),
                     met=station.get("met", ""),
                     currents=station.get("currents", ""),
-                    waterquality=station.get("waterquality", ""),
+                    water_quality=station.get("waterquality", ""),
                     dart=station.get("dart", ""),
                     seq=station.get("seq", None),
                 )
