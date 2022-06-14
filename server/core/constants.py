@@ -1,11 +1,20 @@
 from enum import Enum
 
 _API_VERSION = "v1"
-_API_PREFIX = f"api/{_API_VERSION}"
+API_PREFIX = f"/api/{_API_VERSION}"
+
+BUOYS_PATH = "/buoys"
+COASTLINES_PATH = "/coastlines"
+
+BUOYS_URI = f"{API_PREFIX}{BUOYS_PATH}"
+COASTLINES_URI = f"{API_PREFIX}{COASTLINES_PATH}"
+
+RELATIVE_ROOT = "/"
 
 
-buoys_path = f"{_API_PREFIX}/buoys"
-coastlines_path = f"{_API_PREFIX}/coastlines"
+class PathTags(Enum):
+    BUOYS = "buoys"
+    COASTLINES = "coastlines"
 
 
 class PythonEnv(Enum):
