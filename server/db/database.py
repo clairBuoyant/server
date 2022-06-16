@@ -1,3 +1,5 @@
+from ctypes import Union
+
 from sqlalchemy.ext.asyncio import AsyncSession, create_async_engine
 from sqlalchemy.orm import declarative_base, sessionmaker
 
@@ -32,4 +34,4 @@ class Database:
 
 settings = Settings()
 # TODO: dynamically append '_test' based on PYTHON_ENV
-db: AsyncSession | Database = Database(settings.DATABASE_URL)
+db: AsyncSession or Database = Database(settings.DATABASE_URL)
