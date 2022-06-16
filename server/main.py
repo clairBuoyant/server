@@ -11,12 +11,15 @@ clairBuoyant API provides you with timely buoy data from NDBC.
 
 ## Buoys
 
-You can **get buoy** data by `station_id`.
 You can **get buoys** data.
+
+You can **get buoy** data by `station_id`.
 
 ## Coastlines
 
 You can **get coastlines** data.
+
+You can **get coastline** by `coastline_id`.
 """
 
 
