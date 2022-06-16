@@ -4,7 +4,7 @@ from fastapi.encoders import jsonable_encoder
 from pydantic import BaseModel
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.future import select
-from sqlalchemy.orm import Session
+from sqlalchemy.orm import Session, selectinload
 
 from server.db.base_class import Base
 
@@ -27,7 +27,13 @@ class CRUDBase(Generic[ModelType, CreateSchemaType, UpdateSchemaType]):
         return db.query(self.model).filter(self.model.id == id).first()
 
     async def async_get(self, db: AsyncSession, id: Any) -> Optional[ModelType]:
-        return await db.execute(select(self.model).where(self.model.id == id))
+        return await db.execute(
+            select(self.model)
+            .where(self.model.id == id)
+            .options(
+                selectinload(self.model.buoy)
+            )  # TODO: refactor options in such a way to keep base class as generic as possible
+        )
 
     def get_multi(
         self, db: Session, *, skip: int = 0, limit: int = 100

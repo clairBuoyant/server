@@ -11,7 +11,6 @@ from server.schemas.coastline import CoastlineCreate, CoastlineUpdate
 class CRUDCoastline(CRUDBase[Coastline, CoastlineCreate, CoastlineUpdate]):
     # TODO: Create get method
 
-    @staticmethod
     async def create_coastlines(
         db_session: AsyncSession, coastlines: list[CoastlineCreate]
     ):
@@ -22,7 +21,6 @@ class CRUDCoastline(CRUDBase[Coastline, CoastlineCreate, CoastlineUpdate]):
         db_session.add_all(coastlines_to_db)
         await db_session.commit()
 
-    @staticmethod
     async def get_coastlines(db_session: AsyncSession):
         # `selectinload`: alternative approach to `joinedload`
         stmt = (

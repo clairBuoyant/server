@@ -19,17 +19,19 @@ async def get_coastlines(
     db_session: AsyncSession = Depends(get_db),
 ) -> models.Coastline:
 
-    results = await coastline.async_get(db_session, id=1)
-    # print("RESULTS", schemas.Coastline.from_orm(next(results.chunks(None))[0]).dict())
-    for row in results:
-        print(schemas.Coastline.from_orm(row.Coastline).dict())
+    # TODO: finish get_coastlines with CoastlineCRUD
+    response = await coastline.async_get(db_session, id=1)
 
-    # stmt = (
-    #     select(models.Coastline)
-    #     .options(joinedload(models.Coastline.buoy, innerjoin=True))
-    #     .order_by(models.Coastline.id)
-    # )
-    # response = await db_session.execute(stmt)
+    return [schemas.Coastline.from_orm(row.Coastline).dict() for row in response]
 
-    # return [schemas.Coastline.from_orm(row.Coastline).dict() for row in response]
-    return "Work in progress"
+
+@router.get("/{coastline_id}")
+async def get_coastline(
+    coastline_id: int,
+    db_session: AsyncSession = Depends(get_db),
+) -> models.Coastline:
+
+    # TODO: create tests
+    response = await coastline.async_get(db_session, id=coastline_id)
+    coastline_from_response = response.first()
+    return schemas.Coastline.from_orm(coastline_from_response.Coastline).dict()
