@@ -20,7 +20,7 @@ async def get_coastlines(
 ) -> models.Coastline:
 
     # TODO: finish get_coastlines with CoastlineCRUD
-    response = await coastline.async_get(db_session, id=1)
+    response = await coastline.async_get(db_session)
 
     return [schemas.Coastline.from_orm(row.Coastline).dict() for row in response]
 
@@ -32,6 +32,6 @@ async def get_coastline(
 ) -> models.Coastline:
 
     # TODO: create tests
-    response = await coastline.async_get(db_session, id=coastline_id)
+    response = await coastline.async_get_single(db_session, id=coastline_id)
     coastline_from_response = response.first()
     return schemas.Coastline.from_orm(coastline_from_response.Coastline).dict()
