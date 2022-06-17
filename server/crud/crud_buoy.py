@@ -6,16 +6,12 @@ from server.models.buoy import Buoy
 from server.schemas.buoy import BuoyCreate, BuoyUpdate
 
 
-# TODO: Rework with OOP composition
 class CRUDBuoy(CRUDBase[Buoy, BuoyCreate, BuoyUpdate]):
-    @staticmethod
-    async def get_buoy(db_session: AsyncSession, station_id: str):
-        return await db_session.execute(
-            select(Buoy).where(Buoy.station_id == station_id)
-        )
+    async def find_one(self, db: AsyncSession, station_id: str):
+        result = await db.execute(select(Buoy).where(Buoy.station_id == station_id))
+        return result.first()
 
-    @staticmethod
-    async def create_buoys(db_session: AsyncSession, buoys: list[BuoyCreate]):
+    async def create_buoys(self, db: AsyncSession, buoys: list[BuoyCreate]):
         buoys_to_db = [
             Buoy(
                 station_id=buoy.station_id,
@@ -33,8 +29,8 @@ class CRUDBuoy(CRUDBase[Buoy, BuoyCreate, BuoyUpdate]):
             )
             for buoy in buoys
         ]
-        db_session.add_all(buoys_to_db)
-        await db_session.commit()
+        db.add_all(buoys_to_db)
+        await db.commit()
 
 
 buoy = CRUDBuoy(Buoy)

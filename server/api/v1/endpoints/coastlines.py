@@ -1,16 +1,14 @@
 from fastapi import APIRouter, Depends
 from sqlalchemy.ext.asyncio import AsyncSession
-from sqlalchemy.future import select
-from sqlalchemy.orm import joinedload
 
 from server import models, schemas
 from server.api.dependencies import get_db
 from server.core.constants import RELATIVE_ROOT
-from server.crud.crud_coastline import coastline
+from server.crud import coastline
 
 router = APIRouter()
 
-# TODO: incorporate error handling and refactor with CRUDCoastline
+# TODO: incorporate error handling
 # TODO: incorporate response_model and response type
 
 
@@ -19,9 +17,7 @@ async def get_coastlines(
     db_session: AsyncSession = Depends(get_db),
 ) -> models.Coastline:
 
-    # TODO: finish get_coastlines with CoastlineCRUD
-    response = await coastline.async_get(db_session)
-
+    response = await coastline.find_many(db_session)
     return [schemas.Coastline.from_orm(row.Coastline).dict() for row in response]
 
 
@@ -31,7 +27,5 @@ async def get_coastline(
     db_session: AsyncSession = Depends(get_db),
 ) -> models.Coastline:
 
-    # TODO: create tests
-    response = await coastline.async_get_single(db_session, id=coastline_id)
-    coastline_from_response = response.first()
+    coastline_from_response = await coastline.find_one(db_session, id=coastline_id)
     return schemas.Coastline.from_orm(coastline_from_response.Coastline).dict()

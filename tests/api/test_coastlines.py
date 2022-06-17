@@ -1,7 +1,7 @@
 from server.core.constants import COASTLINES_URI
 
 
-def test_coastlines(test_app):
+def test_get_coastlines(test_app):
     response = test_app.get(COASTLINES_URI)
     assert response.status_code == 200
 
@@ -13,3 +13,15 @@ def test_coastlines(test_app):
     assert "geom" in first_record
     assert "id" in first_record
     assert "station_id" in first_record
+
+
+def test_get_coastline(test_app):
+    response = test_app.get(f"{COASTLINES_URI}/1")
+    assert response.status_code == 200
+
+    coastline = response.json()
+
+    assert "buoy" in coastline
+    assert "geom" in coastline
+    assert "id" in coastline
+    assert "station_id" in coastline
