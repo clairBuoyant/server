@@ -1,6 +1,5 @@
 from geoalchemy2.types import Geography
 from sqlalchemy import Column, Float, Integer, SmallInteger, String
-from sqlalchemy.orm import relationship
 
 from server.db.base_class import Base
 
@@ -23,5 +22,3 @@ class Buoy(Base):
     water_quality = Column(String(1), default="n", nullable=False)
     dart = Column(String(1), default="n", nullable=False)
     seq = Column(SmallInteger, nullable=True)  # tao_seq
-
-    coastlines = relationship("Coastline", back_populates="buoy", uselist=True)

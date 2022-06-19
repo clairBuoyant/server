@@ -1,8 +1,13 @@
+from typing import TYPE_CHECKING, Optional
+
 from geoalchemy2.types import Geography
 from sqlalchemy import Column, ForeignKey, Integer, String
 from sqlalchemy.orm import relationship
 
 from server.db.base_class import Base
+
+if TYPE_CHECKING:
+    from .buoy import Buoy
 
 
 class Coastline(Base):
@@ -21,4 +26,5 @@ class Coastline(Base):
             geometry_type="GEOMETRY", nullable=False, srid=4326, spatial_index=True
         )
     )
-    buoy = relationship("Buoy", back_populates="coastlines", uselist=False)
+    # TODO: revisit relationship strategy to avoid N+1 problem
+    buoy: Optional["Buoy"] = relationship("Buoy", backref="coastlines", lazy="joined")
