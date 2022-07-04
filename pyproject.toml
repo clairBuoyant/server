@@ -7,7 +7,7 @@ authors = ["Kyle J. Burda <47502769+kylejb@users.noreply.github.com>"]
 [tool.poetry.dependencies]
 python = ">=3.10, <4.0"
 fastapi = "^0.78.0"
-requests = "^2.28.0"
+requests = "^2.28.1"
 uvicorn = "^0.17.6"
 pydantic = "^1.9.1"
 GeoAlchemy2 = "^0.11.1"
@@ -16,12 +16,11 @@ python-dotenv = "^0.20.0"
 asyncpg = "^0.25.0"
 SQLAlchemy = "^1.4.37"
 greenlet = "^1.1.2"
-beautifulsoup4 = "^4.11.1"
-lxml = "^4.9.0"
 Shapely = "^1.8.2"
+pybuoy = "^0.1.1"
 
 [tool.poetry.dev-dependencies]
-black="^22.3.0"
+black="^22.6.0"
 coverage = { version = "6.4.1", extras = ["toml"]}
 isort = { version = "^5.10.1", extras = ["pyproject"]}
 pytest="^7.1.2"
