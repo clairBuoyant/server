@@ -49,7 +49,7 @@ jobs:
         env:
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
           PYTHON_ENV: ${{ secrets.PYTHON_ENV }}
-          PYTHONPATH: .:src
+          PYTHONPATH: $PYTHONPATH:.
         run: |
           sleep 10;
           poetry run alembic upgrade head
@@ -58,7 +58,7 @@ jobs:
         env:
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
           PYTHON_ENV: ${{ secrets.PYTHON_ENV }}
-          PYTHONPATH: .:src
+          PYTHONPATH: $PYTHONPATH:.
         # TODO: incorporate coverage reporting
         run: |
           poetry run pytest

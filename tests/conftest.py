@@ -1,4 +1,12 @@
 import inspect
+import os
+import sys
+from pathlib import Path
+
+# if __name__ == "__main__" and server folder is not on PYTHONPATH
+server_fpath = str(Path(os.path.join(os.path.dirname(__file__))).parent)
+if server_fpath not in sys.path:
+    sys.path.append(server_fpath)
 
 import pytest
 from fastapi.testclient import TestClient
