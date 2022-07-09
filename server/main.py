@@ -1,3 +1,13 @@
+import os
+import sys
+from pathlib import Path
+
+# TODO: consolidate duplication of this block of code (seed_initial_data and conftest)
+# if __name__ == "__main__" and server folder is not on PYTHONPATH
+server_fpath = str(Path(os.path.join(os.path.dirname(__file__))).parent)
+if server_fpath not in sys.path:
+    sys.path.append(server_fpath)
+
 import uvicorn
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
