@@ -26,8 +26,8 @@ RUN curl -sSL https://raw.githubusercontent.com/sdispater/poetry/master/get-poet
 # We copy our Python requirements here to cache them
 # and install only runtime deps using poetry
 WORKDIR $PYSETUP_PATH
-COPY ../poetry.lock ./
-COPY ../pyproject.toml ./
+COPY ./server/poetry.lock ./
+COPY ./server/pyproject.toml ./
 RUN poetry install --no-dev
 
 
@@ -49,9 +49,9 @@ WORKDIR $PYSETUP_PATH
 RUN poetry install
 
 WORKDIR /backend
-COPY ./server /backend/server
-COPY ./alembic.ini /backend/
-COPY ./migrations /backend/migrations
+COPY ./server/server /backend/server
+COPY ./server/alembic.ini /backend/
+COPY ./server/migrations /backend/migrations
 
 
 EXPOSE 8888
@@ -85,9 +85,9 @@ COPY ./docker/docker-entrypoint.sh /docker-entrypoint.sh
 RUN chmod +x /docker-entrypoint.sh
 
 WORKDIR /backend
-COPY ./server /backend/server
-COPY ./alembic.ini /backend/
-COPY ./migrations /backend/migrations
+COPY ./server/server /backend/server
+COPY ./server/alembic.ini /backend/
+COPY ./server/migrations /backend/migrations
 ENTRYPOINT /docker-entrypoint.sh $0 $@
 # TODO: rework entry point (reconcile approach taken in docker-compose with line below)
 # CMD [ "gunicorn", "--worker-class uvicorn.workers.UvicornWorker", "--config /gunicorn_conf.py", "main:app"]

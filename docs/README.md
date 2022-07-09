@@ -7,8 +7,8 @@ Run all documented commands from the project's **root** folder.
 ### Requirements
 
 - [Docker >= 20.10](https://docs.docker.com/get-docker)
-- [Python >= 3.9](https://www.python.org/downloads/release/python-3101)
-- [Poetry >= 1.0](https://github.com/python-poetry/poetry)
+- [Python >= 3.10](https://www.python.org/downloads/release/python-3105)
+- [Poetry >= 1.1.14](https://github.com/python-poetry/poetry)
 
 ### Local development with Poetry
 
@@ -29,7 +29,7 @@ Run all documented commands from the project's **root** folder.
 
    - API will be available at [localhost:8888](http://localhost:8888/).
 
-   - Swagger docs at [localhost:8888/api/v1/docs](http://localhost:8888/api/v1/docs).
+   - Swagger docs at [localhost:8888/api/docs](http://localhost:8888/api/docs).
 
 5. Spawn a shell inside the virtual environment with `poetry shell` before running commands like above without needing to invoke `poetry run`.
 
