@@ -32,8 +32,7 @@ async def seed_active_buoys(db):
         return await buoy.create_buoys(db, stations)
 
     async def run():
-        # TODO: fix requirement for station_id when only fetching active stations
-        buoy = Buoy(station_id=None)
+        buoy = Buoy()
         stations = buoy.stations.get_active()
 
         parsed_stations = parse_activestations(stations=stations)
