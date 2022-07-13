@@ -13,7 +13,6 @@ def test_get_buoy(test_app):
     assert "station_id" in rockaway_buoy
     assert "name" in rockaway_buoy
     assert "owner" in rockaway_buoy
-    assert "location" in rockaway_buoy
     assert "elev" in rockaway_buoy
     assert "pgm" in rockaway_buoy
     assert "type" in rockaway_buoy
@@ -22,6 +21,12 @@ def test_get_buoy(test_app):
     assert "water_quality" in rockaway_buoy
     assert "dart" in rockaway_buoy
     assert "seq" in rockaway_buoy
+
+    assert "location" in rockaway_buoy
+    rockaway_buoy_location = rockaway_buoy["location"]
+    assert len(rockaway_buoy_location) == 2
+    assert rockaway_buoy_location[0] == -73.703
+    assert rockaway_buoy_location[1] == 40.369
 
 
 def test_get_buoys(test_app):
