@@ -3,7 +3,7 @@ from typing import Optional
 from geoalchemy2.elements import WKBElement
 from pydantic import BaseModel, validator
 
-from .common import ewkb_to_wkt
+from .common import ewkb_to_coords
 
 
 # Shared properties
@@ -11,7 +11,7 @@ class BuoyBase(BaseModel):
     station_id: str
     name: str
     owner: str
-    location: str  # Geography(geometry_type="POINT")
+    location: tuple[float, float] | str  # [lon, lat] or POINT(lon lat)
     elev: Optional[float] = 0.0  # elevation
     pgm: str
     type: str
@@ -46,7 +46,7 @@ class Buoy(BuoyInDBBase):
     def correct_location_format(cls, v):
         if not isinstance(v, WKBElement):
             raise ValueError("Must be a valid WKBE element")
-        return ewkb_to_wkt(v)
+        return ewkb_to_coords(v)
 
 
 # Properties properties stored in DB
