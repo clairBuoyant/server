@@ -2,19 +2,20 @@ import os
 import sys
 from pathlib import Path
 
-# TODO: consolidate duplication of this block of code (seed_initial_data and conftest)
+import uvicorn
+from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
+
+# TODO: Make DRY (used in seed_initial_data and conftest)
 # if __name__ == "__main__" and server folder is not on PYTHONPATH
 server_fpath = str(Path(os.path.join(os.path.dirname(__file__))).parent)
 if server_fpath not in sys.path:
     sys.path.append(server_fpath)
 
-import uvicorn
-from fastapi import FastAPI
-from fastapi.middleware.cors import CORSMiddleware
 
-from server.api.v1.api import api_router
-from server.core.constants import API_PREFIX
-from server.db.database import db
+from server.api.v1.api import api_router  # noqa: E402
+from server.core.constants import API_PREFIX  # noqa: E402
+from server.db.database import db  # noqa: E402
 
 description_markdown = """
 clairBuoyant API provides you with timely buoy data from NDBC.
@@ -63,7 +64,7 @@ app = get_application()
 @app.on_event("startup")
 async def startup_event():
     await db.init()
-    await db.create_all()
+    # await db.create_all() # ! breaks only on init bootstrap in docker
 
 
 @app.on_event("shutdown")

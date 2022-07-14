@@ -1,0 +1,45 @@
+#!/bin/sh -e
+
+random_password () {
+    date +%s | sha256sum | base64 | head -c 32 ; echo
+}
+
+set_username () {
+    whoami
+}
+
+command -v pre-commit &> /dev/null && pre-commit install --hook-type commit-msg || echo >&2 "pre-commit not found."
+
+if [ ! -f .env ]
+then
+    touch .env
+    echo "POSTGRES_DB=clairbuoyant" >> .env
+    echo "POSTGRES_PASSWORD=$(random_password)" >> .env
+    echo "POSTGRES_USER=$(set_username)" >> .env
+    echo "DATABASE_URL=postgresql+asyncpg://$(set_username):$(random_password)@localhost:5432/clairbuoyant" >> .env
+    echo "PYTHON_ENV=development" >> .env
+fi
+
+if command -v docker &> /dev/null; then
+    if [ ! "$(docker ps -q -f name=clairbuoyant)" ]; then
+        # if [ "$(docker ps -aq -f status=exited -f name=clairbuoyant)" ]; then
+        #     docker rm clairbuoyant-postgres
+        #     docker rm clairbuoyant-redis
+        # fi
+        # run your container
+        COMPOSE_PROJECT_NAME=clairbuoyant docker-compose --env-file .env up -d
+    fi
+fi
+
+# Install dependencies
+poetry install
+
+# Hack to wait for postgres container to be up before running alembic migrations
+sleep 10;
+
+# Run migrations
+poetry run alembic upgrade head
+
+# TODO: toggle whether this runs to prevent error in logs
+# Create initial data
+poetry run python server/seed_initial_data.py

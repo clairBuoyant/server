@@ -3,7 +3,7 @@ from typing import Optional
 from geoalchemy2.elements import WKBElement
 from pydantic import BaseModel, validator
 
-from .common import ewkb_to_coords
+from server.schemas.common import ewkb_to_coords
 
 
 # Shared properties

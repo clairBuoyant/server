@@ -1,0 +1,7 @@
+#!/bin/sh -ex
+
+./scripts/clean
+
+if [ -d '.venv' ] ; then
+    rm -r .venv
+fi

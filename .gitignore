@@ -60,3 +60,6 @@ docs/_build/
 !.vscode/launch.json
 !.vscode/extensions.json
 *.code-workspace
+
+## Exceptions
+!scripts/coverage

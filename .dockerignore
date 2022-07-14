@@ -1,4 +1,4 @@
-.DS_Store
+__pycache__
 .coverage
 .docker
 .git
@@ -8,7 +8,9 @@
 .idea_modules
 .mypy_cache
 .pytest_cache
+.python-version
 .vscode
+.DS_Store
 
 coverage
 htmlcov
@@ -16,4 +18,9 @@ docs
 tests
 
 LICENSE
+poetry.toml
+*.log
 *.md
+
+## Exceptions
+!scripts/coverage

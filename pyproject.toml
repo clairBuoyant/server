@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "clairbuoyant-server"
+name = "server"
 version = "0.1.1"
 description = "clairBuoyant Server"
 authors = ["Kyle J. Burda <47502769+kylejb@users.noreply.github.com>"]
@@ -27,6 +27,18 @@ pytest="^7.1.2"
 pre-commit = "^2.20.0"
 pytest-asyncio = "^0.18.3"
 pytest-cov = "^3.0.0"
+flake8 = "^4.0.1"
+
+[tool.poetry.scripts]
+bootstrap="scripts.poetry_entrypoint:bootstrap"
+check="scripts.poetry_entrypoint:check"
+clean="scripts.poetry_entrypoint:clean"
+coverage="scripts.poetry_entrypoint:coverage"
+init="scripts.poetry_entrypoint:init"
+lint="scripts.poetry_entrypoint:lint"
+setup="scripts.poetry_entrypoint:setup"
+start="scripts.poetry_entrypoint:start"
+test="scripts.poetry_entrypoint:test"
 
 [tool.black]
 # https://github.com/psf/black
@@ -46,13 +58,7 @@ exclude = '''
 '''
 
 [tool.isort]
-# https://github.com/timothycrosley/isort
-# https://github.com/timothycrosley/isort/wiki/isort-Settings
-line_length = 88
-indent = '    '
-multi_line_output = 3
-include_trailing_comma = true
-force_grid_wrap = 0
+profile="black"
 
 [tool.pytest.ini_options]
 asyncio_mode = "strict"

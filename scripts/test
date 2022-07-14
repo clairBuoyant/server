@@ -1,0 +1,17 @@
+#!/bin/sh -e
+
+if [ -d '.venv' ] ; then
+    PREFIX=".venv/bin/"
+else
+    PREFIX=""
+fi
+
+if [ -z $GITHUB_ACTIONS ]; then
+    scripts/check
+fi
+
+if [ -z $GITHUB_ACTIONS ]; then
+    scripts/coverage
+else
+    ${PREFIX}coverage run --concurrency=thread,greenlet -m pytest $@
+fi
