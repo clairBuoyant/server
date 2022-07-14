@@ -13,8 +13,8 @@ UpdateSchemaType = TypeVar("UpdateSchemaType", bound=BaseModel)
 
 class CRUDBase(Generic[ModelType, CreateSchemaType, UpdateSchemaType]):
     def __init__(self, model: Type[ModelType]):
-        """
-        CRUD object with default methods to Create, Read, Update, Delete (CRUD).
+        """Base CRUD class with default CRUD methods.
+
         **Parameters**
         * `model`: A SQLAlchemy model class
         * `schema`: A Pydantic model (schema) class
@@ -36,7 +36,7 @@ class CRUDBase(Generic[ModelType, CreateSchemaType, UpdateSchemaType]):
     #     return db.query(self.model).offset(skip).limit(limit).all()
 
     # TODO: replace with async implementation
-    # def create(self, db: Session, *, obj_in: CreateSchemaType) -> ModelType:
+    # def create(self, db: Session, *, obj_in: CreateSchemaType) -> ModelType: # noqa: E501, W505
     #     obj_in_data = jsonable_encoder(obj_in)
     #     db_obj = self.model(**obj_in_data)
     #     db.add(db_obj)

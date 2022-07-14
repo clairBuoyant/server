@@ -1,2 +1,2 @@
-from .buoy import Buoy  # noqa
-from .coastline import Coastline  # noqa
+from .buoy import Buoy  # noqa: F401
+from .coastline import Coastline  # noqa: F401

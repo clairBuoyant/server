@@ -4,15 +4,15 @@ import os
 import sys
 from pathlib import Path
 
+from sqlalchemy.ext.asyncio import AsyncSession, create_async_engine
+
 # if __name__ == "__main__" and server folder is not on PYTHONPATH
 server_fpath = str(Path(os.path.join(os.path.dirname(__file__))).parent)
 if server_fpath not in sys.path:
     sys.path.append(server_fpath)
 
-from sqlalchemy.ext.asyncio import AsyncSession, create_async_engine
-
-from server.core.config import get_settings
-from server.db.init_db import init_db
+from server.core.config import get_settings  # noqa: E402
+from server.db.init_db import init_db  # noqa: E402
 
 logging.basicConfig(level=logging.WARN)
 logger = logging.getLogger(__name__)

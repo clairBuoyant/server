@@ -41,23 +41,7 @@ def upgrade():
             nullable=False,
         ),
     )
-    # op.create_index(
-    #     "idx_coastlines_geom",
-    #     "coastlines",
-    #     ["geom"],
-    #     unique=False,
-    #     postgresql_using="gist",
-    #     postgresql_ops={},
-    # )
-    # op.create_index(op.f("ix_coastlines_id"), "coastlines", ["id"], unique=False)
 
 
 def downgrade():
-    # op.drop_index(
-    #     "idx_coastlines_geom",
-    #     table_name="coastlines",
-    #     postgresql_using="gist",
-    #     postgresql_ops={},
-    # )
-    # op.drop_index(op.f("ix_coastlines_id"), table_name="coastlines")
     op.drop_table("coastlines")

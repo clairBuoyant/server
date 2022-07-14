@@ -1,6 +1,7 @@
 from server.crud.crud_coastline import coastline
 from server.schemas import CoastlineCreate
 
+# flake8: noqa
 # ! TMP - hardcoded for MVP
 rockaway_coastlines: list[tuple] = [
     (

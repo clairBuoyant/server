@@ -27,6 +27,7 @@ pytest="^7.1.2"
 pre-commit = "^2.20.0"
 pytest-asyncio = "^0.18.3"
 pytest-cov = "^3.0.0"
+flake8 = "^4.0.1"
 
 [tool.black]
 # https://github.com/psf/black
@@ -46,13 +47,7 @@ exclude = '''
 '''
 
 [tool.isort]
-# https://github.com/timothycrosley/isort
-# https://github.com/timothycrosley/isort/wiki/isort-Settings
-line_length = 88
-indent = '    '
-multi_line_output = 3
-include_trailing_comma = true
-force_grid_wrap = 0
+profile="black"
 
 [tool.pytest.ini_options]
 asyncio_mode = "strict"

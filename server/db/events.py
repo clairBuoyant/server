@@ -1,8 +1,8 @@
 """PURPOSE: https://fastapi.tiangolo.com/advanced/events/
 
 TODO: https://docs.sqlalchemy.org/en/14/core/connections.html
-    * Investigate whether there are any significant advantages with managing connections ourselves.
-    * Alternative: use `get_db` with Dependency hook for every API request.
+    * Investigate any advantages managing connections ourselves.
+    * Alternative: `get_db` with Dependency hook for every request.
 """
 import logging
 
