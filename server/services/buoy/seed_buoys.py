@@ -1,7 +1,7 @@
 from pybuoy import Buoy
 
 from server.crud.crud_buoy import buoy
-from server.schemas.buoy import BuoyCreate
+from server.schemas import BuoyCreate
 
 
 async def seed_active_buoys(db):

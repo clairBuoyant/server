@@ -1,6 +1,6 @@
 [[package]]
 name = "alembic"
-version = "1.8.0"
+version = "1.8.1"
 description = "A database migration tool for SQLAlchemy."
 category = "main"
 optional = false
@@ -159,7 +159,7 @@ toml = ["tomli"]
 
 [[package]]
 name = "distlib"
-version = "0.3.4"
+version = "0.3.5"
 description = "Distribution utilities"
 category = "dev"
 optional = false
@@ -167,7 +167,7 @@ python-versions = "*"
 
 [[package]]
 name = "fastapi"
-version = "0.78.0"
+version = "0.79.0"
 description = "FastAPI framework, high performance, easy to learn, fast to code, ready for production"
 category = "main"
 optional = false
@@ -647,12 +647,12 @@ testing = ["coverage (>=4)", "coverage-enable-subprocess (>=1)", "flaky (>=3)", 
 [metadata]
 lock-version = "1.1"
 python-versions = ">=3.10, <4.0"
-content-hash = "ca3f4d489fd8ec8984675044fac02fdd2f41aa5762b593a7516580c8345398b6"
+content-hash = "fc025883d603e5f31d2d1b7ae8c51d74a2c5465a97ea7c9ea8853fc9427faef2"
 
 [metadata.files]
 alembic = [
-    {file = "alembic-1.8.0-py3-none-any.whl", hash = "sha256:b5ae4bbfc7d1302ed413989d39474d102e7cfa158f6d5969d2497955ffe85a30"},
-    {file = "alembic-1.8.0.tar.gz", hash = "sha256:a2d4d90da70b30e70352cd9455e35873a255a31402a438fe24815758d7a0e5e1"},
+    {file = "alembic-1.8.1-py3-none-any.whl", hash = "sha256:0a024d7f2de88d738d7395ff866997314c837be6104e90c5724350313dee4da4"},
+    {file = "alembic-1.8.1.tar.gz", hash = "sha256:cd0b5e45b14b706426b833f06369b9a6d5ee03f826ec3238723ce8caaf6e5ffa"},
 ]
 anyio = [
     {file = "anyio-3.6.1-py3-none-any.whl", hash = "sha256:cb29b9c70620506a9a8f87a309591713446953302d7d995344d0d7c6c0c9a7be"},
@@ -786,12 +786,12 @@ coverage = [
     {file = "coverage-6.4.1.tar.gz", hash = "sha256:4321f075095a096e70aff1d002030ee612b65a205a0a0f5b815280d5dc58100c"},
 ]
 distlib = [
-    {file = "distlib-0.3.4-py2.py3-none-any.whl", hash = "sha256:6564fe0a8f51e734df6333d08b8b94d4ea8ee6b99b5ed50613f731fd4089f34b"},
-    {file = "distlib-0.3.4.zip", hash = "sha256:e4b58818180336dc9c529bfb9a0b58728ffc09ad92027a3f30b7cd91e3458579"},
+    {file = "distlib-0.3.5-py2.py3-none-any.whl", hash = "sha256:b710088c59f06338ca514800ad795a132da19fda270e3ce4affc74abf955a26c"},
+    {file = "distlib-0.3.5.tar.gz", hash = "sha256:a7f75737c70be3b25e2bee06288cec4e4c221de18455b2dd037fe2a795cab2fe"},
 ]
 fastapi = [
-    {file = "fastapi-0.78.0-py3-none-any.whl", hash = "sha256:15fcabd5c78c266fa7ae7d8de9b384bfc2375ee0503463a6febbe3bab69d6f65"},
-    {file = "fastapi-0.78.0.tar.gz", hash = "sha256:3233d4a789ba018578658e2af1a4bb5e38bdd122ff722b313666a9b2c6786a83"},
+    {file = "fastapi-0.79.0-py3-none-any.whl", hash = "sha256:d337563424ceada23857f73d5abe8dae0c28e4cccb53b2af06e78b7bb4a1c7d7"},
+    {file = "fastapi-0.79.0.tar.gz", hash = "sha256:cf0ff6db25b91d321050c4112baab0908c90f19b40bf257f9591d2f9780d1f22"},
 ]
 filelock = [
     {file = "filelock-3.7.1-py3-none-any.whl", hash = "sha256:37def7b658813cda163b56fc564cdc75e86d338246458c4c28ae84cabefa2404"},

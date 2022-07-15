@@ -23,11 +23,11 @@ class CRUDBase(Generic[ModelType, CreateSchemaType, UpdateSchemaType]):
 
     async def find_one(self, db: AsyncSession, id: Any) -> Optional[ModelType]:
         result = await db.execute(select(self.model).where(self.model.id == id))
-        return result.first()
+        return result.scalars().first()
 
     async def find_many(self, db: AsyncSession) -> Optional[ModelType]:
         results = await db.execute(select(self.model))
-        return results.all()
+        return results.scalars().all()
 
     # TODO: remove after blending it with `get_many`.
     # def get_multi(
