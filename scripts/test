@@ -1,7 +1,17 @@
 #!/bin/sh -e
 
-CURRENT_DIR=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)
-BASE_DIR="$(dirname "$CURRENT_DIR")"
+if [ -d '.venv' ] ; then
+    PREFIX=".venv/bin/"
+else
+    PREFIX=""
+fi
 
-coverage run --rcfile "${BASE_DIR}/pyproject.toml" -m pytest "${BASE_DIR}/tests" "$*"
-coverage html --rcfile "${BASE_DIR}/pyproject.toml"
+if [ -z $GITHUB_ACTIONS ]; then
+    scripts/check
+fi
+
+${PREFIX}coverage run --concurrency=thread,greenlet -m pytest $@
+
+if [ -z $GITHUB_ACTIONS ]; then
+    scripts/coverage
+fi

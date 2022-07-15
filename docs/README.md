@@ -34,7 +34,7 @@ Run all documented commands from the project's **root** folder.
 5. Spawn a shell inside the virtual environment with `poetry shell` before running commands like above without needing to invoke `poetry run`.
 
 6. Linting and Testing locally:
-   - Execute lint/test in [scripts](/scripts/).
+   - Execute [lint](/scripts/lint), [test](/scripts/test) and others from [scripts folder](/scripts/).
 
 See the [poetry docs](https://python-poetry.org/docs/) for more information.
 

@@ -1,0 +1,31 @@
+#!/bin/sh -e
+
+if [ -d '.venv' ] ; then
+    PREFIX=".venv/bin/"
+else
+    PREFIX=""
+fi
+
+
+CURRENT_DIR=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)
+BASE_DIR="$(dirname "$CURRENT_DIR")"
+
+# install with poetry, if exists
+
+# else, install with pip and requirements file
+PYTHON="python3"
+REQUIREMENTS="requirements.txt"
+VENV=".venv"
+
+set -x
+
+if [ -z "$GITHUB_ACTIONS" ]; then
+    "$PYTHON" -m venv "$VENV"
+    PIP="$VENV/bin/pip"
+else
+    PIP="pip"
+fi
+
+"$PIP" install -r "$REQUIREMENTS"
+"$PIP" install -e .
+pre-commit install
