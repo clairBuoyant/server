@@ -25,7 +25,8 @@ class CRUDCoastline(CRUDBase[Coastline, CoastlineCreate, CoastlineUpdate]):
             .options(joinedload(Coastline.buoy, innerjoin=True))
             .order_by(Coastline.id)
         )
-        return await db_session.execute(stmt)
+        results = await db_session.execute(stmt)
+        return results.scalars().all()
 
 
 coastline = CRUDCoastline(Coastline)
