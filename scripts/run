@@ -1,0 +1,11 @@
+#!/bin/sh -e
+
+# LOAD ENV VARIABLES
+# if [ -f .env ]; then
+#   export $(echo $(cat .env | sed 's/#.*//g'| xargs) | envsubst)
+# fi
+
+# RUN SERVER AS DEV OR PROD based on ENV
+# TODO: launch in virtualenv
+# TODO: incorporate psql setup?
+python server/main.py
