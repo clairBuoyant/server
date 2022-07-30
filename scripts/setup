@@ -1,3 +1,4 @@
 #!/bin/sh -ex
 
 # TODO: setup dev environment
+# TODO: incorporate psql setup?

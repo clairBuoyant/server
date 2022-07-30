@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "clairbuoyant-server"
+name = "server"
 version = "0.1.1"
 description = "clairBuoyant Server"
 authors = ["Kyle J. Burda <47502769+kylejb@users.noreply.github.com>"]
@@ -28,6 +28,17 @@ pre-commit = "^2.20.0"
 pytest-asyncio = "^0.18.3"
 pytest-cov = "^3.0.0"
 flake8 = "^4.0.1"
+
+[tool.poetry.scripts]
+bootstrap="scripts.poetry_entrypoint:bootstrap"
+check="scripts.poetry_entrypoint:check"
+clean="scripts.poetry_entrypoint:clean"
+coverage="scripts.poetry_entrypoint:coverage"
+install="scripts.poetry_entrypoint:install"
+lint="scripts.poetry_entrypoint:lint"
+setup="scripts.poetry_entrypoint:setup"
+start="scripts.poetry_entrypoint:start"
+test="scripts.poetry_entrypoint:test"
 
 [tool.black]
 # https://github.com/psf/black

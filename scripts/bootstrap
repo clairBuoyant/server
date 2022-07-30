@@ -1,0 +1,44 @@
+#!/bin/sh -e
+
+# Resolve all system dependencies the application needs to run.
+
+# TODO: setup dev environment
+# List of dependencies
+# python, pipx (?), pipx to poetry, python dependencies
+# docker-desktop / docker-compose (?)
+#
+#
+#
+#
+#
+# ADD INSTRUCTIONS FOR USERS TO ADD (OPTIONALLY) https://python-poetry.org/docs/master/#enable-tab-completion-for-bash-fish-or-zsh
+
+# || { echo >&2 "Poetry is required, but it's not installed."; exit 1; }
+
+# install with poetry, if exists
+if ! command -v poetry &> /dev/null
+then
+    echo "Required package not found: poetry"
+    echo "Installing poetry..."
+fi
+
+
+
+# TODO: decide whether to support poetry alterative
+# else, install with pip and requirements file
+# PYTHON="python3"
+# REQUIREMENTS="requirements.txt"
+# VENV=".venv"
+
+# set -x
+
+# if [ -z "$GITHUB_ACTIONS" ]; then
+#     "$PYTHON" -m venv "$VENV"
+#     PIP="$VENV/bin/pip"
+# else
+#     PIP="pip"
+# fi
+
+# "$PIP" install -r "$REQUIREMENTS"
+# "$PIP" install -e .
+# pre-commit install
