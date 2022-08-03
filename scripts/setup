@@ -1,7 +1,7 @@
 #!/bin/sh -e
 
 random_password () {
-    date +%s | sha256sum | base64 | head -c 32 ; echo
+    LC_ALL=C < /dev/urandom tr -dc _A-Z-a-z-0-9 | head -c ${1:-20}; echo;
 }
 
 set_username () {
