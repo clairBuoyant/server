@@ -3,8 +3,8 @@ from typing import Optional
 from geoalchemy2.elements import WKBElement
 from pydantic import BaseModel, validator
 
-from .buoy import Buoy
-from .common import ewkb_to_wkt
+from server.schemas.buoy import Buoy
+from server.schemas.common import ewkb_to_wkt
 
 
 # Shared properties

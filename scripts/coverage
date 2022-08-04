@@ -1,0 +1,13 @@
+#!/bin/sh -e
+
+if [ -d '.venv' ] ; then
+    PREFIX=".venv/bin/"
+else
+    PREFIX=""
+fi
+
+CURRENT_DIR=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)
+BASE_DIR="$(dirname "$CURRENT_DIR")"
+
+${PREFIX}coverage run --rcfile "${BASE_DIR}/pyproject.toml" -m pytest "${BASE_DIR}/tests" "$*"
+${PREFIX}coverage html --rcfile "${BASE_DIR}/pyproject.toml"

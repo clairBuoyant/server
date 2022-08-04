@@ -3,7 +3,7 @@ from fastapi import APIRouter
 from server.api.v1.endpoints import buoys, coastlines
 from server.core.constants import BUOYS_PATH, COASTLINES_PATH, PathTags
 
-# TODO: JSON serialization with fastapi's `jsonable_encoder` VS PydanticModel.from_orm().dict()
+# TODO: fastapi's jsonable_encoder VS PydanticModel.from_orm().dict()
 
 api_router = APIRouter()
 

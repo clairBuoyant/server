@@ -5,13 +5,12 @@ from server.schemas import BuoyCreate
 
 
 async def seed_active_buoys(db):
-    # ACTIVESTATIONS_XML = "https://www.ndbc.noaa.gov/activestations.xml"
     # OBS_ENDPOINT = "https://sdf.ndbc.noaa.gov/sos/server.php"
 
     def parse_activestations(stations):
         return [
             BuoyCreate(
-                location=f"POINT({float(station.get('lon', 0.0))} {float(station.get('lat', 0.0))})",
+                location=f"POINT({float(station.get('lon', 0.0))} {float(station.get('lat', 0.0))})",  # noqa: 501
                 station_id=station.get("id"),
                 name=station.get("name"),
                 owner=station.get("owner"),

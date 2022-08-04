@@ -1,0 +1,15 @@
+#!/bin/sh -e
+
+if [ -d '.venv' ] ; then
+    PREFIX=".venv/bin/"
+else
+    PREFIX=""
+fi
+
+CURRENT_DIR=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)
+BASE_DIR="$(dirname "$CURRENT_DIR")"
+
+${PREFIX}black --check --config "${BASE_DIR}/pyproject.toml" "${BASE_DIR}"
+${PREFIX}isort --check --settings-path "${BASE_DIR}/pyproject.toml" "${BASE_DIR}"
+${PREFIX}flake8 --config="${BASE_DIR}/.flake8" "${BASE_DIR}/server"
+# ${PREFIX}mypy "${BASE_DIR}/server"

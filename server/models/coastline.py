@@ -7,7 +7,7 @@ from sqlalchemy.orm import relationship
 from server.db.base_class import Base
 
 if TYPE_CHECKING:
-    from .buoy import Buoy
+    from server.models.buoy import Buoy
 
 
 class Coastline(Base):
