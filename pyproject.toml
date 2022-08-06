@@ -39,6 +39,7 @@ lint="scripts.poetry_entrypoint:lint"
 setup="scripts.poetry_entrypoint:setup"
 start="scripts.poetry_entrypoint:start"
 test="scripts.poetry_entrypoint:test"
+uninstall="scripts.poetry_entrypoint:uninstall"
 
 [tool.black]
 # https://github.com/psf/black
