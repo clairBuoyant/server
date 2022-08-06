@@ -1,5 +1,4 @@
-#! /usr/bin/env sh
-set -e
+#!/bin/sh -e
 
 if [ -f /app/app/main.py ]; then
     DEFAULT_MODULE_NAME=server.main
@@ -14,8 +13,8 @@ HOST=${HOST:-0.0.0.0}
 PORT=${PORT:-8888}
 LOG_LEVEL=${LOG_LEVEL:-info}
 
-# If there's a prestart.sh script in the /server directory or other path specified, run it before starting
-PRE_START_PATH=${PRE_START_PATH:-/server/prestart.sh}
+# If there's a prestart script in the /server directory or other path specified, run it before starting
+PRE_START_PATH=${PRE_START_PATH:-/server/prestart}
 echo "Checking for script in $PRE_START_PATH"
 if [ -f $PRE_START_PATH ] ; then
     echo "Running script $PRE_START_PATH"

@@ -1,0 +1,11 @@
+#!/bin/bash -e
+
+echo "Running inside /server/prestart, you could add migrations to this file"
+
+echo "
+#!/bin/sh
+# Let the DB start
+sleep 10;
+# Run migrations
+alembic upgrade head
+"

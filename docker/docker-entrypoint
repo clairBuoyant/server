@@ -1,6 +1,4 @@
-#!/bin/sh
-
-set -e
+#!/bin/sh -e
 
 # Activate our virtual environment here.
 . /opt/pysetup/.venv/bin/activate

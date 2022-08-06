@@ -22,13 +22,32 @@ Install the following required dependencies before proceeding further. We also r
 
 ### Getting Started
 
-For your initial setup (or if you've deleted your local database and want to start anew), run `poetry run init` in your terminal to get started.
+For your initial setup (or if you've deleted your local database and want to start anew), run `poetry run init` in your terminal to get started like so:
 
-See below for general tips regarding working with `poetry`.
+```shell
+# executes scripts/bootstrap and scripts/setup.
+poetry run init
+
+# start development server locally
+poetry run start
+```
+
+Alternatively, you may load script aliases to your current shell and execute them without `poetry` like so:
+
+```shell
+# add scripts aliases to current shell.
+. ./aliases
+
+# executes scripts/bootstrap and scripts/setup.
+init
+
+# start development server locally
+start
+```
 
 #### Working with Poetry
 
-Some of `poetry`'s most frequently used commands are documented below. If you'd like to learn more about `poetry` check their [documentation](https://python-poetry.org/docs/).
+Some of `poetry`'s most frequently used commands are documented below:
 
 1. Create the virtual environment and install dependencies: `poetry install`
 
@@ -36,7 +55,7 @@ Some of `poetry`'s most frequently used commands are documented below. If you'd 
 
 3. Start a development server locally: `poetry run start`
 
-   - API will be available at [localhost:8888](http://localhost:8888/).
+   - API will be available at [localhost:8888/api](http://localhost:8888/api).
    - API documentation will be available at [localhost:8888/api/docs](http://localhost:8888/api/docs).
 
 4. Spawn a shell inside the virtual environment with `poetry shell` before running commands like above without needing to invoke `poetry run`.
@@ -50,6 +69,8 @@ Some of `poetry`'s most frequently used commands are documented below. If you'd 
 
 5. Linting and Testing locally:
    - Execute [lint](../scripts/lint), [test](../scripts/test) and from [scripts folder](../scripts/README.md).
+
+If you'd like to learn more about `poetry`, check their [documentation](https://python-poetry.org/docs/).
 
 ### Environment Variables
 
