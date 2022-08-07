@@ -4,6 +4,8 @@ These scripts are provided for development of [clairBuoyant](https://www.github.
 
 ### Commands
 
+<!-- TODO: add DB commands to list and update descriptions before merging -->
+
 - `bootstrap` - Prepare local development environment.
 - `check` - Check whether code linting passes.
 - `clean` - Delete any build artifacts.

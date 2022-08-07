@@ -1,0 +1,7 @@
+#!/bin/bash -e
+
+if command -v docker &> /dev/null; then
+    if [ ! "$(docker ps -q -f name=clairbuoyant)" ]; then
+        COMPOSE_PROJECT_NAME=clairbuoyant docker-compose --env-file .env up -d
+    fi
+fi

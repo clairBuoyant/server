@@ -31,6 +31,10 @@ flake8 = "^4.0.1"
 
 [tool.poetry.scripts]
 bootstrap="scripts.poetry_entrypoint:bootstrap"
+db-create="scripts.poetry_entrypoint:create"
+db-docker="scripts.poetry_entrypoint:docker"
+db-migrations="scripts.poetry_entrypoint:migrations"
+db-seeds="scripts.poetry_entrypoint:seeds"
 check="scripts.poetry_entrypoint:check"
 clean="scripts.poetry_entrypoint:clean"
 coverage="scripts.poetry_entrypoint:coverage"

@@ -1,24 +1,7 @@
 #!/bin/bash -e
 #
 # Resolve all system dependencies the application needs to run.
-
-echo "ABOUT BOOTSTRAP
-Ensures your Python version compatible and check
-whether Docker (optional) is installed.
-
-Installs the following required dependencies:
-    - poetry (https://python-poetry.org/)
-    - pipx (https://pypa.github.io/pipx/)
-    - pre-commit with pipx (https://pre-commit.com/)
-"
-
-read -p "Would you like to proceed? (y/n) " -n 1 -r
-echo # move to a new line
-if [[ ! $REPLY =~ ^[Yy]$ ]]
-then
-    [[ "$0" = "$BASH_SOURCE" ]] && exit 1 || return 1
-fi
-
+#
 
 PYV=`python3 -c 'import sys; sys.stdout.write("true") if sys.version_info.major >= 3 and sys.version_info.minor >= 10 else sys.stdout.write("false");'`
 if ! $PYV
@@ -27,49 +10,11 @@ then
     exit 1
 fi
 
-__missing_docker_message="
-Docker was not found.
-Visit https://docs.docker.com/get-docker to download.
-
-Options:
-- Run databases in docker for development.
-- Manage databases yourself for development.
-"
-
-echo "[OPTIONAL] Checking for Docker..."
-if ! command -v docker &> /dev/null
-then
-    echo "$__missing_docker_message"
-else
-    echo "docker was detected."
-    read -p "Would you like run databases in docker for development? (y/n) " -n 1 -r
-    echo # move to a new line
-    if [[ $REPLY =~ ^[Yy]$ ]]
-    then
-        echo "Going to run docker-compose here eventually..."
-    fi
-fi
-
-echo "[REQUIRED] Checking for poetry..."
+echo "Checking for poetry..."
 if ! command -v poetry &> /dev/null
 then
     echo "poetry was not found. Installing..."
-    curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python -
-fi
-
-echo "[REQUIRED] Checking for pipx..."
-if ! command -v pipx &> /dev/null
-then
-    echo "pipx was not found. Installing..."
-    python3 -m pip install --user pipx
-    python3 -m pipx ensurepath
-fi
-
-echo "[REQUIRED] Checking for pre-commit..."
-if ! command -v pre-commit &> /dev/null
-then
-    echo "pre-commit not found. Installing with pipx..."
-    pipx install pre-commit
+    curl -sSL https://install.python-poetry.org | python3 -
 fi
 
 echo "System dependencies installed."

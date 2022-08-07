@@ -1,0 +1,23 @@
+#!/bin/bash -e
+#
+# DOTENV
+# Generates `.env` file with randomized secrets.
+#
+
+random_password () {
+    LC_ALL=C < /dev/urandom tr -dc _A-Z-a-z-0-9 | head -c ${1:-20}; echo;
+}
+
+username () {
+    whoami
+}
+
+if [ ! -f .env ]
+then
+    touch .env
+    echo "POSTGRES_DB=clairbuoyant" >> .env
+    echo "POSTGRES_PASSWORD=$(random_password)" >> .env
+    echo "POSTGRES_USER=$(username)" >> .env
+    echo "DATABASE_URL=postgresql+asyncpg://$(username):$(random_password)@localhost:5432/clairbuoyant" >> .env
+    echo "PYTHON_ENV=development" >> .env
+fi

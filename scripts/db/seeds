@@ -1,0 +1,11 @@
+#!/bin/bash -e
+
+if [ -d '.venv' ] ; then
+    PREFIX=".venv/bin/"
+else
+    PREFIX=""
+fi
+
+# Create initial data
+${PREFIX}python server/seed_initial_data.py
+echo "Seeding has been executed."
