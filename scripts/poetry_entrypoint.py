@@ -11,15 +11,15 @@ def _handle_argv(command_name: str) -> tuple[str, str]:
     dirname, filename = (
         requested_script if len(requested_script) > 1 else (None, command_name)
     )
-    user_arg = argv[1] if len(argv) > 1 else ""
+    comment_if_migrations_autogenerate = argv[1] if len(argv) > 1 else ""
 
     return (
-        _set_script_path(subfolder=str(dirname), filename=str(filename)),
-        user_arg,
+        _set_script_path(filename=str(filename), subfolder=str(dirname)),
+        comment_if_migrations_autogenerate,
     )
 
 
-def _set_script_path(subfolder: str, filename: str) -> str:
+def _set_script_path(filename: str, subfolder: str) -> str:
     scripts_dir = Path(__file__).parent
 
     scripts_subdirectory = scripts_dir.joinpath(subfolder)
@@ -38,6 +38,6 @@ def __getattr__(command_name: str) -> Callable[[], None]:
         try:
             call([script, user_arg])
         except KeyboardInterrupt:
-            logging.info("Ctrl + C.")
+            logging.info("Ctrl + C")
 
     return execute_script
