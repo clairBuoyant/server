@@ -9,6 +9,8 @@ These scripts are provided for development of [clairBuoyant](https://www.github.
 - `bootstrap` - Prepare local development environment.
 - `check` - Check whether code linting passes.
 - `clean` - Delete any build artifacts.
+- `db` - _TBD_
+- `dotenv` - _TBD_
 - `coverage` - Check test coverage.
 - `init` - Execute bootstrap and setup for initial setup.
 - `lint` - Run code linting.
