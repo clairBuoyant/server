@@ -70,16 +70,16 @@ See below for list of available commands.
 
 These scripts can be used directly or with `poetry` (**recommended**).
 
-1. Run with poetry: `poetry run <command-name>` (e.g., `poetry run init`) <sup>1</sup>
+1. Run with poetry: `poetry run <command_name>` (e.g., `poetry run init`) <sup>1</sup>
 2. Run directly:
    - `./scripts/<filename>` (e.g., `./scripts/init` or `./scripts/db/docker`)
-   - Run `. ./aliases` in your terminal to run any script just by `<command-name>` (e.g., `init` or `db-docker`). <sup>2</sup>
+   - Run `. ./aliases` in your terminal to run any script just by `<command_name>` (e.g., `init` or `db-docker`). <sup>2</sup>
 
 #### Note
 
-1. If you've ran `poetry shell` (i.e., if `which python` outputs "path/to/clairBuoyant/server/.venv/bin/python"), you could just run these scripts by `<command-name>` in terminal (e.g., `init` or `db-docker`).
+1. If you've ran `poetry shell` (i.e., if `which python` outputs "path/to/clairBuoyant/server/.venv/bin/python"), you could just run these scripts by `<command_name>` in terminal (e.g., `init` or `db-docker`).
 
-2. Alternatively, you could run `. ./aliases`. This will load all command names to current shell, so you can call on these scripts by `<command-name>` too (e.g., `init` or `db-docker`). This script needs to be re-run every time you start a new terminal session.
+2. Alternatively, you could run `. ./aliases`. This will load all command names to current shell, so you can call on these scripts by `<command_name>` (e.g., `init` or `db-docker`). This script needs to be re-run every time you start a new terminal session. But, it saves you from prepending `poetry run` every time! :)
 
 ### Attribution
 
