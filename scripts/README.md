@@ -6,18 +6,18 @@ These scripts are provided for development of [clairBuoyant](https://www.github.
 
 <!-- TODO: add DB commands to list and update descriptions before merging -->
 
-- `bootstrap` - Prepare local development environment.
+- `bootstrap` - Resolve all system dependencies the application needs to run.
 - `check` - Check whether code linting passes.
-- `clean` - Delete any build artifacts.
+- `clean` - Remove all unnecessary build artifacts.
 - `db` - _TBD_
 - `dotenv` - _TBD_
 - `coverage` - Check test coverage.
 - `init` - Execute bootstrap and setup for initial setup.
 - `lint` - Run code linting.
-- `setup` - Initial setup for development dependencies.
+- `setup` - Install python dependencies and githooks.
 - `start` - Start server locally.
 - `test` - Run test suite.
-- `uninstall` - Delete all dependencies and build artifacts.
+- `uninstall` - Remove all dependencies and build artifacts.
 
 ### Usage
 

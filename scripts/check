@@ -1,4 +1,6 @@
 #!/bin/bash -e
+#
+# Check whether code linting passes.
 
 if [ -d '.venv' ] ; then
     PREFIX=".venv/bin/"
@@ -12,4 +14,4 @@ BASE_DIR="$(dirname "$CURRENT_DIR")"
 ${PREFIX}black --check --config "${BASE_DIR}/pyproject.toml" "${BASE_DIR}"
 ${PREFIX}isort --check --settings-path "${BASE_DIR}/pyproject.toml" "${BASE_DIR}"
 ${PREFIX}flake8 --config="${BASE_DIR}/.flake8" "${BASE_DIR}/server"
-# ${PREFIX}mypy "${BASE_DIR}/server"
+# ${PREFIX}mypy "${BASE_DIR}/server" # TODO: add mypy after addressing typing errors

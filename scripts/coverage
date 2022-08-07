@@ -1,4 +1,6 @@
 #!/bin/bash -e
+#
+# Check test coverage.
 
 if [ -d '.venv' ] ; then
     PREFIX=".venv/bin/"

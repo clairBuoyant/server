@@ -1,7 +1,6 @@
 #!/bin/bash -e
 #
 # Resolve all system dependencies the application needs to run.
-#
 
 PYV=`python3 -c 'import sys; sys.stdout.write("true") if sys.version_info.major >= 3 and sys.version_info.minor >= 10 else sys.stdout.write("false");'`
 if ! $PYV

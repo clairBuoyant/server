@@ -1,11 +1,7 @@
 #!/bin/bash -e
 #
-# SETUP
-# Installs application dependencies.
-#
+# Install python dependencies and githooks.
 
-# Install dependencies
 poetry install
 
-# Install githooks with pre-commit
 command -v pre-commit &> /dev/null && pre-commit install --hook-type commit-msg || echo >&2 "pre-commit not found."

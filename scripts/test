@@ -1,4 +1,6 @@
 #!/bin/bash -e
+#
+# Run test suite.
 
 if [ -d '.venv' ] ; then
     PREFIX=".venv/bin/"

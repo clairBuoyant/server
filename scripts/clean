@@ -1,6 +1,8 @@
 #!/bin/bash -ex
+#
+# Remove all build artifacts.
 
-PACKAGE="server"
+APP="server"
 
 if [ -d '.mypy_cache' ] ; then
     rm -r .mypy_cache
@@ -18,4 +20,4 @@ if [ -d 'htmlcov' ] ; then
     rm -r htmlcov
 fi
 
-find ${PACKAGE} -type d -name '__pycache__' | xargs -L1 rm -r
+find ${APP} -type d -name '__pycache__' | xargs -L1 rm -r

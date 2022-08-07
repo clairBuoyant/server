@@ -1,3 +1,5 @@
 #!/bin/bash -e
+#
+# Create local databases for development.
 
-echo "Scripting for local database is not supported yet."
+echo "Script for local databases is not supported yet."

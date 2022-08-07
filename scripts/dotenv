@@ -1,23 +1,72 @@
 #!/bin/bash -e
 #
-# DOTENV
-# Generates `.env` file with randomized secrets.
-#
+# Generate `.env` file with randomized secrets.
 
-random_password () {
+#######################################
+# Create dotenv file for development.
+#
+# Globals:
+#   None
+# Arguments:
+#   None
+# Outputs:
+#   None
+#######################################
+create_env() {
+    if [ ! -f .env ]
+    then
+        touch .env
+        echo "POSTGRES_DB=clairbuoyant" >> .env
+        echo "POSTGRES_PASSWORD=$(random_password)" >> .env
+        echo "POSTGRES_USER=$(username)" >> .env
+        echo "DATABASE_URL=postgresql+asyncpg://$(username):$(random_password)@localhost:5432/clairbuoyant" >> .env
+        echo "PYTHON_ENV=development" >> .env
+    fi
+}
+
+#######################################
+# Load contents of dotenv file to shell.
+#
+# Globals:
+#   None
+# Arguments:
+#   None
+# Outputs:
+#   None
+#######################################
+load_env() {
+    if [ -f .env ]; then
+        export $(echo $(cat .env | sed 's/#.*//g'| xargs) | envsubst)
+    fi
+}
+
+#######################################
+# Generate randomized password
+# for development environment.
+#
+# Globals:
+#   None
+# Arguments:
+#   None
+# Outputs:
+#   Writes random password to stdout
+#######################################
+random_password() {
     LC_ALL=C < /dev/urandom tr -dc _A-Z-a-z-0-9 | head -c ${1:-20}; echo;
 }
 
-username () {
+#######################################
+# Get name of currently logged-in user.
+#
+# Globals:
+#   None
+# Arguments:
+#   None
+# Outputs:
+#   Writes name of user to stdout
+#######################################
+username() {
     whoami
 }
 
-if [ ! -f .env ]
-then
-    touch .env
-    echo "POSTGRES_DB=clairbuoyant" >> .env
-    echo "POSTGRES_PASSWORD=$(random_password)" >> .env
-    echo "POSTGRES_USER=$(username)" >> .env
-    echo "DATABASE_URL=postgresql+asyncpg://$(username):$(random_password)@localhost:5432/clairbuoyant" >> .env
-    echo "PYTHON_ENV=development" >> .env
-fi
+create_env

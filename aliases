@@ -1,8 +1,7 @@
 #!/bin/bash -e
 #
-# Aliases
-# Adds scripts to current shell environment for execution without package manager.
-#
+# Load scripts to current shell environment for execution without package manager.
+
 
 PROJECT_ROOT=$(realpath $(dirname "$BASH_SOURCE"))
 

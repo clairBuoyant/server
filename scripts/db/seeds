@@ -1,4 +1,6 @@
 #!/bin/bash -e
+#
+# Populate database with initial dataset.
 
 if [ -d '.venv' ] ; then
     PREFIX=".venv/bin/"
