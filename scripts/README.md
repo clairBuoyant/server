@@ -40,9 +40,9 @@ The command to run can be inferred based on the following pattern:
 
 See below for list of available commands.
 
-- **db-create**: create databases locally. [_WIP_]
-- **db-docker**: create databases in docker.
-- **db-migrations_autogenerate**: autogenerate migration files for db schema changes.
+- `db-create`: create databases locally. [🚧 _currently unsupported_ 🚧]
+- `db-docker`: create databases in docker.
+- `db-migrations_autogenerate`: autogenerate migration files for db schema changes.
 
   ```bash
   # recommended: provide revision message between double quotes
@@ -52,19 +52,19 @@ See below for list of available commands.
   poetry run db-migrations_autogenerate
   ```
 
-- **db-migrations_run**: apply database schema changes from migration files.
-- **db-seeds**: populate database with initial dataset.
-- **bootstrap**: resolve all system dependencies the application needs to run.
-- **check**: check whether code linting passes.
-- **clean**: remove all unnecessary build artifacts.
-- **dotenv**: create .env file for development.
-- **coverage**: check test coverage.
-- **init**: run bootstrap and setup.
-- **lint**: run code linting.
-- **setup**: install python dependencies and githooks.
-- **start**: start server locally with dotenv.
-- **test**: run test suite.
-- **uninstall**: remove python dependencies and build artifacts.
+- `db-migrations_run`: apply database schema changes from migration files.
+- `db-seeds`: populate database with initial dataset.
+- `bootstrap`: resolve all system dependencies the application needs to run.
+- `check`: check whether code linting passes.
+- `clean`: remove all unnecessary build artifacts.
+- `dotenv`: create .env file for development.
+- `coverage`: check test coverage.
+- `init`: run bootstrap and setup.
+- `lint`: run code linting.
+- `setup`: install python dependencies and githooks.
+- `start`: start server locally with dotenv.
+- `test`: run test suite.
+- `uninstall`: remove python dependencies and build artifacts.
 
 ### Usage
 
