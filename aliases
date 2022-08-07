@@ -17,6 +17,24 @@ function clean() {
 function coverage() {
     ${PROJECT_ROOT}/scripts/coverage
 }
+function db-create() {
+    ${PROJECT_ROOT}/scripts/db/create
+}
+function db-docker() {
+    ${PROJECT_ROOT}/scripts/db/docker
+}
+function db-migrations_autogenerate() {
+    ${PROJECT_ROOT}/scripts/db/migrations_autogenerate
+}
+function db-migrations_run() {
+    ${PROJECT_ROOT}/scripts/db/migrations_run
+}
+function db-seeds() {
+    ${PROJECT_ROOT}/scripts/db/seeds
+}
+function dotenv() {
+    ${PROJECT_ROOT}/scripts/dotenv
+}
 function init() {
     ${PROJECT_ROOT}/scripts/init
 }
