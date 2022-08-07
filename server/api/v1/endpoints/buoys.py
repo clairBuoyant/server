@@ -3,8 +3,8 @@ from sqlalchemy.ext.asyncio import AsyncSession  # type: ignore
 
 from server.api.dependencies import get_db
 from server.core.constants import RELATIVE_ROOT
-from server.crud import buoy
-from server.schemas import Buoy
+from server.crud.crud_buoy import buoy
+from server.schemas.buoy import Buoy
 
 router = APIRouter()
 

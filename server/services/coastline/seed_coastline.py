@@ -1,5 +1,5 @@
 from server.crud.crud_coastline import coastline
-from server.schemas import CoastlineCreate
+from server.schemas.coastline import CoastlineCreate
 
 # flake8: noqa
 # ! TMP - hardcoded for MVP
