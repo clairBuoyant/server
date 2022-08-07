@@ -3,9 +3,9 @@
 # Run test suite.
 
 if [ -d '.venv' ] ; then
-    PREFIX=".venv/bin/"
+    PREFIX='.venv/bin/'
 else
-    PREFIX=""
+    PREFIX=''
 fi
 
 if [ -z $GITHUB_ACTIONS ]; then

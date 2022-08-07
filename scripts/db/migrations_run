@@ -4,9 +4,9 @@
 
 
 if [ -d '.venv' ] ; then
-    PREFIX=".venv/bin/"
+    PREFIX='.venv/bin/'
 else
-    PREFIX=""
+    PREFIX=''
 fi
 
 ${PREFIX}alembic upgrade head

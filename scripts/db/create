@@ -2,4 +2,4 @@
 #
 # Create local databases for development.
 
-echo "Script for local databases is not supported yet."
+echo 'Script for local databases is not supported yet.'

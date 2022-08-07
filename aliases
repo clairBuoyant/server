@@ -37,4 +37,4 @@ function uninstall() {
     ${PROJECT_ROOT}/scripts/uninstall
 }
 
-echo "Script commands are ready to use in current shell environment."
+echo 'Script commands are ready to use in current shell environment.'

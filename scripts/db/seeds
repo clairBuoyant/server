@@ -3,11 +3,11 @@
 # Populate database with initial dataset.
 
 if [ -d '.venv' ] ; then
-    PREFIX=".venv/bin/"
+    PREFIX='.venv/bin/'
 else
-    PREFIX=""
+    PREFIX=''
 fi
 
 # Create initial data
 ${PREFIX}python server/seed_initial_data.py
-echo "Seeding has been executed."
+echo 'Seeding has been executed.'

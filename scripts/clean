@@ -2,7 +2,7 @@
 #
 # Remove all build artifacts.
 
-APP="server"
+APP='server'
 
 if [ -d '.mypy_cache' ] ; then
     rm -r .mypy_cache
