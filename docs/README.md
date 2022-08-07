@@ -26,10 +26,9 @@
 
 ## Development
 
-Run all [documented commands](../scripts/README.md) from the project's **root** folder.
+[Scripts](../scripts/README.md) are provided to support the development experience. For best results, please run these commands from the project's **root** folder.
 
-For example, once all system dependencies are installed you may run:
-`poetry run init` to complete the prerequisite setup.
+Contributing guidelines can be found [here](./CONTRIBUTING.md).
 
 ### System Dependencies
 
@@ -68,8 +67,6 @@ init
 # start development server locally
 start
 ```
-
-These scripts are provided to support the development experience. For a full list of available commands, check out the documentation [here](../scripts/README.md).
 
 #### Working with Poetry
 
