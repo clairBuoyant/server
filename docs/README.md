@@ -46,7 +46,7 @@ Install the following required dependencies before proceeding further. We also r
 
 ### Getting Started
 
-For your initial setup (or if you've deleted your local database and want to start anew), run `poetry run init` in your terminal to get started like so:
+Run `poetry run init` in your terminal to get started like so:
 
 ```shell
 # executes scripts/bootstrap and scripts/setup.
@@ -56,7 +56,7 @@ poetry run init
 poetry run start
 ```
 
-Alternatively, you may load script aliases to your current shell and execute them without `poetry` like so:
+Alternatively, you may load script aliases to your current shell and then run the aforementioned commands without `poetry` like so:
 
 ```shell
 # add scripts aliases to current shell.
@@ -68,6 +68,8 @@ init
 # start development server locally
 start
 ```
+
+These scripts are provided to support the development experience. For a full list of available commands, check out the documentation [here](../scripts/README.md).
 
 #### Working with Poetry
 
@@ -109,12 +111,6 @@ Running either [dotenv](../scripts/dotenv) or [start](../scripts/start) will cre
 - `POSTGRES_USER`: "postgres" (default: randomly generated value)
 - `POSTGRES_PASSWORD`: "postgres" (default: randomly generated value)
 - `PYTHON_ENV`: "development" or "production" or "test". (default: production)
-
-### Scripts
-
-Scripts such as the aforementioned [dotenv](../scripts/dotenv) and [start](../scripts/start) are provided to make the development experience more pleasant.
-
-To learn more about them, check out the documentation [here](../scripts/README.md).
 
 ### Development with Docker
 
