@@ -21,7 +21,7 @@ RUN apt-get update \
     build-essential
 
 # Install Poetry - respects $POETRY_VERSION & $POETRY_HOME
-RUN curl -sSL https://raw.githubusercontent.com/sdispater/poetry/master/get-poetry.py | python
+RUN curl -sSL https://install.python-poetry.org | python3 -
 
 # We copy our Python requirements here to cache them
 # and install only runtime deps using poetry
@@ -41,8 +41,8 @@ COPY --from=builder-base $POETRY_HOME $POETRY_HOME
 COPY --from=builder-base $PYSETUP_PATH $PYSETUP_PATH
 
 # Copying in our entrypoint
-COPY ./docker/docker-entrypoint.sh /docker-entrypoint.sh
-RUN chmod +x /docker-entrypoint.sh
+COPY ./docker/docker-entrypoint /docker-entrypoint
+RUN chmod +x /docker-entrypoint
 
 # venv already has runtime deps installed we get a quicker install
 WORKDIR $PYSETUP_PATH
@@ -55,7 +55,7 @@ COPY ./migrations /backend/migrations
 
 
 EXPOSE 8888
-ENTRYPOINT /docker-entrypoint.sh $0 $@
+ENTRYPOINT /docker-entrypoint $0 $@
 CMD ["uvicorn", "--reload", "--host=0.0.0.0", "--port=8888", "server.main:app"]
 
 # 'lint' stage runs black and isort
@@ -81,13 +81,13 @@ ENV FASTAPI_ENV=production
 COPY --from=builder-base $VENV_PATH $VENV_PATH
 COPY ./docker/gunicorn_conf.py /gunicorn_conf.py
 
-COPY ./docker/docker-entrypoint.sh /docker-entrypoint.sh
-RUN chmod +x /docker-entrypoint.sh
+COPY ./docker/docker-entrypoint /docker-entrypoint
+RUN chmod +x /docker-entrypoint
 
 WORKDIR /backend
 COPY ./server /backend/server
 COPY ./alembic.ini /backend/
 COPY ./migrations /backend/migrations
-ENTRYPOINT /docker-entrypoint.sh $0 $@
+ENTRYPOINT /docker-entrypoint $0 $@
 # TODO: rework entry point (reconcile approach taken in docker-compose with line below)
 # CMD [ "gunicorn", "--worker-class uvicorn.workers.UvicornWorker", "--config /gunicorn_conf.py", "server.main:app"]

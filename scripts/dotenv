@@ -1,0 +1,80 @@
+#!/bin/bash -e
+#
+# Generate `.env` file with randomized secrets.
+
+#######################################
+# Create dotenv file for development.
+#
+# Globals:
+#   None
+# Arguments:
+#   None
+# Outputs:
+#   None
+#######################################
+create_env() {
+    if [ ! -f .env ]
+    then
+        touch .env
+
+        POSTGRES_DB=clairbuoyant
+        POSTGRES_PASSWORD=$(random_password)
+        POSTGRES_USER=$(username)
+        PYTHON_ENV=development
+
+        DATABASE_URL="postgresql+asyncpg://${POSTGRES_USER}:${POSTGRES_PASSWORD}@localhost:5432/${POSTGRES_DB}"
+
+        echo "POSTGRES_DB=${POSTGRES_DB}" >> .env
+        echo "POSTGRES_PASSWORD=${POSTGRES_PASSWORD}" >> .env
+        echo "POSTGRES_USER=${POSTGRES_USER}" >> .env
+        echo "DATABASE_URL=postgresql+asyncpg://${POSTGRES_USER}:${POSTGRES_PASSWORD}@localhost:5432/${POSTGRES_DB}" >> .env
+        echo "PYTHON_ENV=${PYTHON_ENV}" >> .env
+    fi
+}
+
+#######################################
+# Load contents of dotenv file to shell.
+#
+# Globals:
+#   None
+# Arguments:
+#   None
+# Outputs:
+#   None
+#######################################
+load_env() {
+    if [ -f .env ]; then
+        export $(echo $(cat .env | sed 's/#.*//g'| xargs) | envsubst)
+    fi
+}
+
+#######################################
+# Generate randomized password
+# for development environment.
+#
+# Globals:
+#   None
+# Arguments:
+#   None
+# Outputs:
+#   Writes random password to stdout
+#######################################
+random_password() {
+    LC_ALL=C < /dev/urandom tr -dc _A-Z-a-z-0-9 | head -c ${1:-20}; echo;
+}
+
+#######################################
+# Get name of currently logged-in user.
+#
+# Globals:
+#   None
+# Arguments:
+#   None
+# Outputs:
+#   Writes name of user to stdout
+#######################################
+username() {
+    whoami
+}
+
+create_env

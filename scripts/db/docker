@@ -1,0 +1,10 @@
+#!/bin/bash -e
+#
+# Create databases in docker for development.
+
+if command -v docker &> /dev/null; then
+    COMPOSE_PROJECT_NAME=clairbuoyant docker-compose --env-file .env up -d
+else
+    echo 'Docker was not found. Go to https://docs.docker.com/get-docker.'
+    exit 1
+fi

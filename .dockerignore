@@ -19,6 +19,7 @@ tests
 
 LICENSE
 poetry.toml
+aliases
 *.log
 *.md
 

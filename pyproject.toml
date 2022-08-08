@@ -34,11 +34,18 @@ bootstrap="scripts.poetry_entrypoint:bootstrap"
 check="scripts.poetry_entrypoint:check"
 clean="scripts.poetry_entrypoint:clean"
 coverage="scripts.poetry_entrypoint:coverage"
+db-create="scripts.poetry_entrypoint:create"
+db-docker="scripts.poetry_entrypoint:docker"
+db-migrations_autogenerate="scripts.poetry_entrypoint:migrations_autogenerate"
+db-migrations_run="scripts.poetry_entrypoint:migrations_run"
+db-seeds="scripts.poetry_entrypoint:seeds"
+dotenv="scripts.poetry_entrypoint:dotenv"
 init="scripts.poetry_entrypoint:init"
 lint="scripts.poetry_entrypoint:lint"
 setup="scripts.poetry_entrypoint:setup"
 start="scripts.poetry_entrypoint:start"
 test="scripts.poetry_entrypoint:test"
+uninstall="scripts.poetry_entrypoint:uninstall"
 
 [tool.black]
 # https://github.com/psf/black

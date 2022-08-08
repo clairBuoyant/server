@@ -1,0 +1,12 @@
+#!/bin/bash -e
+#
+# Apply migrations with `alembic`.
+
+
+if [ -d '.venv' ] ; then
+    PREFIX='.venv/bin/'
+else
+    PREFIX=''
+fi
+
+${PREFIX}alembic upgrade head

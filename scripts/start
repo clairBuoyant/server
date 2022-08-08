@@ -1,14 +1,18 @@
-#!/bin/sh -e
+#!/bin/bash -e
+#
+# Start server locally with dotenv file.
+
+CURRENT_DIR=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)
+BASE_DIR="$(dirname "$CURRENT_DIR")"
 
 # LOAD ENV VARIABLES
-if [ -f .env ]; then
-    export $(echo $(cat .env | sed 's/#.*//g'| xargs) | envsubst)
-fi
+source ${BASE_DIR}/scripts/dotenv
+load_env
 
 if [ -d '.venv' ] ; then
-    PREFIX=".venv/bin/"
+    PREFIX='.venv/bin/'
 else
-    PREFIX=""
+    PREFIX=''
 fi
-# TODO: confirm server runs dev/prod based on env
+# TODO: server runs dev/prod based on env
 ${PREFIX}python server/main.py

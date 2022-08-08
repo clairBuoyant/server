@@ -1,9 +1,11 @@
-#!/bin/sh -e
+#!/bin/bash -e
+#
+# Check test coverage.
 
 if [ -d '.venv' ] ; then
-    PREFIX=".venv/bin/"
+    PREFIX='.venv/bin/'
 else
-    PREFIX=""
+    PREFIX=''
 fi
 
 CURRENT_DIR=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)

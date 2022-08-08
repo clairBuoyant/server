@@ -1,5 +1,4 @@
-#! /usr/bin/env sh
-set -e
+#!/bin/sh -e
 
 if [ -f /server/server/main.py ]; then
     DEFAULT_MODULE_NAME=server.main
@@ -20,8 +19,8 @@ fi
 export GUNICORN_CONF=${GUNICORN_CONF:-$DEFAULT_GUNICORN_CONF}
 export WORKER_CLASS=${WORKER_CLASS:-"uvicorn.workers.UvicornWorker"}
 
-# If there's a prestart.sh script in the /server directory or other path specified, run it before starting
-PRE_START_PATH=${PRE_START_PATH:-/server/prestart.sh}
+# If there's a prestart script in the /server directory or other path specified, run it before starting
+PRE_START_PATH=${PRE_START_PATH:-/server/prestart}
 echo "Checking for script in $PRE_START_PATH"
 if [ -f $PRE_START_PATH ] ; then
     echo "Running script $PRE_START_PATH"

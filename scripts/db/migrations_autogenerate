@@ -1,0 +1,19 @@
+#!/bin/bash -e
+#
+# Autogenerate migration files with `alembic`.
+# https://alembic.sqlalchemy.org/en/latest/autogenerate.html
+
+if [ -d '.venv' ] ; then
+    PREFIX='.venv/bin/'
+else
+    PREFIX=''
+fi
+
+if [ -n "$1" ]
+then
+    WITH_COMMENT="-m $1"
+else
+    WITH_COMMENT=''
+fi
+
+${PREFIX}alembic revision --autogenerate ${WITH_COMMENT}"
