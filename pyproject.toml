@@ -28,6 +28,7 @@ pre-commit = "^2.20.0"
 pytest-asyncio = "^0.18.3"
 pytest-cov = "^3.0.0"
 flake8 = "^4.0.1"
+mypy = "^0.971"
 
 [tool.poetry.scripts]
 bootstrap="scripts.poetry_entrypoint:bootstrap"
@@ -64,12 +65,6 @@ exclude = '''
 )
 '''
 
-[tool.isort]
-profile="black"
-
-[tool.pytest.ini_options]
-asyncio_mode = "strict"
-
 [tool.coverage]
 # https://github.com/nedbat/coveragepy
   [tool.coverage.run]
@@ -86,6 +81,16 @@ asyncio_mode = "strict"
     "raise NotImplementedError",
     "if __name__ == \"__main__\":",
   ]
+
+[tool.isort]
+profile="black"
+
+[tool.mypy]
+explicit_package_bases = true
+namespace_packages = true
+
+[tool.pytest.ini_options]
+asyncio_mode = "strict"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]

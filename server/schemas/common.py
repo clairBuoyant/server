@@ -1,5 +1,5 @@
-from geoalchemy2.elements import WKBElement
-from geoalchemy2.shape import to_shape
+from geoalchemy2.elements import WKBElement  # type: ignore
+from geoalchemy2.shape import to_shape  # type: ignore
 
 
 def ewkb_to_wkt(geom: WKBElement):

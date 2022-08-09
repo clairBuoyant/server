@@ -1,8 +1,8 @@
 from typing import TYPE_CHECKING, Optional
 
-from geoalchemy2.types import Geography
-from sqlalchemy import Column, ForeignKey, Integer, String
-from sqlalchemy.orm import relationship
+from geoalchemy2.types import Geography  # type: ignore
+from sqlalchemy import Column, ForeignKey, Integer, String  # type: ignore
+from sqlalchemy.orm import relationship  # type: ignore
 
 from server.db.base_class import Base
 

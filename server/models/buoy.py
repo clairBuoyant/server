@@ -1,5 +1,5 @@
-from geoalchemy2.types import Geography
-from sqlalchemy import Column, Float, Integer, SmallInteger, String
+from geoalchemy2.types import Geography  # type: ignore
+from sqlalchemy import Column, Float, Integer, SmallInteger, String  # type: ignore
 
 from server.db.base_class import Base
 

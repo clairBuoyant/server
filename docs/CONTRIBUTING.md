@@ -20,7 +20,7 @@ See [below](#submit) for additional guidelines.
 
 ## <a name="feature"></a> Want a Feature?
 
-You can request a new feature by submitting an issue to our [GitHub Repository][github].
+You can request a new feature by submitting a feature request [here](https://github.com/clairbuoyant/server/issues).
 
 ## <a name="submit"></a> Submission Guidelines
 

@@ -5,9 +5,9 @@ Revises:
 Create Date: 2021-12-25 20:31:21.052080
 
 """
-import sqlalchemy as sa
+import sqlalchemy as sa  # type: ignore
 from alembic import op
-from geoalchemy2.types import Geography
+from geoalchemy2.types import Geography  # type: ignore
 
 # revision identifiers, used by Alembic.
 revision = "d632ea3490c4"

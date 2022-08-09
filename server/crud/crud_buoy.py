@@ -1,5 +1,5 @@
-from sqlalchemy.ext.asyncio import AsyncSession
-from sqlalchemy.future import select
+from sqlalchemy.ext.asyncio import AsyncSession  # type: ignore
+from sqlalchemy.future import select  # type: ignore
 
 from server.crud.base import CRUDBase
 from server.models.buoy import Buoy

@@ -1,8 +1,8 @@
 from typing import Any, Generic, Optional, Type, TypeVar
 
 from pydantic import BaseModel
-from sqlalchemy.ext.asyncio import AsyncSession
-from sqlalchemy.future import select
+from sqlalchemy.ext.asyncio import AsyncSession  # type: ignore
+from sqlalchemy.future import select  # type: ignore
 
 from server.db.base_class import Base
 

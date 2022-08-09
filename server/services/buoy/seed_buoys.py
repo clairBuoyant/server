@@ -1,4 +1,4 @@
-from pybuoy import Buoy
+from pybuoy import Buoy  # type: ignore
 
 from server.crud.crud_buoy import buoy
 from server.schemas import BuoyCreate

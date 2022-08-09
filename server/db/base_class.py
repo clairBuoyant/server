@@ -1,17 +1,18 @@
 import typing as t
 
-from sqlalchemy.ext.declarative import as_declarative
+from sqlalchemy.orm import declarative_base  # type: ignore
 
 class_registry: t.Dict = {}
 
 
-@as_declarative(class_registry=class_registry)
-class Base:
-    id: t.Any
-    __name__: str
+Base = declarative_base()
 
-    # TODO: redesign naming schema to implement
-    # Generate __tablename__ automatically
-    # @declared_attr
-    # def __tablename__(cls) -> str:
-    #     return cls.__name__.lower()
+# TODO: implement with metadata attribute
+# @as_declarative(class_registry=class_registry)
+# # class _Base:
+# #     id: t.Any
+# #     __name__: str
+# #     # Generate __tablename__ automatically
+# #     @declared_attr
+# #     def __tablename__(cls) -> str:
+# #         return cls.__name__.lower()
