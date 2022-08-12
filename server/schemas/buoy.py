@@ -1,6 +1,6 @@
 from typing import Optional
 
-from geoalchemy2.elements import WKBElement
+from geoalchemy2.elements import WKBElement  # type: ignore
 from pydantic import BaseModel, validator
 
 from server.schemas.common import ewkb_to_coords

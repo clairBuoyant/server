@@ -2,7 +2,7 @@ import os
 import sys
 from pathlib import Path
 
-import uvicorn
+import uvicorn  # type: ignore
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 

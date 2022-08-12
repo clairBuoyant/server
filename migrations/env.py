@@ -2,9 +2,9 @@ import asyncio
 from logging.config import fileConfig
 
 from alembic import context
-from asyncpg import PostgresError
-from sqlalchemy import engine_from_config, pool, text
-from sqlalchemy.ext.asyncio import AsyncEngine, create_async_engine
+from asyncpg import PostgresError  # type: ignore
+from sqlalchemy import engine_from_config, pool, text  # type: ignore
+from sqlalchemy.ext.asyncio import AsyncEngine, create_async_engine  # type: ignore
 
 from server.core.config import get_settings
 from server.core.constants import PythonEnv

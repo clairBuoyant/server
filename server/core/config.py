@@ -7,7 +7,7 @@ from server.core.constants import DEFAULT_PYTHON_ENV
 
 class Settings(BaseSettings):
     DATABASE_URL: str
-    PYTHON_ENV: str = DEFAULT_PYTHON_ENV
+    PYTHON_ENV: str = DEFAULT_PYTHON_ENV.value
 
     class Config:
         env_file = ".env"

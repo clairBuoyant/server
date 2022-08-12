@@ -4,7 +4,7 @@ import os
 import sys
 from pathlib import Path
 
-from sqlalchemy.ext.asyncio import AsyncSession, create_async_engine
+from sqlalchemy.ext.asyncio import AsyncSession, create_async_engine  # type: ignore
 
 # if __name__ == "__main__" and server folder is not on PYTHONPATH
 server_fpath = str(Path(os.path.join(os.path.dirname(__file__))).parent)

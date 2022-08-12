@@ -1,4 +1,4 @@
-from sqlalchemy.ext.asyncio import AsyncSession
+from sqlalchemy.ext.asyncio import AsyncSession  # type: ignore
 
 # Make sure all SQL Alchemy models are imported before initializing DB
 # https://github.com/tiangolo/full-stack-fastapi-postgresql/issues/28

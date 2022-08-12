@@ -6,7 +6,7 @@ TODO: https://docs.sqlalchemy.org/en/14/core/connections.html
 """
 import logging
 
-import asyncpg
+import asyncpg  # type: ignore
 from fastapi import FastAPI
 
 from server.core.config import Settings
@@ -17,8 +17,8 @@ async def connect_to_db(app: FastAPI, settings: Settings) -> None:
 
     app.state.pool = await asyncpg.create_pool(
         str(settings.DATABASE_URL),
-        min_size=settings.min_connection_count,  # ! not implemented
-        max_size=settings.max_connection_count,  # ! not implemented
+        # min_size=settings.min_connection_count,  # ! not implemented
+        # max_size=settings.max_connection_count,  # ! not implemented
     )
 
     logging.info("Connection established")
