@@ -59,7 +59,7 @@ See below for list of available commands.
 - `clean`: remove all unnecessary build artifacts.
 - `dotenv`: create .env file for development.
 - `coverage`: check test coverage.
-- `init`: run bootstrap and setup.
+- `init`: run bootstrap, setup, and dotenv.
 - `lint`: run code linting.
 - `setup`: install python dependencies and githooks.
 - `start`: start server locally with dotenv.

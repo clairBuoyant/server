@@ -1,9 +1,10 @@
 #!/bin/bash -e
 #
-# Prepare application for development by running bootstrap and setup.
+# Prepare application for development.
 
 CURRENT_DIR=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)
 BASE_DIR="$(dirname "$CURRENT_DIR")"
 
 ${BASE_DIR}/scripts/bootstrap
 ${BASE_DIR}/scripts/setup
+${BASE_DIR}/scripts/dotenv

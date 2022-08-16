@@ -101,7 +101,7 @@ The application expects the following environment variables to be set prior to r
 
 For development purposes, it is recommended you manage your environment variables with a file called `.env`. This file is included in our [.gitignore](../.gitignore#L10), as it must **never** be tracked by git or pushed up to any hosted repository.
 
-Running either [dotenv](../scripts/dotenv) or [start](../scripts/start) will create this file for you, if it does not already exist.
+Running [dotenv](../scripts/dotenv), [init](../scripts/init), or [start](../scripts/start) will create this file for you, if it does not exist.
 
 - `DATABASE_URL`: "postgresql+asyncpg://{POSTGRES_USER}:{POSTGRES_PASSWORD}@localhost:5432/{POSTGRES_DB}"
 - `POSTGRES_DB`: "clairbuoyant" (default: clairbuoyant)
