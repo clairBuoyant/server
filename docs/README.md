@@ -2,7 +2,7 @@
 
 ## Folder Structure
 
-```py
+```shell
 📂 scripts/       # scripts to support development
 📂 server/
 ├── 📂 api/       # routes per model
@@ -85,7 +85,7 @@ Some of `poetry`'s most frequently used commands are documented below:
 
    - this enables us to access the repository's dependencies and scripts directly like so:
 
-     ```bash
+     ```shell
      poetry shell
      start # instead of poetry run start
      ```

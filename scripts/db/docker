@@ -2,6 +2,15 @@
 #
 # Create databases in docker for development.
 
+CURRENT_DIR=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)
+BASE_DIR="$(dirname "$CURRENT_DIR")"
+PATH_TO_DOTENV_FILE="$(realpath ${BASE_DIR}/../.env)"
+
+if [ ! -f "${PATH_TO_DOTENV_FILE}" ]; then
+    echo 'Missing .env file. Run dotenv script or create manually.'
+    exit 1
+fi
+
 if command -v docker &> /dev/null; then
     COMPOSE_PROJECT_NAME=clairbuoyant docker-compose --env-file .env up -d
 else

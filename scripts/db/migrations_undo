@@ -1,0 +1,19 @@
+#!/bin/bash -e
+#
+# Revert migrations with `alembic`.
+
+
+if [ -d '.venv' ] ; then
+    PREFIX='.venv/bin/'
+else
+    PREFIX=''
+fi
+
+if [ -n "$1" ]
+then
+    [ "$1" -gt 0 ] && DOWNGRADE_TO="-$1" || DOWNGRADE_TO="$1"
+else
+    DOWNGRADE_TO='-1'
+fi
+
+${PREFIX}alembic downgrade "${DOWNGRADE_TO}"
