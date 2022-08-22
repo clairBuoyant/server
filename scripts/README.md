@@ -44,7 +44,7 @@ See below for list of available commands.
 - `db-docker`: create databases in docker.
 - `db-migrations_autogenerate`: autogenerate migration files for db schema changes.
 
-  ```bash
+  ```shell
   # recommended: provide revision message between double quotes
   poetry run db-migrations_autogenerate "<optional-descriptive-comment>"
 
@@ -53,6 +53,36 @@ See below for list of available commands.
   ```
 
 - `db-migrations_run`: apply database schema changes from migration files.
+
+  ```shell
+  # DEFAULT: apply all latest migration changes
+  poetry run db-migrations_run
+
+  # apply number of migrations relative to current version
+  # <integer> cannot be greater than number of migration files
+  poetry run db-migrations_run <integer>
+
+  # apply migrations until specified revision version
+  poetry run db-migrations_run <partial-or-full-revision-version>
+  ```
+
+- `db-migrations_undo`: undo database schema changes from migration files.
+
+  ```shell
+  # DEFAULT: undo latest migration
+  poetry run db-migrations_undo
+
+  # undo all migrations
+  poetry run db-migrations_undo base
+
+  # undo number of migrations relative to current version
+  # <integer> cannot be greater than number of migration files
+  poetry run db-migrations_undo <integer>
+
+   # undo migrations until specified revision version
+  poetry run db-migrations_undo <partial-or-full-revision-version>
+  ```
+
 - `db-seeds`: populate database with initial dataset.
 - `bootstrap`: resolve all system dependencies the application needs to run.
 - `check`: check whether code linting passes.

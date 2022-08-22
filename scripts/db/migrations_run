@@ -9,4 +9,11 @@ else
     PREFIX=''
 fi
 
-${PREFIX}alembic upgrade head
+if [ -n "$1" ]
+then
+    [ "$1" -gt 0 ] && UPGRADE_TO="+$1" || UPGRADE_TO="$1"
+else
+    UPGRADE_TO='head'
+fi
+
+${PREFIX}alembic upgrade "${UPGRADE_TO}"

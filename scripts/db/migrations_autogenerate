@@ -16,4 +16,4 @@ else
     WITH_COMMENT=''
 fi
 
-${PREFIX}alembic revision --autogenerate ${WITH_COMMENT}"
+${PREFIX}alembic revision --autogenerate "${WITH_COMMENT}"
