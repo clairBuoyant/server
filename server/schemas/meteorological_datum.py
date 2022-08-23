@@ -12,7 +12,7 @@ class MeteorologicalDatumBase(BaseModel):
     wind_speed: Optional[float]
     wind_gust: Optional[float]
     wave_height: Optional[float]
-    dominant_wave_period: Optional[int]
+    dominant_wave_period: Optional[float]
     average_wave_period: Optional[float]
     wave_direction: Optional[str]
     sea_level_pressure: Optional[float]

@@ -43,28 +43,28 @@ class CRUDMeteorologicalDatum(
         return result
 
     async def create_meteorological_datum(
-        self, db: AsyncSession, datum: list[MeteorologicalDatumCreate]
+        self, db: AsyncSession, data: list[MeteorologicalDatumCreate]
     ):
         data_to_db = [
             MeteorologicalDatum(
-                station_id=data.station_id,
-                date_recorded=data.date_recorded,
-                wind_direction=data.wind_direction,
-                wind_speed=data.wind_speed,
-                wind_gust=data.wind_gust,
-                wave_height=data.wave_height,
-                dominant_period=data.dominant_period,
-                average_wave_period=data.average_wave_period,
-                wave_direction=data.mean_wave_direction,
-                air_pressure=data.air_pressure,
-                pressure_tendency=data.pressure_tendency,
-                air_temperature=data.air_temperature,
-                water_temperature=data.water_temperature,
-                dewpoint_temperature=data.dewpoint,
-                visibility=data.visibility,
-                tide=data.tide,
+                station_id=datum.station_id,
+                date_recorded=datum.date_recorded,
+                wind_direction=datum.wind_direction,
+                wind_speed=datum.wind_speed,
+                wind_gust=datum.wind_gust,
+                wave_height=datum.wave_height,
+                dominant_wave_period=datum.dominant_wave_period,
+                average_wave_period=datum.average_wave_period,
+                wave_direction=datum.wave_direction,
+                sea_level_pressure=datum.sea_level_pressure,
+                pressure_tendency=datum.pressure_tendency,
+                air_temperature=datum.air_temperature,
+                water_temperature=datum.water_temperature,
+                dewpoint_temperature=datum.dewpoint_temperature,
+                visibility=datum.visibility,
+                tide=datum.tide,
             )
-            for data in datum
+            for datum in data
         ]
         db.add_all(data_to_db)
         await db.commit()
