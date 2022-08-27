@@ -56,7 +56,7 @@ def upgrade():
         sa.Column("id", sa.Integer(), nullable=False),
         sa.Column("station_id", sa.String(length=10), nullable=False),
         sa.Column("date_recorded", sa.DateTime(), nullable=False),
-        sa.Column("wave_height", sa.Float(), nullable=True),
+        sa.Column("significant_wave_height", sa.Float(), nullable=True),
         sa.Column("swell_height", sa.Float(), nullable=True),
         sa.Column("swell_period", sa.Float(), nullable=True),
         sa.Column("wind_wave_height", sa.Float(), nullable=True),
@@ -65,6 +65,7 @@ def upgrade():
         sa.Column("wind_wave_direction", sa.String(), nullable=True),
         sa.Column("steepness", sa.String(), nullable=True),
         sa.Column("average_wave_period", sa.Float(), nullable=True),
+        sa.Column("mean_wave_direction", sa.Integer(), nullable=True),
         sa.ForeignKeyConstraint(
             ["station_id"],
             ["buoys.station_id"],

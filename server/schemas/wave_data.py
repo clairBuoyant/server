@@ -8,7 +8,7 @@ from pydantic import BaseModel
 class WaveBase(BaseModel):
     station_id: str
     date_recorded: datetime
-    wave_height: Optional[float]
+    significant_wave_height: Optional[float]
     swell_height: Optional[float]
     swell_period: Optional[float]
     wind_wave_height: Optional[float]
@@ -17,6 +17,7 @@ class WaveBase(BaseModel):
     wind_wave_direction: Optional[str]
     steepness: Optional[str]
     average_wave_period: Optional[float]
+    mean_wave_direction: Optional[int]
 
 
 # Properties to receive on item creation

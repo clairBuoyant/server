@@ -16,7 +16,7 @@ class WaveData(Base):
         unique=False,
     )
     date_recorded = Column(DateTime, nullable=False)
-    wave_height = Column(Float, nullable=True)
+    significant_wave_height = Column(Float, nullable=True)
     swell_height = Column(Float, nullable=True)
     swell_period = Column(Float, nullable=True)
     wind_wave_height = Column(Float, nullable=True)
@@ -25,3 +25,4 @@ class WaveData(Base):
     wind_wave_direction = Column(String, nullable=True)
     steepness = Column(String, nullable=True)
     average_wave_period = Column(Float, nullable=True)
+    mean_wave_direction = Column(Integer, nullable=True)
