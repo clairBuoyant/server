@@ -8,9 +8,10 @@ from server.schemas.meteorological_datum import MeteorologicalDatum
 
 router = APIRouter()
 
-# TODO: build out meteorological endpoint
 
-
+# TODO: (HIGH) fix type error caused by CRUD method
 @router.get(RELATIVE_ROOT, response_model=list[MeteorologicalDatum])
 async def get_meteorological_datum(db_session: AsyncSession = Depends(get_db)):
-    return await meteorological_datum.find_all(db=db_session)
+    test = await meteorological_datum.find_all(db=db_session)
+    print(test)
+    return "Work in progress"

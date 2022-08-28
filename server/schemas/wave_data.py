@@ -5,7 +5,7 @@ from pydantic import BaseModel
 
 
 # Shared properties
-class WaveBase(BaseModel):
+class WaveDataBase(BaseModel):
     station_id: str
     date_recorded: datetime
     significant_wave_height: Optional[float]
@@ -21,27 +21,27 @@ class WaveBase(BaseModel):
 
 
 # Properties to receive on item creation
-class WaveCreate(WaveBase):
+class WaveDataCreate(WaveDataBase):
     ...
 
 
 # Properties to receive on item update
-class WaveUpdate(WaveBase):
+class WaveDataUpdate(WaveDataBase):
     ...
 
 
 # Properties shared by models stored in DB
-class WaveInDBBase(WaveBase):
+class WaveDataInDBBase(WaveDataBase):
     id: int
 
     class Config:
         orm_mode = True
 
 
-class Wave(WaveInDBBase):
+class WaveData(WaveDataInDBBase):
     ...
 
 
 # Properties properties stored in DB
-class WaveInDB(WaveInDBBase):
+class WaveDataInDB(WaveDataInDBBase):
     ...
