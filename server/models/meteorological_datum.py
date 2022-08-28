@@ -22,7 +22,7 @@ class MeteorologicalDatum(Base):
     wave_height = Column(Float, nullable=True)
     dominant_wave_period = Column(Float, nullable=True)
     average_wave_period = Column(Float, nullable=True)
-    wave_direction = Column(String, nullable=True)
+    wave_direction = Column(Integer, nullable=True)
     sea_level_pressure = Column(Float, nullable=True)
     pressure_tendency = Column(Float, nullable=True)
     air_temperature = Column(Float, nullable=True)

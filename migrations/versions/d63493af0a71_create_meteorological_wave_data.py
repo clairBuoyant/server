@@ -28,7 +28,7 @@ def upgrade():
         sa.Column("wave_height", sa.Float(), nullable=True),
         sa.Column("dominant_wave_period", sa.Float(), nullable=True),
         sa.Column("average_wave_period", sa.Float(), nullable=True),
-        sa.Column("wave_direction", sa.String(), nullable=True),
+        sa.Column("wave_direction", sa.Integer(), nullable=True),
         sa.Column("sea_level_pressure", sa.Float(), nullable=True),
         sa.Column("pressure_tendency", sa.Float(), nullable=True),
         sa.Column("air_temperature", sa.Float(), nullable=True),
