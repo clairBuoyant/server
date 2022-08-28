@@ -23,7 +23,7 @@ class CRUDMeteorologicalDatum(
         return result.scalars().first()
 
     async def find_all(self, db: AsyncSession):
-        result = await db.execute(select(MeteorologicalDatum))
+        result = await db.execute(select(self.model))
         return result.scalars().all()
 
     # TODO: Try to refactor this to follow DRY principle
