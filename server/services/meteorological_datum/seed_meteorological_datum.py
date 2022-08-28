@@ -38,6 +38,4 @@ async def seed_meteorological_data(db: AsyncSession):
         )
         for datum in data
     ]
-    return await meteorological_datum.create_meteorological_datum(
-        db, parsed_meteorological_data
-    )
+    return await meteorological_datum.create_many(db, parsed_meteorological_data)

@@ -35,7 +35,7 @@ class CRUDMeteorologicalDatum(
         end_date: datetime,
     ):
         result = await db.execute(
-            select(MeteorologicalDatum).where(
+            select(self.model).where(
                 MeteorologicalDatum.station_id == station_id
                 and MeteorologicalDatum.date_recorded >= begin_date
                 and MeteorologicalDatum.date_recorded <= end_date
@@ -43,7 +43,7 @@ class CRUDMeteorologicalDatum(
         )
         return result
 
-    async def create_meteorological_datum(
+    async def create_many(
         self, db: AsyncSession, data: list[MeteorologicalDatumCreate]
     ):
         data_to_db = [
