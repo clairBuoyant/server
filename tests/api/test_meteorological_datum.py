@@ -13,7 +13,7 @@ def test_get_meteorological_data(test_app):
     assert "wind_direction" in first_record
     assert "wind_speed" in first_record
     assert "wind_gust" in first_record
-    assert "wind_height" in first_record
+    assert "wave_height" in first_record
     assert "dominant_wave_period" in first_record
     assert "average_wave_period" in first_record
     assert "wave_direction" in first_record
