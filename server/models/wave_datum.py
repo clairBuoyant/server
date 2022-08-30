@@ -4,7 +4,7 @@ from server.db.base_class import Base
 from server.models.buoy import Buoy
 
 
-class WaveData(Base):
+class WaveDatum(Base):
     __tablename__ = "wave_data"
 
     id = Column(Integer, index=True, nullable=False, primary_key=True)

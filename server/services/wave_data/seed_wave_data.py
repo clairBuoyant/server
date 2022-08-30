@@ -3,8 +3,8 @@ from datetime import datetime as dt
 from pybuoy import Buoy
 from sqlalchemy.ext.asyncio import AsyncSession  # type: ignore
 
-from server.crud.crud_wave_data import wave_data
-from server.schemas.wave_data import WaveDataCreate
+from server.crud.crud_wave_datum import wave_datum
+from server.schemas.wave_datum import WaveDatumCreate
 
 buoy = Buoy()
 STATION_ID = "44065"
@@ -18,7 +18,7 @@ async def seed_wave_data(db: AsyncSession):
     for row in rows[2:]:
         record_array = " ".join(row.split()).split(" ")
         parsed_wave_data.append(
-            WaveDataCreate(
+            WaveDatumCreate(
                 station_id=STATION_ID,
                 date_recorded=dt(
                     int(record_array[0]),
@@ -41,4 +41,4 @@ async def seed_wave_data(db: AsyncSession):
                 mean_wave_direction=record_array[14],
             )
         )
-    return await wave_data.create_wave_data(db, parsed_wave_data)
+    return await wave_datum.create_wave_data(db, parsed_wave_data)

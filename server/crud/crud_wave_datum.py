@@ -4,19 +4,19 @@ from sqlalchemy.ext.asyncio import AsyncSession  # type: ignore
 from sqlalchemy.future import select  # type: ignore
 
 from server.crud.base import CRUDBase
-from server.models.wave_data import WaveData
-from server.schemas.wave_data import WaveDataCreate, WaveDataUpdate
+from server.models.wave_datum import WaveDatum
+from server.schemas.wave_datum import WaveDatumCreate, WaveDatumUpdate
 
 
-class CRUDWaveData(CRUDBase[WaveData, WaveDataCreate, WaveDataUpdate]):
+class CRUDWaveDatum(CRUDBase[WaveDatum, WaveDatumCreate, WaveDatumUpdate]):
     async def find_one(self, db: AsyncSession, date_recorded: datetime):
         result = await db.execute(
-            select(WaveData).where(WaveData.date_recorded == date_recorded)
+            select(WaveDatum).where(WaveDatum.date_recorded == date_recorded)
         )
         return result.scalars().first()
 
     async def find_all(self, db: AsyncSession):
-        return await db.execute(select(WaveData))
+        return await db.execute(select(WaveDatum))
 
     # TODO: Try to refactor this to follow DRY principle
     async def find_many_recordings(
@@ -27,17 +27,17 @@ class CRUDWaveData(CRUDBase[WaveData, WaveDataCreate, WaveDataUpdate]):
         end_date: datetime,
     ):
         result = await db.execute(
-            select(WaveData).where(
-                WaveData.station_id == station_id
-                and WaveData.date_recorded >= begin_date
-                and WaveData.date_recorded <= end_date
+            select(WaveDatum).where(
+                WaveDatum.station_id == station_id
+                and WaveDatum.date_recorded >= begin_date
+                and WaveDatum.date_recorded <= end_date
             )
         )
         return result
 
-    async def create_wave_data(self, db: AsyncSession, data: list[WaveDataCreate]):
+    async def create_wave_data(self, db: AsyncSession, data: list[WaveDatumCreate]):
         data_to_db = [
-            WaveData(
+            WaveDatum(
                 station_id=datum.station_id,
                 date_recorded=datum.date_recorded,
                 significant_wave_height=datum.significant_wave_height,
@@ -57,4 +57,4 @@ class CRUDWaveData(CRUDBase[WaveData, WaveDataCreate, WaveDataUpdate]):
         await db.commit()
 
 
-wave_data = CRUDWaveData(WaveData)
+wave_datum = CRUDWaveDatum(WaveDatum)

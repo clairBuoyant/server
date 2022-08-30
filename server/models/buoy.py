@@ -25,4 +25,4 @@ class Buoy(Base):
     seq = Column(SmallInteger, nullable=True)  # tao_seq
 
     meteorological = relationship("MeteorologicalDatum")
-    wave = relationship("WaveData")
+    wave = relationship("WaveDatum")
