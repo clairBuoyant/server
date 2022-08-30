@@ -8,11 +8,11 @@ from server.services.coastline.seed_coastline import seed_rockaway
 from server.services.meteorological_datum.seed_meteorological_datum import (
     seed_meteorological_data,
 )
-from server.services.wave_data.seed_wave_data import seed_wave_data
+from server.services.wave_datum.seed_wave_datum import seed_wave_datum
 
 
 async def init_db(db_session: AsyncSession) -> None:
     await seed_active_buoys(db_session)
     await seed_rockaway(db_session)
     await seed_meteorological_data(db_session)
-    await seed_wave_data(db_session)
+    await seed_wave_datum(db_session)
