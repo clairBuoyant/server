@@ -12,3 +12,6 @@ router = APIRouter()
 @router.get(RELATIVE_ROOT, response_model=list[MeteorologicalDatum])
 async def get_meteorological_data(db_session: AsyncSession = Depends(get_db)):
     return await meteorological_datum.find_all(db=db_session)
+
+
+# TODO: write out remaining query endpoints

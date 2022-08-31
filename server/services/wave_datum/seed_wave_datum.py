@@ -29,9 +29,7 @@ async def seed_wave_data(db: AsyncSession):
                 ),
                 significant_wave_height=record_array[5],
                 swell_height=record_array[6],
-                swell_period=None
-                if record_array[7] == "MM"
-                else record_array[7],  # value is not a valid float...
+                swell_period=None if record_array[7] == "MM" else record_array[7],
                 wind_wave_height=record_array[8],
                 wind_wave_period=record_array[9],
                 swell_direction=None if record_array[10] == "MM" else record_array[10],

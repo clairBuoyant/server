@@ -1,10 +1,11 @@
 from fastapi import APIRouter
 
-from server.api.v1.endpoints import buoys, coastlines, meteorological_data
-from server.core.constants import (  # WAVE_DATUM_PATH,
+from server.api.v1.endpoints import buoys, coastlines, meteorological_data, wave_data
+from server.core.constants import (
     BUOYS_PATH,
     COASTLINES_PATH,
     METEOROLOGICAL_DATA_PATH,
+    WAVE_DATA_PATH,
     PathTags,
 )
 
@@ -21,4 +22,10 @@ api_router.include_router(
     meteorological_data.router,
     prefix=METEOROLOGICAL_DATA_PATH,
     tags=[PathTags.METEOROLOGICAL_DATA],
+)
+
+api_router.include_router(
+    wave_data.router,
+    prefix=WAVE_DATA_PATH,
+    tags=[PathTags.WAVE_DATA],
 )
