@@ -1,4 +1,11 @@
-from sqlalchemy import Column, DateTime, Float, ForeignKey, Integer, String
+from sqlalchemy import (  # type: ignore
+    Column,
+    DateTime,
+    Float,
+    ForeignKey,
+    Integer,
+    String,
+)
 
 from server.db.base_class import Base
 from server.models.buoy import Buoy

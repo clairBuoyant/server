@@ -11,12 +11,12 @@ from server.schemas.wave_datum import WaveDatumCreate, WaveDatumUpdate
 class CRUDWaveDatum(CRUDBase[WaveDatum, WaveDatumCreate, WaveDatumUpdate]):
     async def find_one(self, db: AsyncSession, date_recorded: datetime):
         result = await db.execute(
-            select(WaveDatum).where(WaveDatum.date_recorded == date_recorded)
+            select(self.model).where(self.model.date_recorded == date_recorded)
         )
         return result.scalars().first()
 
     async def find_all(self, db: AsyncSession):
-        return await db.execute(select(WaveDatum))
+        return await db.execute(select(self.model))
 
     # TODO: Try to refactor this to follow DRY principle
     async def find_many_recordings(
@@ -27,10 +27,10 @@ class CRUDWaveDatum(CRUDBase[WaveDatum, WaveDatumCreate, WaveDatumUpdate]):
         end_date: datetime,
     ):
         result = await db.execute(
-            select(WaveDatum).where(
-                WaveDatum.station_id == station_id
-                and WaveDatum.date_recorded >= begin_date
-                and WaveDatum.date_recorded <= end_date
+            select(self.model).where(
+                self.model.station_id == station_id
+                and self.model.date_recorded >= begin_date
+                and self.model.date_recorded <= end_date
             )
         )
         return result

@@ -12,7 +12,7 @@ STATION_ID = "44065"
 data = buoy.realtime.get(station_id=STATION_ID, dataset="spec")
 
 
-async def seed_wave_datum(db: AsyncSession):
+async def seed_wave_data(db: AsyncSession):
     rows = data.strip().split("\n")
     parsed_wave_data = []
     for row in rows[2:]:

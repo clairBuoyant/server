@@ -20,6 +20,7 @@ class PathTags(Enum):
     BUOYS = "buoys"
     COASTLINES = "coastlines"
     METEOROLOGICAL_DATA = "meteorological_data"
+    WAVE_DATA = "wave_data"
 
 
 class PythonEnv(Enum):

@@ -16,9 +16,7 @@ class CRUDMeteorologicalDatum(
 ):
     async def find_one(self, db: AsyncSession, date_recorded: datetime):
         result = await db.execute(
-            select(MeteorologicalDatum).where(
-                MeteorologicalDatum.date_recorded == date_recorded
-            )
+            select(self.model).where(MeteorologicalDatum.date_recorded == date_recorded)
         )
         return result.scalars().first()
 
@@ -36,9 +34,9 @@ class CRUDMeteorologicalDatum(
     ):
         result = await db.execute(
             select(self.model).where(
-                MeteorologicalDatum.station_id == station_id
-                and MeteorologicalDatum.date_recorded >= begin_date
-                and MeteorologicalDatum.date_recorded <= end_date
+                self.model.station_id == station_id
+                and self.model.date_recorded >= begin_date
+                and self.model.date_recorded <= end_date
             )
         )
         return result
