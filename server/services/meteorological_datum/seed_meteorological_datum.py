@@ -1,5 +1,3 @@
-from math import isnan
-
 from pybuoy import Buoy
 from sqlalchemy.ext.asyncio import AsyncSession  # type: ignore
 
@@ -20,21 +18,21 @@ async def seed_meteorological_data(db: AsyncSession):
         MeteorologicalDatumCreate(
             # TODO: refactor with the help of incoming pybuoy changes
             station_id=STATION_ID,
-            date_recorded=datum[0].datetime,
-            wind_direction=None if isnan(datum[0].value) else datum[0].value,
-            wind_speed=None if isnan(datum[1].value) else datum[1].value,
-            wind_gust=None if isnan(datum[2].value) else datum[2].value,
-            wave_height=None if isnan(datum[3].value) else datum[3].value,
-            dominant_wave_period=None if isnan(datum[4].value) else datum[4].value,
-            average_wave_period=None if isnan(datum[5].value) else datum[5].value,
-            wave_direction=None if isnan(datum[6].value) else datum[6].value,
-            sea_level_pressure=None if isnan(datum[7].value) else datum[7].value,
-            pressure_tendency=None if isnan(datum[8].value) else datum[8].value,
-            air_temperature=None if isnan(datum[9].value) else datum[9].value,
-            water_temperature=None if isnan(datum[10].value) else datum[10].value,
-            dewpoint_temperature=None if isnan(datum[11].value) else datum[11].value,
-            visibility=None if isnan(datum[12].value) else datum[12].value,
-            tide=None if isnan(datum[13].value) else datum[13].value,
+            date_recorded=datum.datetime,
+            wind_direction=datum.wind_direction.value,
+            wind_speed=datum.wind_speed.value,
+            wind_gust=datum.wind_gust.value,
+            wave_height=datum.wave_height.value,
+            dominant_wave_period=datum.dominate_wave_period.value,
+            average_wave_period=datum.average_wave_period.value,
+            wave_direction=datum.wave_direction.value,
+            sea_level_pressure=datum.sea_level_pressure.value,
+            pressure_tendency=datum.pressure_tendency.value,
+            air_temperature=datum.air_temperature.value,
+            water_temperature=datum.water_temperature.value,
+            dewpoint_temperature=datum.dewpoint_temperature.value,
+            visibility=datum.visibility.value,
+            tide=datum.tide.value,
         )
         for datum in data
     ]

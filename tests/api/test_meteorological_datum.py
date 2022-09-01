@@ -1,5 +1,6 @@
 from server.core.constants import METEOROLOGICAL_DATA_URI
 
+
 def test_get_meteorological_data(test_app):
     response = test_app.get(METEOROLOGICAL_DATA_URI)
     assert response.status_code == 200
@@ -24,3 +25,5 @@ def test_get_meteorological_data(test_app):
     assert "dewpoint_temperature" in first_record
     assert "visibility" in first_record
     assert "tide" in first_record
+
+    # TODO: Create JOIN test

@@ -17,7 +17,7 @@ asyncpg = "^0.25.0"
 SQLAlchemy = "^1.4.40"
 greenlet = "^1.1.2"
 Shapely = "^1.8.2"
-pybuoy = "^0.3.0"
+pybuoy = "^0.4.0"
 
 [tool.poetry.dev-dependencies]
 black="^22.6.0"

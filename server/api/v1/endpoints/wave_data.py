@@ -9,7 +9,7 @@ from server.schemas.wave_datum import WaveDatum
 router = APIRouter()
 
 
-@router.get(RELATIVE_ROOT, response_model=list[WaveDatum])
+@router.get(RELATIVE_ROOT, response_model=WaveDatum)
 async def get_meteorological_data(db_session: AsyncSession = Depends(get_db)):
     return await wave_datum.find_all(db=db_session)
 
