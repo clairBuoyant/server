@@ -4,11 +4,8 @@ from sqlalchemy.ext.asyncio import AsyncSession  # type: ignore
 from sqlalchemy.future import select  # type: ignore
 
 from server.crud.base import CRUDBase
-from server.models.meteorological_datum import MeteorologicalDatum
-from server.schemas.meteorological_datum import (
-    MeteorologicalDatumCreate,
-    MeteorologicalDatumUpdate,
-)
+from server.models import MeteorologicalDatum
+from server.schemas import MeteorologicalDatumCreate, MeteorologicalDatumUpdate
 
 
 class CRUDMeteorologicalDatum(

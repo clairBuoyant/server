@@ -3,8 +3,8 @@ from sqlalchemy.ext.asyncio import AsyncSession  # type: ignore
 
 from server.api.dependencies import get_db
 from server.core.constants import RELATIVE_ROOT
-from server.crud.crud_meteorological_datum import meteorological_datum
-from server.schemas.meteorological_datum import MeteorologicalDatum
+from server.crud import meteorological_datum
+from server.schemas import MeteorologicalDatum
 
 router = APIRouter()
 

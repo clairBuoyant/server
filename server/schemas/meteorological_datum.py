@@ -47,5 +47,5 @@ class MeteorologicalDatum(MeteorologicalDatumInDBBase):
 
 
 # Properties properties stored in DB
-class MeteorologicalInDB(MeteorologicalDatumInDBBase):
+class MeteorologicalDatumInDB(MeteorologicalDatumInDBBase):
     ...

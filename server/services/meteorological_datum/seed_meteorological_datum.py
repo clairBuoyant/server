@@ -1,8 +1,8 @@
 from pybuoy import Buoy
 from sqlalchemy.ext.asyncio import AsyncSession  # type: ignore
 
-from server.crud.crud_meteorological_datum import meteorological_datum
-from server.schemas.meteorological_datum import MeteorologicalDatumCreate
+from server.crud import meteorological_datum
+from server.schemas import MeteorologicalDatumCreate
 
 # reference links:
 # https://github.com/clairBuoyant/pybuoy/blob/main/docs/examples/get_realtime_data.py
