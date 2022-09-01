@@ -8,11 +8,11 @@ buoy = Buoy()
 STATION_ID = "44065"
 
 
-async def seed_wave_data(db: AsyncSession):
-    data = buoy.realtime.get(station_id=STATION_ID, dataset="spec")
+async def seed_wave_data(db: AsyncSession, station_id: str = STATION_ID):
+    data = buoy.realtime.get(station_id=station_id, dataset="spec")
     parsed_wave_data = [
         WaveDatumCreate(
-            station_id=STATION_ID,
+            station_id=station_id,
             date_recorded=datum.datetime,
             significant_wave_height=datum.significant_wave_height.value,
             swell_height=datum.swell_height.value,

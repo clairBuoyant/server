@@ -386,8 +386,8 @@ optional = false
 python-versions = ">=3.6"
 
 [package.extras]
-testing = ["pytest-benchmark", "pytest"]
-dev = ["tox", "pre-commit"]
+dev = ["pre-commit", "tox"]
+testing = ["pytest", "pytest-benchmark"]
 
 [[package]]
 name = "pre-commit"
@@ -415,7 +415,7 @@ python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*"
 
 [[package]]
 name = "pybuoy"
-version = "0.4.0"
+version = "0.4.1"
 description = "Python wrapper for NDBC data."
 category = "main"
 optional = false
@@ -514,7 +514,7 @@ coverage = {version = ">=5.2.1", extras = ["toml"]}
 pytest = ">=4.6"
 
 [package.extras]
-testing = ["virtualenv", "pytest-xdist", "six", "process-tests", "hunter", "fields"]
+testing = ["fields", "hunter", "process-tests", "six", "pytest-xdist", "virtualenv"]
 
 [[package]]
 name = "python-dotenv"
@@ -693,7 +693,7 @@ testing = ["coverage (>=6.2)", "coverage-enable-subprocess (>=1)", "flaky (>=3.7
 [metadata]
 lock-version = "1.1"
 python-versions = ">=3.10, <4.0"
-content-hash = "17025efbeeb2bb1e7a09cfb987a9e6c6568433a778e680b9435c818a83a9ef1d"
+content-hash = "d9e0f1877ddbc6216327eecf36591b599ca8021232a9a29db407541920d4ce26"
 
 [metadata.files]
 alembic = [
@@ -1035,8 +1035,8 @@ py = [
     {file = "py-1.11.0.tar.gz", hash = "sha256:51c75c4126074b472f746a24399ad32f6053d1b34b68d2fa41e558e6f4a98719"},
 ]
 pybuoy = [
-    {file = "pybuoy-0.4.0-py3-none-any.whl", hash = "sha256:9291228be0989aa3f562f0c88faa2507f7a9b6ac32c359d79a83f0b8e1a1b2bf"},
-    {file = "pybuoy-0.4.0.tar.gz", hash = "sha256:18d7da5716eb1cbf1cf8ffb9e3bc303704c16f6c1e8309fd3109fc86b414926b"},
+    {file = "pybuoy-0.4.1-py3-none-any.whl", hash = "sha256:4b7a24e3cd57a883d7bb4373078e7f9dbff74d0f705964f4dcfcd25b31c4c1e0"},
+    {file = "pybuoy-0.4.1.tar.gz", hash = "sha256:32e354c30a2de90434d42a5d7a19f8d123cf0aa33e49a7da9a93ffbdbb2d392b"},
 ]
 pycodestyle = [
     {file = "pycodestyle-2.8.0-py2.py3-none-any.whl", hash = "sha256:720f8b39dde8b293825e7ff02c475f3077124006db4f440dcbc9a20b76548a20"},
