@@ -16,7 +16,8 @@ class CRUDWaveDatum(CRUDBase[WaveDatum, WaveDatumCreate, WaveDatumUpdate]):
         return result.scalars().first()
 
     async def find_all(self, db: AsyncSession):
-        return await db.execute(select(self.model))
+        result = await db.execute(select(self.model))
+        return result.scalars().all()
 
     # TODO: Try to refactor this to follow DRY principle
     async def find_many_recordings(

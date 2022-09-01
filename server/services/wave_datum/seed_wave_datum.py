@@ -23,7 +23,7 @@ async def seed_wave_data(db: AsyncSession):
             wind_wave_direction=datum.wind_wave_direction.value,
             steepness=datum.steepness.value,
             average_wave_period=datum.average_wave_period.value,
-            mean_wave_direction=datum.dominant_wave_direction,
+            mean_wave_direction=datum.dominant_wave_direction.value,
         )
         for datum in data
     ]
