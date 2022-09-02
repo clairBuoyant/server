@@ -1,3 +1,4 @@
+from datetime import datetime
 from typing import Any, Generic, Optional, Type, TypeVar
 
 from pydantic import BaseModel
@@ -28,6 +29,25 @@ class CRUDBase(Generic[ModelType, CreateSchemaType, UpdateSchemaType]):
     async def find_many(self, db: AsyncSession) -> Optional[ModelType]:
         results = await db.execute(select(self.model))
         return results.scalars().all()
+
+    # TODO: Work on implementing DRY base
+    # find_many_daterange conditional method
+
+    async def find_many_date_range(
+        self,
+        db: AsyncSession,
+        station_id: str,
+        begin_date: datetime,
+        end_date: datetime,
+    ):
+        result = await db.execute(
+            select(self.model).where(
+                self.model.station_id == station_id
+                and self.model.date_recorded >= begin_date
+                and self.model.date_recorded <= end_date
+            )
+        )
+        return result
 
     # TODO: remove after blending it with `get_many`.
     # def get_multi(

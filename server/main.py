@@ -31,6 +31,14 @@ You can **get buoy** data by `station_id`.
 You can **get coastlines** data.
 
 You can **get coastline** by `coastline_id`.
+
+## Meteorological Data
+
+You can **get meteorological** data by station id or range of dates
+
+## Wave Data
+
+You can **get wave** data by station id or range of dates
 """
 
 

@@ -1,5 +1,6 @@
 from geoalchemy2.types import Geography  # type: ignore
 from sqlalchemy import Column, Float, Integer, SmallInteger, String  # type: ignore
+from sqlalchemy.orm import relationship  # type: ignore
 
 from server.db.base_class import Base
 
@@ -22,3 +23,6 @@ class Buoy(Base):
     water_quality = Column(String(1), default="n", nullable=False)
     dart = Column(String(1), default="n", nullable=False)
     seq = Column(SmallInteger, nullable=True)  # tao_seq
+
+    meteorological = relationship("MeteorologicalDatum")
+    wave = relationship("WaveDatum")
