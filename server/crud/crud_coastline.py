@@ -8,22 +8,23 @@ from server.schemas.coastline import CoastlineCreate, CoastlineUpdate
 
 
 class CRUDCoastline(CRUDBase[Coastline, CoastlineCreate, CoastlineUpdate]):
-    async def create_coastlines(
+    async def create_many(
         self, db_session: AsyncSession, coastlines: list[CoastlineCreate]
     ):
-        coastlines_to_db = [
-            Coastline(station_id=coastline.station_id, geom=coastline.geom)
-            for coastline in coastlines
-        ]
-        db_session.add_all(coastlines_to_db)
-        await db_session.commit()
+        return await super().create_many(
+            db_session,
+            [
+                Coastline(station_id=coastline.station_id, geom=coastline.geom)
+                for coastline in coastlines
+            ],
+        )
 
     async def get_coastlines(self, db_session: AsyncSession):
         # `selectinload`: alternative approach to `joinedload`
         stmt = (
-            select(Coastline)
-            .options(joinedload(Coastline.buoy, innerjoin=True))
-            .order_by(Coastline.id)
+            select(self.model)
+            .options(joinedload(self.model.buoy, innerjoin=True))
+            .order_by(self.model.id)
         )
         results = await db_session.execute(stmt)
         return results.scalars().all()

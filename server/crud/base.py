@@ -22,25 +22,30 @@ class CRUDBase(Generic[ModelType, CreateSchemaType, UpdateSchemaType]):
         """
         self.model = model
 
-    async def find_one(self, db: AsyncSession, id: Any) -> Optional[ModelType]:
-        result = await db.execute(select(self.model).where(self.model.id == id))
+    async def create_many(
+        self, db_session: AsyncSession, models: list[CreateSchemaType]
+    ):
+        # TODO: dynamically instantiate self.model before committing
+        db_session.add_all(models)
+        await db_session.commit()
+
+    async def find_one(self, db_session: AsyncSession, id: Any) -> Optional[ModelType]:
+        result = await db_session.execute(select(self.model).where(self.model.id == id))
         return result.scalars().first()
 
-    async def find_many(self, db: AsyncSession) -> Optional[ModelType]:
-        results = await db.execute(select(self.model))
+    async def find_many(self, db_session: AsyncSession) -> Optional[ModelType]:
+        results = await db_session.execute(select(self.model))
         return results.scalars().all()
 
-    # TODO: Work on implementing DRY base
-    # find_many_daterange conditional method
-
+    # TODO: incorporate with find_many
     async def find_many_date_range(
         self,
-        db: AsyncSession,
+        db_session: AsyncSession,
         station_id: str,
         begin_date: datetime,
         end_date: datetime,
-    ):
-        result = await db.execute(
+    ) -> Optional[ModelType]:
+        result = await db_session.execute(
             select(self.model).where(
                 self.model.station_id == station_id
                 and self.model.date_recorded >= begin_date
@@ -53,15 +58,15 @@ class CRUDBase(Generic[ModelType, CreateSchemaType, UpdateSchemaType]):
     # def get_multi(
     #     self, db: Session, *, skip: int = 0, limit: int = 100
     # ) -> List[ModelType]:
-    #     return db.query(self.model).offset(skip).limit(limit).all()
+    #     return db_session.query(self.model).offset(skip).limit(limit).all() # noqa: E501, W505
 
     # TODO: replace with async implementation
     # def create(self, db: Session, *, obj_in: CreateSchemaType) -> ModelType: # noqa: E501, W505
     #     obj_in_data = jsonable_encoder(obj_in)
     #     db_obj = self.model(**obj_in_data)
-    #     db.add(db_obj)
-    #     db.commit()
-    #     db.refresh(db_obj)
+    #     db_session.add(db_obj)
+    #     db_session.commit()
+    #     db_session.refresh(db_obj)
     #     return db_obj
 
     # TODO: replace with async implementation
@@ -80,14 +85,14 @@ class CRUDBase(Generic[ModelType, CreateSchemaType, UpdateSchemaType]):
     #     for field in obj_data:
     #         if field in update_data:
     #             setattr(db_obj, field, update_data[field])
-    #     db.add(db_obj)
-    #     db.commit()
-    #     db.refresh(db_obj)
+    #     db_session.add(db_obj)
+    #     db_session.commit()
+    #     db_session.refresh(db_obj)
     #     return db_obj
 
     # TODO: replace with async implementation
     # def remove(self, db: Session, *, id: int) -> ModelType:
-    #     obj = db.query(self.model).get(id)
-    #     db.delete(obj)
-    #     db.commit()
+    #     obj = db_session.query(self.model).get(id)
+    #     db_session.delete(obj)
+    #     db_session.commit()
     #     return obj

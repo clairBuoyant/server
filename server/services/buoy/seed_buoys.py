@@ -26,16 +26,11 @@ async def seed_active_buoys(db):
             for station in stations
         ]
 
-    async def persist_parsed(stations):
-        # TODO: integrate pydantic layer with model layer
-        return await buoy.create_buoys(db, stations)
-
     async def run():
-        buoy = Buoy()
-        stations = buoy.stations.get_active()
+        ndbc = Buoy()
+        stations = ndbc.stations.get_active()
 
         parsed_stations = parse_activestations(stations=stations)
-
-        return await persist_parsed(parsed_stations)
+        return await buoy.create_many(db, parsed_stations)
 
     return await run()

@@ -2,18 +2,21 @@
 #
 # Run test suite.
 
+# TODO: review to ensure process ends successfully
+
 if [ -d '.venv' ] ; then
     PREFIX='.venv/bin/'
 else
     PREFIX=''
 fi
 
-if [ -z $GITHUB_ACTIONS ]; then
+if [ -z "$GITHUB_ACTIONS" ]; then
     scripts/check
 fi
 
-if [ -z $GITHUB_ACTIONS ]; then
+if [ -z "$GITHUB_ACTIONS" ]; then
     scripts/coverage
-else
-    ${PREFIX}coverage run --concurrency=thread,greenlet -m pytest $@
+    # else
+    # TODO: research concurrency implementation
+    # ${PREFIX}coverage run --concurrency=thread,greenlet -m pytest $@
 fi

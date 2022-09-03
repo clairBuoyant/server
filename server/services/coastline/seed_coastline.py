@@ -56,4 +56,4 @@ async def seed_rockaway(db):
         CoastlineCreate(geom=geom_coastline, station_id=station_id)
         for station_id, geom_coastline in rockaway_coastlines
     ]
-    return await coastline.create_coastlines(db, parsed_coastlines)
+    return await coastline.create_many(db, parsed_coastlines)

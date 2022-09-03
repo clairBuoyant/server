@@ -4,14 +4,13 @@ from sqlalchemy.ext.asyncio import AsyncSession  # type: ignore
 from server.crud import meteorological_datum
 from server.schemas import MeteorologicalDatumCreate
 
-# reference links:
-# https://github.com/clairBuoyant/pybuoy/blob/main/docs/examples/get_realtime_data.py
-
 buoy = Buoy()
 STATION_ID = "44065"
 
 
-async def seed_meteorological_data(db: AsyncSession, station_id: str = STATION_ID):
+async def seed_meteorological_data(
+    db_session: AsyncSession, station_id: str = STATION_ID
+):
     data = buoy.realtime.get(station_id=station_id)
     # TODO: remove object from memory
     parsed_meteorological_data = [
@@ -35,4 +34,6 @@ async def seed_meteorological_data(db: AsyncSession, station_id: str = STATION_I
         )
         for datum in data
     ]
-    return await meteorological_datum.create_many(db, parsed_meteorological_data)
+    return await meteorological_datum.create_many(
+        db_session, parsed_meteorological_data
+    )
