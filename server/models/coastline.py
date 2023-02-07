@@ -1,10 +1,9 @@
 from typing import TYPE_CHECKING, Optional
 
 from geoalchemy2.types import Geography  # type: ignore
-from sqlalchemy import Column, ForeignKey, Integer, String  # type: ignore
-from sqlalchemy.orm import relationship  # type: ignore
+from sqlalchemy.orm import Mapped, mapped_column, relationship
 
-from server.db.base_class import Base
+from server.db.base_class import Base, buoy_fk, intpk
 
 if TYPE_CHECKING:
     from server.models.buoy import Buoy
@@ -13,18 +12,15 @@ if TYPE_CHECKING:
 class Coastline(Base):
     __tablename__ = "coastlines"
 
-    id = Column(Integer, index=True, nullable=False, primary_key=True)
-    station_id = Column(
-        String(10),
-        ForeignKey("buoys.station_id"),
-        index=True,
-        nullable=False,
-        unique=True,
+    # TODO: revisit relationship strategy to avoid N+1 scenarios
+    buoy: Mapped[Optional["Buoy"]] = relationship(
+        "Buoy", back_populates="coastlines", lazy="joined"
     )
-    geom = Column(
+
+    id: Mapped[intpk]
+    station_id: Mapped[buoy_fk]
+    geom: Mapped[Geography] = mapped_column(
         Geography(
             geometry_type="GEOMETRY", nullable=False, srid=4326, spatial_index=True
         )
     )
-    # TODO: revisit relationship strategy to avoid N+1 problem
-    buoy: Optional["Buoy"] = relationship("Buoy", backref="coastlines", lazy="joined")

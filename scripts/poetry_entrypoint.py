@@ -27,7 +27,7 @@ def _set_script_path(filename: str, subfolder: str) -> str:
 
     return (
         str(script_in_scripts_subdirectory)
-        if scripts_subdirectory.exists() and script_in_scripts_subdirectory.exists
+        if scripts_subdirectory.exists() and script_in_scripts_subdirectory.exists()
         else str(scripts_dir.joinpath(filename))
     )
 

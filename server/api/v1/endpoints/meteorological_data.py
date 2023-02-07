@@ -1,5 +1,5 @@
 from fastapi import APIRouter, Depends
-from sqlalchemy.ext.asyncio import AsyncSession  # type: ignore
+from sqlalchemy.ext.asyncio import AsyncSession
 
 from server.api.dependencies import get_db
 from server.core.constants import RELATIVE_ROOT

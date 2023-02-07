@@ -1,6 +1,6 @@
 from typing import AsyncGenerator
 
-from sqlalchemy.ext.asyncio import AsyncSession  # type: ignore
+from sqlalchemy.ext.asyncio import AsyncSession
 
 from server.db.database import db
 

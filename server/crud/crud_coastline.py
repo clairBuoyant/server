@@ -1,6 +1,6 @@
-from sqlalchemy.ext.asyncio import AsyncSession  # type: ignore
-from sqlalchemy.future import select  # type: ignore
-from sqlalchemy.orm import joinedload  # type: ignore
+from sqlalchemy.ext.asyncio import AsyncSession
+from sqlalchemy.future import select
+from sqlalchemy.orm import joinedload
 
 from server.crud.base import CRUDBase
 from server.models.coastline import Coastline

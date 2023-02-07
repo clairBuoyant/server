@@ -1,5 +1,5 @@
 from pybuoy import Buoy
-from sqlalchemy.ext.asyncio import AsyncSession  # type: ignore
+from sqlalchemy.ext.asyncio import AsyncSession
 
 from server.crud import meteorological_datum
 from server.schemas import MeteorologicalDatumCreate
