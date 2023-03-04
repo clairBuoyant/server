@@ -1,4 +1,4 @@
-from sqlalchemy.ext.asyncio import AsyncSession  # type: ignore
+from sqlalchemy.ext.asyncio import AsyncSession
 
 from server.crud.base import CRUDBase
 from server.models.wave_datum import WaveDatum

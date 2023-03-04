@@ -1,11 +1,8 @@
-from sqlalchemy.ext.asyncio import (  # type: ignore
-    AsyncEngine,
-    AsyncSession,
-    create_async_engine,
-)
-from sqlalchemy.orm import declarative_base, sessionmaker  # type: ignore
+from sqlalchemy.ext.asyncio import AsyncEngine, AsyncSession, create_async_engine
+from sqlalchemy.orm import sessionmaker
 
 from server.core.config import get_settings
+from server.db.base_class import Base
 
 
 class Database:
@@ -16,7 +13,6 @@ class Database:
         self.url = connection_url
 
     async def create_all(self):  # pragma: no cover
-        Base = declarative_base()
         async with self._engine.begin() as connection:
             await connection.run_sync(Base.metadata.create_all)
 

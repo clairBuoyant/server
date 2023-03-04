@@ -1,5 +1,5 @@
 from pybuoy import Buoy
-from sqlalchemy.ext.asyncio import AsyncSession  # type: ignore
+from sqlalchemy.ext.asyncio import AsyncSession
 
 from server.crud.crud_wave_datum import wave_datum
 from server.schemas.wave_datum import WaveDatumCreate

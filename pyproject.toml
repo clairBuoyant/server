@@ -9,27 +9,27 @@ python = ">=3.11, <4.0"
 fastapi = "^0.92.0"
 requests = "^2.28.2"
 uvicorn = "^0.20.0"
-pydantic = "^1.10.3"
-GeoAlchemy2 = "^0.12.5"
-alembic = "^1.9.1"
-python-dotenv = "^0.21.0"
+pydantic = "^1.10.5"
+GeoAlchemy2 = "^0.13.1"
+alembic = "^1.9.4"
+python-dotenv = "^1.0.0"
 asyncpg = "^0.27.0"
-SQLAlchemy = "^1.4.45"
-greenlet = "^2.0.1"
-Shapely = "^2.0.0"
+SQLAlchemy = "^2.0.4"
+greenlet = "^2.0.2"
+Shapely = "^2.0.1"
 pybuoy = "^0.5.0"
 
 [tool.poetry.dev-dependencies]
-black="^22.12.0"
-coverage = { version = "7.0.1", extras = ["toml"]}
-httpx = "^0.23.1"
-isort = { version = "^5.11.4", extras = ["pyproject"]}
-pytest="^7.2.0"
-pre-commit = "^2.21.0"
+black="^23.1.0"
+coverage = { version = "7.2.1", extras = ["toml"]}
+httpx = "^0.23.3"
+isort = { version = "^5.12.0", extras = ["pyproject"]}
+pytest="^7.2.2"
+pre-commit = "^3.1.1"
 pytest-asyncio = "^0.20.3"
 pytest-cov = "^4.0.0"
 flake8 = "^6.0.0"
-mypy = "^0.991"
+mypy = "^1.0.1"
 
 [tool.poetry.scripts]
 bootstrap="scripts.poetry_entrypoint:bootstrap"
