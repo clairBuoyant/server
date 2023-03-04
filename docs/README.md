@@ -36,7 +36,7 @@ Install the following required dependencies before proceeding further. We also r
 
 #### Required
 
-- [Python >= 3.10](https://www.python.org/downloads/release/python-3106): primary language for server.
+- [Python >= 3.11](https://www.python.org/downloads/release/python-3112): primary language for server.
 - [Poetry >= 1.1.14](https://github.com/python-poetry/poetry): manage Python dependencies and virtualenv.
 
 #### Recommended
