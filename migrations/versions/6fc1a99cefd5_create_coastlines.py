@@ -1,4 +1,4 @@
-"""Create coastlines
+"""Create coastlines table.
 
 Revision ID: 6fc1a99cefd5
 Revises: d632ea3490c4

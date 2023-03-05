@@ -1,4 +1,4 @@
-""" Add Forecasts
+"""Create Forecasts table.
 
 Revision ID: 0d4ad564e77b
 Revises: d63493af0a71

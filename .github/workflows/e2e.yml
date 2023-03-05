@@ -1,4 +1,4 @@
-name: FastAPI Server
+name: API - E2E Tests
 
 on:
   push:
@@ -48,7 +48,6 @@ jobs:
       - name: Seed DB
         env:
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
-          PYTHON_ENV: ${{ secrets.PYTHON_ENV }}
           PYTHONPATH: $PYTHONPATH:.
         run: |
           sleep 10;
@@ -57,8 +56,7 @@ jobs:
       - name: Run tests
         env:
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
-          PYTHON_ENV: ${{ secrets.PYTHON_ENV }}
           PYTHONPATH: $PYTHONPATH:.
-        # TODO: incorporate coverage reporting
+        # TODO: leverage Dockerfile to incorporate coverage,lint,etc.
         run: |
           poetry run pytest

@@ -28,7 +28,7 @@ RUN curl -sSL https://install.python-poetry.org | python3 -
 WORKDIR $PYSETUP_PATH
 COPY ./poetry.lock ./
 COPY ./pyproject.toml ./
-RUN poetry install --no-dev
+RUN poetry install --without dev,test --sync
 
 
 # 'development' stage installs all dev deps and can be used to develop code.
@@ -46,7 +46,7 @@ RUN chmod +x /docker-entrypoint
 
 # venv already has runtime deps installed we get a quicker install
 WORKDIR $PYSETUP_PATH
-RUN poetry install
+RUN poetry install --with dev,test
 
 WORKDIR /backend
 COPY ./server /backend/server

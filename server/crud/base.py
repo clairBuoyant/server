@@ -46,6 +46,7 @@ class CRUDBase(Generic[ModelType, CreateSchemaType, UpdateSchemaType]):
         end_date: datetime,
     ) -> Optional[ModelType]:
         result = await db_session.execute(
+            # TODO: standardize these attributes in base model
             select(self.model).where(
                 self.model.station_id == station_id
                 and self.model.date_recorded >= begin_date

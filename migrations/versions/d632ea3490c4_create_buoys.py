@@ -1,4 +1,4 @@
-"""create buoys
+"""Create buoys table.
 
 Revision ID: d632ea3490c4
 Revises:

@@ -3,8 +3,7 @@ from functools import lru_cache
 from pydantic import ConfigDict
 from pydantic_settings import BaseSettings
 
-from server.core.constants import DEFAULT_PYTHON_ENV
-
+from .constants import DEFAULT_PYTHON_ENV
 
 class Settings(BaseSettings):
     DATABASE_URL: str

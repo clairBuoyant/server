@@ -107,7 +107,6 @@ Running [dotenv](../scripts/dotenv), [init](../scripts/init), or [start](../scri
 - `POSTGRES_DB`: "clairbuoyant" (default: clairbuoyant)
 - `POSTGRES_USER`: "postgres" (default: randomly generated value)
 - `POSTGRES_PASSWORD`: "postgres" (default: randomly generated value)
-- `PYTHON_ENV`: "development" or "production" or "test". (default: production)
 
 ### Development with Docker
 
