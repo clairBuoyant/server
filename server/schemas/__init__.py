@@ -5,6 +5,12 @@ from server.schemas.coastline import (  # noqa: F401
     CoastlineInDB,
     CoastlineUpdate,
 )
+from server.schemas.forecast import (  # noqa: F401
+    Forecast,
+    ForecastCreate,
+    ForecastInDB,
+    ForecastUpdate,
+)
 from server.schemas.meteorological_datum import (  # noqa: F401
     MeteorologicalDatum,
     MeteorologicalDatumCreate,

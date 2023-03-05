@@ -16,7 +16,8 @@ class WaveDatum(Base):
 
     id: Mapped[intpk]
     station_id: Mapped[buoy_fk]
-    date_recorded: Mapped[datetime]
+    # TODO: consider renaming
+    date_recorded: Mapped[datetime]  # observation date
     significant_wave_height: Mapped[Optional[float]]
     swell_height: Mapped[Optional[float]]
     swell_period: Mapped[Optional[float]]

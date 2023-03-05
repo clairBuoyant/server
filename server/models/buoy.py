@@ -8,6 +8,7 @@ from server.db.base_class import Base, buoyattr_sint, buoyattr_str1, intpk, str1
 
 if TYPE_CHECKING:
     from server.models.coastline import Coastline
+    from server.models.forecast import Forecast
     from server.models.meteorological_datum import MeteorologicalDatum
     from server.models.wave_datum import WaveDatum
 
@@ -16,6 +17,7 @@ class Buoy(Base):
     __tablename__ = "buoys"
 
     coastlines: Mapped[List["Coastline"]] = relationship()
+    forecasts: Mapped[List["Forecast"]] = relationship()
     meteorological_data: Mapped[List["MeteorologicalDatum"]] = relationship()
     wave_data: Mapped[List["WaveDatum"]] = relationship()
 

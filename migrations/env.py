@@ -33,6 +33,13 @@ target_metadata = Base.metadata
 settings = get_settings()
 
 
+def include_name(name, type_, _):
+    if type_ == "table":
+        return name in target_metadata.tables
+    else:
+        return True
+
+
 def get_db_url():
     return settings.DATABASE_URL
 
@@ -57,6 +64,7 @@ def run_migrations_offline():
     context.configure(
         url=get_db_url(),
         target_metadata=target_metadata,
+        include_name=include_name,
         literal_binds=True,
         dialect_opts={"paramstyle": "named"},
     )
@@ -66,7 +74,11 @@ def run_migrations_offline():
 
 
 def do_run_migrations(connection):
-    context.configure(connection=connection, target_metadata=target_metadata)
+    context.configure(
+        connection=connection,
+        include_name=include_name,
+        target_metadata=target_metadata,
+    )
 
     with context.begin_transaction():
         if settings.PYTHON_ENV == "test":
