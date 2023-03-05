@@ -1,5 +1,4 @@
-from fastapi import APIRouter
-
+from server.api.api_router import APIRouter
 from server.api.v1.endpoints import buoys, coastlines, meteorological_data, wave_data
 from server.core.constants import (
     BUOYS_PATH,
