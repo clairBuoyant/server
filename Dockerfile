@@ -89,5 +89,4 @@ COPY ./server /backend/server
 COPY ./alembic.ini /backend/
 COPY ./migrations /backend/migrations
 ENTRYPOINT /docker-entrypoint $0 $@
-# TODO: rework entry point (reconcile approach taken in docker-compose with line below)
-# CMD [ "gunicorn", "--worker-class uvicorn.workers.UvicornWorker", "--config /gunicorn_conf.py", "server.main:app"]
+CMD [ "gunicorn", "-k uvicorn.workers.UvicornWorker", "-c docker/gunicorn_conf.py", "server.main:app"]
