@@ -53,7 +53,14 @@ def get_application() -> FastAPI:
     )
 
     # TODO: Specify specific hosts and adjust method/header permissions
-    origins = ["localhost"]
+    origins = [
+        "clairbuoyant.live",
+        "dev.clairbuoyant.live",
+        "http://127.0.0.1:3000",
+        "https://clairbuoyant.live",
+        "https://dev.clairbuoyant.live",
+        "https://*.web-dpa.pages.dev",
+    ]
 
     application.add_middleware(
         CORSMiddleware,
