@@ -6,10 +6,10 @@ from server.db.base_class import Base
 
 
 class Database:
-    def __init__(self, connection_url):
+    def __init__(self, connection_url: str):
         self._session: AsyncSession = None
         self._engine: AsyncEngine = None
-        # TODO: dynamically append '_test' based on PYTHON_ENV
+        # TODO: remove approach for adding '_test' based on PYTHON_ENV
         self.url = connection_url
 
     async def create_all(self):  # pragma: no cover

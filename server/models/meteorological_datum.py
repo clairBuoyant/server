@@ -16,7 +16,8 @@ class MeteorologicalDatum(Base):
 
     id: Mapped[intpk]
     station_id: Mapped[buoy_fk]
-    date_recorded: Mapped[datetime]
+    # TODO: consider renaming
+    date_recorded: Mapped[datetime]  # observation date
     wind_direction: Mapped[Optional[int]]
     wind_speed: Mapped[Optional[float]]
     wind_gust: Mapped[Optional[float]]

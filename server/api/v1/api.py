@@ -1,8 +1,15 @@
 from server.api.api_router import APIRouter
-from server.api.v1.endpoints import buoys, coastlines, meteorological_data, wave_data
+from server.api.v1.endpoints import (
+    buoys,
+    coastlines,
+    forecasts,
+    meteorological_data,
+    wave_data,
+)
 from server.core.constants import (
     BUOYS_PATH,
     COASTLINES_PATH,
+    FORECASTS_PATH,
     METEOROLOGICAL_DATA_PATH,
     WAVE_DATA_PATH,
     PathTags,
@@ -15,6 +22,9 @@ api_router = APIRouter()
 api_router.include_router(buoys.router, prefix=BUOYS_PATH, tags=[PathTags.BUOYS])
 api_router.include_router(
     coastlines.router, prefix=COASTLINES_PATH, tags=[PathTags.COASTLINES]
+)
+api_router.include_router(
+    forecasts.router, prefix=FORECASTS_PATH, tags=[PathTags.FORECASTS]
 )
 api_router.include_router(
     meteorological_data.router,
