@@ -1,17 +1,17 @@
 from datetime import datetime
 from typing import Optional
 
-from pydantic import BaseModel
+from pydantic import BaseModel, ConfigDict
 
 
 # Shared properties
 class ForecastBase(BaseModel):
     date_recorded: datetime
     station_id: str
-    wave_height: Optional[float]
-    wind_direction: Optional[int]
-    wind_speed: Optional[float]
-    wind_speed_gust: Optional[float]
+    wave_height: Optional[float] = None
+    wind_direction: Optional[int] = None
+    wind_speed: Optional[float] = None
+    wind_speed_gust: Optional[float] = None
 
 
 # Properties to receive on item creation
@@ -27,9 +27,7 @@ class ForecastUpdate(ForecastBase):
 # Properties shared by models stored in DB
 class ForecastInDBBase(ForecastBase):
     id: int
-
-    class Config:
-        orm_mode = True
+    model_config = ConfigDict(from_attributes=True)
 
 
 class Forecast(ForecastInDBBase):
