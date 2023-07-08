@@ -1,7 +1,7 @@
 from typing import Optional
 
 from geoalchemy2.elements import WKBElement  # type: ignore
-from pydantic import BaseModel, validator
+from pydantic import BaseModel, ConfigDict, validator
 
 from server.schemas.common import ewkb_to_coords
 
@@ -35,13 +35,13 @@ class BuoyUpdate(BuoyBase):
 # Properties shared by models stored in DB
 class BuoyInDBBase(BuoyBase):
     id: int
-
-    class Config:
-        orm_mode = True
+    model_config = ConfigDict(from_attributes=True)
 
 
 # Properties to return to client
 class Buoy(BuoyInDBBase):
+    # TODO: replace `validator` with `field_validator`
+    # https://docs.pydantic.dev/dev-v2/migration/#changes-to-validators
     @validator("location", pre=True, allow_reuse=True, always=True)
     def correct_location_format(cls, v):
         if not isinstance(v, WKBElement):

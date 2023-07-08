@@ -1,23 +1,23 @@
 from datetime import datetime
 from typing import Optional
 
-from pydantic import BaseModel
+from pydantic import BaseModel, ConfigDict
 
 
 # Shared properties
 class WaveDatumBase(BaseModel):
     station_id: str
     date_recorded: datetime
-    significant_wave_height: Optional[float]
-    swell_height: Optional[float]
-    swell_period: Optional[float]
-    wind_wave_height: Optional[float]
-    wind_wave_period: Optional[float]
-    swell_direction: Optional[str]
-    wind_wave_direction: Optional[str]
-    steepness: Optional[str]
-    average_wave_period: Optional[float]
-    mean_wave_direction: Optional[int]
+    significant_wave_height: Optional[float] = None
+    swell_height: Optional[float] = None
+    swell_period: Optional[float] = None
+    wind_wave_height: Optional[float] = None
+    wind_wave_period: Optional[float] = None
+    swell_direction: Optional[str] = None
+    wind_wave_direction: Optional[str] = None
+    steepness: Optional[str] = None
+    average_wave_period: Optional[float] = None
+    mean_wave_direction: Optional[int] = None
 
 
 # Properties to receive on item creation
@@ -33,9 +33,7 @@ class WaveDatumUpdate(WaveDatumBase):
 # Properties shared by models stored in DB
 class WaveDatumInDBBase(WaveDatumBase):
     id: int
-
-    class Config:
-        orm_mode = True
+    model_config = ConfigDict(from_attributes=True)
 
 
 class WaveDatum(WaveDatumInDBBase):
