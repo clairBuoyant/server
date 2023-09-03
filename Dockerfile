@@ -1,4 +1,4 @@
-FROM python:3.11.2-slim as python-base
+FROM python:3.11-slim AS python-base
 
 ENV PYTHONUNBUFFERED=1 \
     PYTHONDONTWRITEBYTECODE=1 \
@@ -14,7 +14,7 @@ ENV PYTHONUNBUFFERED=1 \
 ENV PATH="$POETRY_HOME/bin:$VENV_PATH/bin:$PATH"
 
 # builder-base is used to build dependencies
-FROM python-base as builder-base
+FROM python-base AS builder-base
 RUN apt-get update \
     && apt-get install --no-install-recommends -y \
     curl \
@@ -33,7 +33,7 @@ RUN poetry install --no-dev
 
 # 'development' stage installs all dev deps and can be used to develop code.
 # For example using docker-compose to mount local volume under /server
-FROM python-base as development
+FROM python-base AS development
 ENV FASTAPI_ENV=development
 
 # Copying poetry and venv into image
@@ -75,7 +75,7 @@ RUN coverage report --fail-under 80
 
 # 'production' stage uses the clean 'python-base' stage and copies
 #  only our runtime deps that were installed in the 'builder-base'
-FROM python-base as production
+FROM python-base AS production
 ENV FASTAPI_ENV=production
 
 COPY --from=builder-base $VENV_PATH $VENV_PATH
