@@ -1,57 +1,58 @@
-#!/bin/bash -e
+#!/usr/bin/env bash
 #
 # Load scripts to current shell environment for execution without package manager.
+set -e
 
 
-PROJECT_ROOT=$(realpath $(dirname "$BASH_SOURCE"))
+PROJECT_ROOT=$(realpath "$(dirname "${BASH_SOURCE[0]}")")
 
 function bootstrap() {
-    ${PROJECT_ROOT}/scripts/bootstrap
+    "${PROJECT_ROOT}/scripts/bootstrap"
 }
 function check() {
-    ${PROJECT_ROOT}/scripts/check
+    "${PROJECT_ROOT}/scripts/check"
 }
 function clean() {
-    ${PROJECT_ROOT}/scripts/clean
+    "${PROJECT_ROOT}/scripts/clean"
 }
 function coverage() {
-    ${PROJECT_ROOT}/scripts/coverage
+    "${PROJECT_ROOT}/scripts/coverage"
 }
 function db-create() {
-    ${PROJECT_ROOT}/scripts/db/create
+    "${PROJECT_ROOT}/scripts/db/create"
 }
 function db-docker() {
-    ${PROJECT_ROOT}/scripts/db/docker
+    "${PROJECT_ROOT}/scripts/db/docker"
 }
 function db-migrations_autogenerate() {
-    ${PROJECT_ROOT}/scripts/db/migrations_autogenerate
+    "${PROJECT_ROOT}/scripts/db/migrations_autogenerate"
 }
 function db-migrations_run() {
-    ${PROJECT_ROOT}/scripts/db/migrations_run
+    "${PROJECT_ROOT}/scripts/db/migrations_run"
 }
 function db-seeds() {
-    ${PROJECT_ROOT}/scripts/db/seeds
+    "${PROJECT_ROOT}/scripts/db/seeds"
 }
 function dotenv() {
-    ${PROJECT_ROOT}/scripts/dotenv
+    "${PROJECT_ROOT}/scripts/dotenv"
 }
 function init() {
-    ${PROJECT_ROOT}/scripts/init
+    "${PROJECT_ROOT}/scripts/init"
 }
 function lint() {
-    ${PROJECT_ROOT}/scripts/lint
+    "${PROJECT_ROOT}/scripts/lint"
 }
 function setup() {
-    ${PROJECT_ROOT}/scripts/setup
+    "${PROJECT_ROOT}/scripts/setup"
 }
 function start() {
-    ${PROJECT_ROOT}/scripts/start
+    "${PROJECT_ROOT}/scripts/start"
 }
 function test() {
-    ${PROJECT_ROOT}/scripts/test
+    "${PROJECT_ROOT}/scripts/test"
 }
 function uninstall() {
-    ${PROJECT_ROOT}/scripts/uninstall
+    "${PROJECT_ROOT}/scripts/uninstall"
 }
 
 echo 'Script commands are ready to use in current shell environment.'
