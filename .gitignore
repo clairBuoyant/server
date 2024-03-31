@@ -27,38 +27,39 @@ pip-delete-this-directory.txt
 # Unit test / coverage reports
 coverage
 htmlcov/
-.tox/
-.nox/
+nosetests.xml
+.cache
 .coverage
 .coverage.*
-.cache
-nosetests.xml
+.hypothesis/
+.nox/
+.pytest_cache/
+.ruff_cache
+.tox/
 *.cover
 *.py,cover
-.hypothesis/
-.pytest_cache/
 
 ## Misc
+__pypackages__/
 .DS_Store
 .idea
 .idea_modules
 .python-version
-__pypackages__/
 
 ## mypy
-.mypy_cache/
 .dmypy.json
+.mypy_cache/
 dmypy.json
 
 ## Sphinx documentation
 docs/_build/
 
 ## VSCode
-.vscode/*
+!.vscode/extensions.json
+!.vscode/launch.json
 !.vscode/settings.json
 !.vscode/tasks.json
-!.vscode/launch.json
-!.vscode/extensions.json
+.vscode/*
 *.code-workspace
 
 ## Exceptions
