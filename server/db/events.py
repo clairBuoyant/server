@@ -4,6 +4,7 @@ TODO: https://docs.sqlalchemy.org/en/14/core/connections.html
     * Investigate any advantages managing connections ourselves.
     * Alternative: `get_db` with Dependency hook for every request.
 """
+
 import logging
 
 import asyncpg  # type: ignore

@@ -25,13 +25,11 @@ class MeteorologicalDatumBase(BaseModel):
 
 
 # Properties to receive on item creation
-class MeteorologicalDatumCreate(MeteorologicalDatumBase):
-    ...
+class MeteorologicalDatumCreate(MeteorologicalDatumBase): ...
 
 
 # Properties to receive on item update
-class MeteorologicalDatumUpdate(MeteorologicalDatumBase):
-    ...
+class MeteorologicalDatumUpdate(MeteorologicalDatumBase): ...
 
 
 # Properties shared by models stored in DB
@@ -40,10 +38,8 @@ class MeteorologicalDatumInDBBase(MeteorologicalDatumBase):
     model_config = ConfigDict(from_attributes=True)
 
 
-class MeteorologicalDatum(MeteorologicalDatumInDBBase):
-    ...
+class MeteorologicalDatum(MeteorologicalDatumInDBBase): ...
 
 
 # Properties properties stored in DB
-class MeteorologicalDatumInDB(MeteorologicalDatumInDBBase):
-    ...
+class MeteorologicalDatumInDB(MeteorologicalDatumInDBBase): ...

@@ -23,13 +23,11 @@ class BuoyBase(BaseModel):
 
 
 # Properties to receive on item creation
-class BuoyCreate(BuoyBase):
-    ...
+class BuoyCreate(BuoyBase): ...
 
 
 # Properties to receive on item update
-class BuoyUpdate(BuoyBase):
-    ...
+class BuoyUpdate(BuoyBase): ...
 
 
 # Properties shared by models stored in DB
@@ -50,5 +48,4 @@ class Buoy(BuoyInDBBase):
 
 
 # Properties properties stored in DB
-class BuoyInDB(BuoyInDBBase):
-    ...
+class BuoyInDB(BuoyInDBBase): ...

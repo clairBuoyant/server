@@ -21,13 +21,11 @@ class WaveDatumBase(BaseModel):
 
 
 # Properties to receive on item creation
-class WaveDatumCreate(WaveDatumBase):
-    ...
+class WaveDatumCreate(WaveDatumBase): ...
 
 
 # Properties to receive on item update
-class WaveDatumUpdate(WaveDatumBase):
-    ...
+class WaveDatumUpdate(WaveDatumBase): ...
 
 
 # Properties shared by models stored in DB
@@ -36,10 +34,8 @@ class WaveDatumInDBBase(WaveDatumBase):
     model_config = ConfigDict(from_attributes=True)
 
 
-class WaveDatum(WaveDatumInDBBase):
-    ...
+class WaveDatum(WaveDatumInDBBase): ...
 
 
 # Properties properties stored in DB
-class WaveDatumInDB(WaveDatumInDBBase):
-    ...
+class WaveDatumInDB(WaveDatumInDBBase): ...
