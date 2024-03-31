@@ -1,6 +1,7 @@
 __pycache__
 .coverage
 .docker
+.DS_Store
 .git
 .github
 .gitignore
@@ -9,8 +10,8 @@ __pycache__
 .mypy_cache
 .pytest_cache
 .python-version
+.ruff_cache
 .vscode
-.DS_Store
 
 coverage
 htmlcov

@@ -5,6 +5,7 @@ Revises:
 Create Date: 2021-12-25 20:31:21.052080
 
 """
+
 import sqlalchemy as sa
 from alembic import op
 from geoalchemy2.types import Geography  # type: ignore

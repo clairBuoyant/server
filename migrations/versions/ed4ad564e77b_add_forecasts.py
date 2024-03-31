@@ -1,10 +1,11 @@
-""" Add Forecasts
+"""Add Forecasts
 
 Revision ID: 0d4ad564e77b
 Revises: d63493af0a71
 Create Date: 2023-03-26 12:46:10.999340
 
 """
+
 import sqlalchemy as sa
 from alembic import op
 

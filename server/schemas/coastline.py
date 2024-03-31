@@ -14,13 +14,11 @@ class CoastlineBase(BaseModel):
 
 
 # Properties to receive on item creation
-class CoastlineCreate(CoastlineBase):
-    ...
+class CoastlineCreate(CoastlineBase): ...
 
 
 # Properties to receive on item update
-class CoastlineUpdate(CoastlineBase):
-    ...
+class CoastlineUpdate(CoastlineBase): ...
 
 
 # Properties shared by models stored in DB
@@ -43,5 +41,4 @@ class Coastline(CoastlineInDBBase):
 
 
 # Properties properties stored in DB
-class CoastlineInDB(CoastlineInDBBase):
-    ...
+class CoastlineInDB(CoastlineInDBBase): ...

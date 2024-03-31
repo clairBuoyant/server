@@ -15,13 +15,11 @@ class ForecastBase(BaseModel):
 
 
 # Properties to receive on item creation
-class ForecastCreate(ForecastBase):
-    ...
+class ForecastCreate(ForecastBase): ...
 
 
 # Properties to receive on item update
-class ForecastUpdate(ForecastBase):
-    ...
+class ForecastUpdate(ForecastBase): ...
 
 
 # Properties shared by models stored in DB
@@ -30,8 +28,7 @@ class ForecastInDBBase(ForecastBase):
     model_config = ConfigDict(from_attributes=True)
 
 
-class Forecast(ForecastInDBBase):
-    ...
+class Forecast(ForecastInDBBase): ...
 
 
 # Properties properties stored in DB
