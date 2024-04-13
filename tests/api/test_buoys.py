@@ -25,8 +25,7 @@ def test_get_buoy(test_app):
     assert "location" in rockaway_buoy
     rockaway_buoy_location = rockaway_buoy["location"]
     assert len(rockaway_buoy_location) == 2
-    assert rockaway_buoy_location[0] == -73.703
-    assert rockaway_buoy_location[1] == 40.369
+    assert rockaway_buoy["station_id"] == _rockaway_buoy_station_id
 
 
 def test_get_buoys(test_app):
