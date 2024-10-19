@@ -2,7 +2,7 @@
 #
 # Resolve all system dependencies the application needs to run.
 
-PYV=`python3 -c 'import sys; sys.stdout.write("true") if sys.version_info.major >= 3 and sys.version_info.minor >= 11 else sys.stdout.write("false");'`
+PYV=$(python3 -c 'import sys; sys.stdout.write("true") if sys.version_info.major >= 3 and sys.version_info.minor >= 11 else sys.stdout.write("false");')
 if ! $PYV
 then
     echo 'Python version 3.11 or greater is required.'
