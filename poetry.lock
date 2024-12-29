@@ -1058,13 +1058,13 @@ virtualenv = ">=20.10.0"
 
 [[package]]
 name = "pybuoy"
-version = "0.5.6"
+version = "0.5.7"
 description = "Python wrapper for NOAA and NDBC REST web services."
 optional = false
 python-versions = "<4.0,>=3.11"
 files = [
-    {file = "pybuoy-0.5.6-py3-none-any.whl", hash = "sha256:18ee590cbe7ba8dad60abb85cab932aaced51974899c3437cc41f440d04af0a2"},
-    {file = "pybuoy-0.5.6.tar.gz", hash = "sha256:df99b9cb41117ab59d8c6051267b1898ac3e6e7c2fe17796f8f577bc1674b89f"},
+    {file = "pybuoy-0.5.7-py3-none-any.whl", hash = "sha256:ffda437673ef1fe21158d19f93dc8ff00852482c7a6d55f10fe3c456ddb0d286"},
+    {file = "pybuoy-0.5.7.tar.gz", hash = "sha256:8dc5f9337d8c2fe0dffa38d668f8d5746c8379198e7e478d630c994c7f4cce9a"},
 ]
 
 [package.dependencies]
@@ -1653,4 +1653,4 @@ test = ["covdefaults (>=2.3)", "coverage (>=7.2.7)", "coverage-enable-subprocess
 [metadata]
 lock-version = "2.0"
 python-versions = ">=3.11, <4.0"
-content-hash = "cab3c0d4b9349839aa00132a2ac55b773470cbcc07c6651eddd6adfc2b5c4fa2"
+content-hash = "f4b5353d2c4f6b51c6fdc6edc317e71f98ce11c93ae680353e8759ab84cd6954"
