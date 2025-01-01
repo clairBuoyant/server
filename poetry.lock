@@ -1058,13 +1058,13 @@ virtualenv = ">=20.10.0"
 
 [[package]]
 name = "pybuoy"
-version = "0.5.6"
+version = "0.5.7"
 description = "Python wrapper for NOAA and NDBC REST web services."
 optional = false
 python-versions = "<4.0,>=3.11"
 files = [
-    {file = "pybuoy-0.5.6-py3-none-any.whl", hash = "sha256:18ee590cbe7ba8dad60abb85cab932aaced51974899c3437cc41f440d04af0a2"},
-    {file = "pybuoy-0.5.6.tar.gz", hash = "sha256:df99b9cb41117ab59d8c6051267b1898ac3e6e7c2fe17796f8f577bc1674b89f"},
+    {file = "pybuoy-0.5.7-py3-none-any.whl", hash = "sha256:ffda437673ef1fe21158d19f93dc8ff00852482c7a6d55f10fe3c456ddb0d286"},
+    {file = "pybuoy-0.5.7.tar.gz", hash = "sha256:8dc5f9337d8c2fe0dffa38d668f8d5746c8379198e7e478d630c994c7f4cce9a"},
 ]
 
 [package.dependencies]
@@ -1205,13 +1205,13 @@ typing-extensions = ">=4.6.0,<4.7.0 || >4.7.0"
 
 [[package]]
 name = "pydantic-settings"
-version = "2.7.0"
+version = "2.7.1"
 description = "Settings management using Pydantic"
 optional = false
 python-versions = ">=3.8"
 files = [
-    {file = "pydantic_settings-2.7.0-py3-none-any.whl", hash = "sha256:e00c05d5fa6cbbb227c84bd7487c5c1065084119b750df7c8c1a554aed236eb5"},
-    {file = "pydantic_settings-2.7.0.tar.gz", hash = "sha256:ac4bfd4a36831a48dbf8b2d9325425b549a0a6f18cea118436d728eb4f1c4d66"},
+    {file = "pydantic_settings-2.7.1-py3-none-any.whl", hash = "sha256:590be9e6e24d06db33a4262829edef682500ef008565a969c73d39d5f8bfb3fd"},
+    {file = "pydantic_settings-2.7.1.tar.gz", hash = "sha256:10c9caad35e64bfb3c2fbf70a078c0e25cc92499782e5200747f942a065dec93"},
 ]
 
 [package.dependencies]
@@ -1653,4 +1653,4 @@ test = ["covdefaults (>=2.3)", "coverage (>=7.2.7)", "coverage-enable-subprocess
 [metadata]
 lock-version = "2.0"
 python-versions = ">=3.11, <4.0"
-content-hash = "d89db5616f4a228a6caf31686aaca1efabebf1bb4dbee4cf5a3f62a83a06d035"
+content-hash = "f9f6d5b3adc88a7a9df738e30f695b52e1a53dd0916f0cadaddba66f63d5aa60"
