@@ -29,7 +29,7 @@ pre-commit = "^4.0.1"
 pytest-asyncio = "^0.25.2"
 pytest-cov = "^6.0.0"
 pytest = "^8.3.4"
-ruff = "^0.9.1"
+ruff = "^0.9.2"
 
 [tool.poetry.scripts]
 bootstrap="scripts.poetry_entrypoint:bootstrap"
