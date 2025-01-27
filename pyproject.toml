@@ -25,11 +25,11 @@ uvicorn = "^0.34.0"
 coverage = { version = "7.6.10", extras = ["toml"]}
 httpx = "^0.28.1"
 mypy = "^1.14.1"
-pre-commit = "^4.0.1"
+pre-commit = "^4.1.0"
 pytest-asyncio = "^0.25.2"
 pytest-cov = "^6.0.0"
 pytest = "^8.3.4"
-ruff = "^0.9.2"
+ruff = "^0.9.3"
 
 [tool.poetry.scripts]
 bootstrap="scripts.poetry_entrypoint:bootstrap"
