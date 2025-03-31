@@ -26,7 +26,7 @@ coverage = { version = "7.7.1", extras = ["toml"]}
 httpx = "^0.28.1"
 mypy = "^1.15.0"
 pre-commit = "^4.2.0"
-pytest-asyncio = "^0.25.3"
+pytest-asyncio = "^0.26.0"
 pytest-cov = "^6.0.0"
 pytest = "^8.3.5"
 ruff = "^0.11.2"
