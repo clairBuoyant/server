@@ -12,14 +12,14 @@ GeoAlchemy2 = "^0.17.1"
 greenlet = "^3.1.1"
 gunicorn = "^23.0.0"
 pybuoy = "^0.5.7"
-pydantic = "^2.11.2"
+pydantic = "^2.11.3"
 pydantic-settings = "^2.8.1"
 python = ">=3.11, <4.0"
 python-dotenv = "^1.1.0"
 requests = "^2.32.3"
 Shapely = "^2.0.7"
 SQLAlchemy = "^2.0.40"
-uvicorn = "^0.34.0"
+uvicorn = "^0.34.1"
 
 [tool.poetry.dev-dependencies]
 coverage = { version = "7.8.0", extras = ["toml"]}
