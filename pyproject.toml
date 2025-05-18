@@ -11,17 +11,17 @@ fastapi = "^0.115.12"
 GeoAlchemy2 = "^0.17.1"
 greenlet = "^3.2.2"
 gunicorn = "^23.0.0"
-pybuoy = "^0.5.7"
+pybuoy = "^0.5.8"
 pydantic = "^2.11.4"
 pydantic-settings = "^2.9.1"
 python = ">=3.11, <4.0"
 python-dotenv = "^1.1.0"
 requests = "^2.32.3"
-Shapely = "^2.0.7"
+Shapely = "^2.1.0"
 SQLAlchemy = "^2.0.41"
 uvicorn = "^0.34.2"
 
-[tool.poetry.dev-dependencies]
+[tool.poetry.group.dev.dependencies]
 coverage = { version = "7.8.0", extras = ["toml"]}
 httpx = "^0.28.1"
 mypy = "^1.15.0"
@@ -29,7 +29,7 @@ pre-commit = "^4.2.0"
 pytest-asyncio = "^0.26.0"
 pytest-cov = "^6.1.1"
 pytest = "^8.3.5"
-ruff = "^0.11.9"
+ruff = "^0.11.10"
 
 [tool.poetry.scripts]
 bootstrap="scripts.poetry_entrypoint:bootstrap"
