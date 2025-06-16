@@ -22,12 +22,12 @@ SQLAlchemy = "^2.0.41"
 uvicorn = "^0.34.3"
 
 [tool.poetry.group.dev.dependencies]
-coverage = { version = "7.8.2", extras = ["toml"]}
+coverage = { version = "7.9.1", extras = ["toml"]}
 httpx = "^0.28.1"
 mypy = "^1.16.0"
 pre-commit = "^4.2.0"
 pytest-asyncio = "^1.0.0"
-pytest-cov = "^6.1.1"
+pytest-cov = "^6.2.1"
 pytest = "^8.4.0"
 ruff = "^0.11.13"
 
