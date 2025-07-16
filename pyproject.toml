@@ -5,9 +5,9 @@ description = "clairBuoyant Server"
 authors = ["Kyle J. Burda <47502769+kylejb@users.noreply.github.com>"]
 
 [tool.poetry.dependencies]
-alembic = "^1.16.2"
+alembic = "^1.16.4"
 asyncpg = "^0.30.0"
-fastapi = "^0.115.14"
+fastapi = "^0.116.1"
 GeoAlchemy2 = "^0.17.1"
 greenlet = "^3.2.3"
 gunicorn = "^23.0.0"
