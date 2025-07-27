@@ -22,14 +22,14 @@ SQLAlchemy = "^2.0.41"
 uvicorn = "^0.35.0"
 
 [tool.poetry.group.dev.dependencies]
-coverage = { version = "7.9.2", extras = ["toml"]}
+coverage = { version = "7.10.1", extras = ["toml"]}
 httpx = "^0.28.1"
 mypy = "^1.17.0"
 pre-commit = "^4.2.0"
 pytest-asyncio = "^1.1.0"
 pytest-cov = "^6.2.1"
 pytest = "^8.4.1"
-ruff = "^0.12.4"
+ruff = "^0.12.5"
 
 [tool.poetry.scripts]
 bootstrap="scripts.poetry_entrypoint:bootstrap"
