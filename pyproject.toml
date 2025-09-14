@@ -27,9 +27,9 @@ httpx = "^0.28.1"
 mypy = "^1.17.1"
 pre-commit = "^4.3.0"
 pytest-asyncio = "^1.1.0"
-pytest-cov = "^6.2.1"
-pytest = "^8.4.1"
-ruff = "^0.12.11"
+pytest-cov = "^6.3.0"
+pytest = "^8.4.2"
+ruff = "^0.12.12"
 
 [tool.poetry.scripts]
 bootstrap="scripts.poetry_entrypoint:bootstrap"
