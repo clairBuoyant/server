@@ -7,7 +7,7 @@ authors = ["Kyle J. Burda <47502769+kylejb@users.noreply.github.com>"]
 [tool.poetry.dependencies]
 alembic = "^1.16.5"
 asyncpg = "^0.30.0"
-fastapi = "^0.116.1"
+fastapi = "^0.117.1"
 GeoAlchemy2 = "^0.18.0"
 greenlet = "^3.2.4"
 gunicorn = "^23.0.0"
@@ -19,7 +19,7 @@ python-dotenv = "^1.1.1"
 requests = "^2.32.5"
 Shapely = "^2.1.1"
 SQLAlchemy = "^2.0.43"
-uvicorn = "^0.35.0"
+uvicorn = "^0.36.0"
 
 [tool.poetry.group.dev.dependencies]
 coverage = { version = "7.10.6", extras = ["toml"]}
