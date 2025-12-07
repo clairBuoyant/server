@@ -7,9 +7,9 @@ authors = ["Kyle J. Burda <47502769+kylejb@users.noreply.github.com>"]
 [tool.poetry.dependencies]
 alembic = "^1.17.2"
 asyncpg = "^0.31.0"
-fastapi = "^0.123.0"
+fastapi = "^0.124.0"
 GeoAlchemy2 = "^0.18.1"
-greenlet = "^3.2.4"
+greenlet = "^3.3.0"
 gunicorn = "^23.0.0"
 pybuoy = "^0.5.9"
 pydantic = "^2.12.5"
