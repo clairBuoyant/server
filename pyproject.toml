@@ -22,7 +22,7 @@ SQLAlchemy = "^2.0.45"
 uvicorn = "^0.38.0"
 
 [tool.poetry.group.dev.dependencies]
-coverage = { version = "7.13.0", extras = ["toml"]}
+coverage = { version = "7.13.1", extras = ["toml"]}
 httpx = "^0.28.1"
 mypy = "^1.19.1"
 pre-commit = "^4.5.1"
