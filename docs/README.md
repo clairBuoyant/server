@@ -1,5 +1,8 @@
 # clairBuoyant - Server
 
+> [!IMPORTANT]
+> Development has moved to [`swellhub`](https://github.com/clairBuoyant/swellhub).
+
 ## Folder Structure
 
 ```shell
@@ -77,12 +80,10 @@ Some of `poetry`'s most frequently used commands are documented below:
 2. Run commands inside the virtual environment: `poetry run <command_name>`
 
 3. Start a development server locally: `poetry run start`
-
    - API will be available at [localhost:8888/api](http://localhost:8888/api).
    - API documentation will be available at [localhost:8888/api/docs](http://localhost:8888/api/docs).
 
 4. Spawn a shell inside the virtual environment with `poetry shell` before running commands like above without needing to invoke `poetry run`.
-
    - this enables us to access the repository's dependencies and scripts directly like so:
 
      ```shell
